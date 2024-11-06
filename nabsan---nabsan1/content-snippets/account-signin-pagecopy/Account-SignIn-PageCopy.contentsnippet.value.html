@@ -1,0 +1,20 @@
+<script>
+    $(document).ready(function() {
+        $('a[title="Forgot your password?"]').text('Change Password'); 
+       // $('a[title="Register"]').text('New User Registration'); 
+        //$('a[title="Register"]').css('display','none');  
+        $('button[title="Sign in with your Azure AD account."]').text('NABSanrakshan users may please click here'); 
+        //$('button[title="Sign in with your Azure AD account."]').hide(); 
+        //$('li a[title="Register"]').before($('li a[title="Sign in"]'));
+        localStorage.clear();
+        $('a[title="Forgot your password?"]').attr("href", location.origin+"/en-US/Account/Manage/ChangePassword")
+        
+        $("#submit-signin-local").click(function()
+            {
+                debugger;
+                localStorage.clear();
+                localStorage.setItem("username", $("#Username").val());
+            })
+    })
+    
+    </script>

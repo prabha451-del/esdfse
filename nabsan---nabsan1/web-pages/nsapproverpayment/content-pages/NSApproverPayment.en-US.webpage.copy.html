@@ -1,0 +1,288 @@
+<script type="text/javascript" src="~/NSApproverPayment.js"></script>
+<script type="text/javascript" src="~/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="~/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="~/jquery-ui.min.js"></script>
+<script type="text/javascript" src="~/select2.min.js"></script>
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+<link href="~/jquery.dataTables.min.css"> -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js" integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<style>
+.ui-dialog{width: 840px !important; left: 317px !important;}
+.btn-default{margin-right:15px !important; font-weight: 500; color: rgb(241, 95, 45); background-color: rgb(255, 255, 255); border-top-color: rgb(243, 122, 81); border-right-color: rgb(243, 122, 81); border-bottom-color: rgb(243, 122, 81); border-left-color: rgb(243, 122, 81); padding-top: 4px; padding-right: 16px; padding-bottom: 4px; padding-left: 16px; font-size: 15px; margin-bottom: 15px !important;}
+</style>
+<input type="hidden" id="txtId" /><input type="hidden" id="hdnDigitalRequestNo" /><input type="hidden" id="hdnCounterItemID" /><input type="hidden" id="hdnCounterItemID1" /><input type="hidden" id="hdnDigitalRequestNoCGFAN" /><input type="hidden" id="hdnCounterItemIDCGFAN" /><input type="hidden" id="hdnCounterItemID1CGFAN" /><input type="hidden" id="CGFANId" /><input type="hidden" id="CGPANNo" /><input type="hidden" id="txtELiCheckerComments" /><input type="hidden" id="hdnPaymentReceivedt" />
+<div class="container-fluid">
+  <div class="formheadingWrap formtitle"><h1>CG Fee Payment Details</h1></div>
+  <div class="design-process-content">
+    <div class="p-10">
+      <div class="form-group row">
+        <div class="col-md-12 title">
+          <h4 class="col-md-4" style="font-size: 20px !important;margin: 10px 0px 15px !important; ">Payment Details Entry</h4>
+          <div class="col-md-8">
+          <div class="viewmanagementb col-md-10" ><button type="button" onclick="javascript:ShowPopUp();" class="" style="margin-right:15px !important; font-weight: 500; color: rgb(241, 95, 45); background-color: rgb(255, 255, 255); border-top-color: rgb(243, 122, 81); border-right-color: rgb(243, 122, 81); border-bottom-color: rgb(243, 122, 81); border-left-color: rgb(243, 122, 81); padding-top: 4px; padding-right: 16px; padding-bottom: 4px; padding-left: 16px; font-size: 15px; margin-bottom: 15px !important;float:right !important;">View Payment Management Certificate</button></div>
+          <div class="viewbtnwrap col-md-2" ><button type="button" onclick="ShowSOE()" class="" style="margin-right:15px !important; font-weight: 500; color: rgb(241, 95, 45); background-color: rgb(255, 255, 255); border-top-color: rgb(243, 122, 81); border-right-color: rgb(243, 122, 81); border-bottom-color: rgb(243, 122, 81); border-left-color: rgb(243, 122, 81); padding-top: 4px; padding-right: 16px; padding-bottom: 4px; padding-left: 16px; font-size: 15px; margin-bottom: 15px !important; float:right !important;">View SOE</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row" style="padding-top: 10px;">
+        <div class="form-group col-md-4">
+          <label for="">Application No</label>
+          <div><label id="txtApplicationNo" class="form-control"></label></div>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="">Name of FPO</label>
+          <div><label id="txtFPOName" class="form-control" style="height: auto;"></label></div>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="">SOE ID</label>
+          <div><label id="txtSOENo" class="form-control"></label></div>
+        </div>
+      </div>
+      <div class=" form-group row my-4">
+        <div class="form-group col-md-4">
+          <label for="">SOE Date</label>
+          <div><label id="txtSOEdt" class="form-control"></label></div>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="">Credit Gurantee Fee</label>
+          <div><label id="txtCreditGuranteeFee" class="form-control"></label></div>
+          <small id="txtCreditGuranteeFeeinwords" style="color: #f55905;"></small>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="">GST</label>
+          <div><label id="txtTaxAmt" class="form-control"></label></div>
+          <small id="txtGrandTotalinwords" style="color: #f55905;"></small>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="form-group col-md-4">
+          <label for="">Total CG fee</label>
+          <div><label id="txtGrandTotal" class="form-control"></label></div>
+          <small id="txtTaxAmtinwords" style="color: #f55905;"></small>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="">Paid Amount</label>
+          <div><label id="txtAmount" class="form-control"></label></div>
+          <small id="txtAmountinwords" style="color: #f55905;"></small>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="">UTR </label>
+          <div><label id="txtUTRNo" class="form-control"></label></div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="form-group col-md-4">
+          <label for="">Payment Date</label>
+          <div><label id="txtPaymentdt" class="form-control"></label></div>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="">Name of ELI</label>
+          <div><label id="txtNameOfLendingInstitution" class="form-control"></label></div>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="">CG FAN </label>
+          <div><label id="CGFANNo" class="form-control"></label></div>
+        </div>
+      </div>
+      <!--<div class="row">
+					<div class="form-group col-md-4">	  
+                   <label for="">Paid Amount :</label>
+                      <div>
+                      <label id="txtAmount" class="form-control"></label></div>
+					</div>
+					<div class="form-group col-md-4">	  
+                   <label for="">UTR :</label>
+                      <div>
+                      <label id="txtUTRNo" class="form-control"></label></div>
+					</div>
+					<div class="form-group col-md-4">	  
+                   <label for="">Payment Date:</label>
+                      <div>
+                      <label id="txtPaymentdt" class="form-control"></label></div>
+					</div>
+					</div>-->
+      <div class="form-group row my-4">
+        <div class="form-group col-md-4">
+          <label for="">Payment Received</label>
+          <div><label id="ddlPaymentReceived" class="form-control"></label></div>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="">Payment Received Date</label>
+          <div><label id="dtpaymentreceived" class="form-control"></label></div>
+        </div>
+      </div>
+      
+  <!--  <h3>Payment Details Entry</h3><br>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="">Application No:</label>
+      <label id="txtApplicationNo"></label>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="">Name of FPO:</label>
+      <label id="txtFPOName"></label>
+    </div>
+    
+  </div>
+<div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="">SOE ID:</label>
+      <label id="txtSOENo"></label>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="">Credit Gurantee Fee:</label>
+      <label id="txtCreditGuranteeFee"></label>
+    </div>
+    
+  </div>
+  <div class="form-row">
+        <div class="form-group col-md-6">
+      <label for="">SOE Date:</label>
+      <label id="txtSOEdt"></label>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="">GST:</label>
+      <label id="txtTaxAmt"></label>
+    </div>
+  </div>
+
+  <div class="form-row">
+  	<div class="form-group col-md-6">
+      <label for="">Name of ELI:</label>
+      <label id="txtNameOfLendingInstitution"></label>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="">Grand Total:</label>
+      <label id="txtGrandTotal"></label>
+    </div>
+    
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="">CG FAN : </label>
+      <label id="CGFANNo"></label>
+    </div>
+ 
+  </div>
+	<h5>Payment Details</h5>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="">Paid Amount :</label>
+      <label id="txtAmount"></label>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="">UTR :</label>
+      <label id="txtUTRNo"></label>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="">Payment Date:</label>
+      <label id="txtPaymentdt"></label>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="">Payment Received</label>
+      <label id="ddlPaymentReceived"></label>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="">Payment Received Date</label>
+      <label id="dtpaymentreceived"></label>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="">Remark</label>
+		<textarea id="txtRemarks"></textarea>
+    </div>-->
+</div>
+<div id="inputDialog2" style="display: none;">
+  <div class="container">
+    <div class="row my-2">
+      <div class="col-md-12">
+        <div class="head"><h5 style="text-align: center;">Management Certificate (Payment)</h5></div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-md-6 col-form-label" style="text-align: right;">CG Application No</label>
+      <div class="col-md-4" style="margin: 3px -24px;"><input type="text" id="txtCGApplicationNo" readonly="readonly" class="form-control" /></div>
+    </div>
+    <div class="form-group row">
+      <label class="col-md-2 col-form-label w18">Name Of FPO</label>
+      <div class="col-md-6" style="margin: 3px -40px;"><label type="text" id="txtNameOfFPO1" readonly="readonly" class="form-control" style="height: auto;"></label></div>
+    </div>
+    <div class="form-group">
+      <div style="display: flex;">
+        <label style="padding-right: 15px;"><input type="checkbox" value="" id="flexCheckChecked" checked="" class="form-check-input" style="margin: auto;" /></label
+        ><label for="vehicle1"
+          ><label> We certify&nbsp;that</label><label class="text">1.There&nbsp;are no dues from the Borrower that have become overdue and/or is not an overdue/NPA credit facility taken over by us and/or /is not Credit'. Facility/which has been rescheduled or restructured on becoming overdue </label><br /><label class="text">2.The business or activity of the borrower for which the Credit Facility was granted has not ceased.</label><br /><label class="text">3.The Credit&nbsp;Facility has not been utilized, wholly or partly, for adjustment of any debt deemed as bad or doubtful of recovery.</label><br /><label class="text">4.The Credit Facility abides by the extant guidelines of Credit Guarantee Scheme for FPO Financing.</label><br /><label>Name: <label id="txtELICheckerNamePayment" style="color: grey; margin-bottom: 0;"></label></label><br /><label>Lending Institution: <label id="instituteIdNewPayment" style="color: grey; margin-bottom: 0;"></label></label><br /><label>Date: <label id="dtproceedPayment" style="color: grey; margin-bottom: 0;"></label></label><br /><label>This is a computer generated management certificate, physical signature is notrequired.</label></label
+        >
+      </div>
+    </div>
+    <!--		<div class="form-group row">
+           <label class="col-md-3">CG Application No</label>
+            <div class="col-md-3"> <input type="text" id="txtCGApplicationNo" class="form-control" readonly="readonly"> </div>
+           
+           
+           <label class="col-md-3">Name Of FPO</label>
+            <div class="col-md-3"> 
+            <input type="text" id="txtNameOfFPO1" class="form-control" readonly="readonly"> 
+            </div>            
+           </div>  -->
+    <div class="button" style="text-align: center;"><!--<button type="button" id="MangmentCheck" class="btn btn-primary" onclick="javascript:Proceed();" style="background-color:green;">Accept and Proceed</button> --><button type="button" id="MangmentCheck" onclick="javascript:ClosePopup();" class="btn btn-primary" style="background-color: red; font-size: 10px;">Close</button></div>
+    <br />
+  </div>
+</div>
+<div class="col-md-12">
+  <!-- <div id="Makerremark" class="form-group col-md-4">
+    <label for="" class="col-md-12">Eli Maker Remark</label>
+    <div class="col-md-12">
+      <b class="col-md-4" style="font-size: 16px; width: 27%;">Comment:-</b>
+      <p id="txtEliMakerRemarks" readonly="readonly" style="font-size: 16px;"></p>
+    </div>
+  </div>
+  <div id="checkerremark" class="form-group col-md-4">
+    <label for="" class="col-md-12">Eli Checker Remark</label>
+    <div class="col-md-12">
+      <b class="col-md-4" style="font-size: 16px; width: 27%;">Comment:-</b>
+      <p id="txtEliCheckerRemarks" style="font-size: 16px;"></p>
+    </div>
+  </div>-->
+  
+  </div>
+  </div>
+  <div class="design-process-content" style="margin:20px 13px 20px;">
+    <div class="form-group row">
+      <div class="col-md-6">
+          <div class="col-md-5"><h5>Documents attached by NS Checker:-</h5></div>
+          <div class="col-md-7"><div id="additionalDocs" style="display: block; margin-left: 25px;"></div></div>
+      </div>
+      <div id="NScheckerremark" class="form-group col-md-6">
+          <label for="" class="col-md-6"><b style="float:right !important;">NS Checker Remark:-</b></label>
+          <div class="col-md-6">          
+            <p id="txtNSCheckerRemarks" style="font-size: 16px;"></p>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class=" form-group row">
+      <div class="col-md-6" style="margin-bottom: 10px; display: flex;">
+            <label for="Creative" class="col-md-4"><b>Supporting Document</b><span></span></label>
+            <div class="col-md-8">
+              <div id="attachFilesHolderOther" class="files"><input id="fileAttachInvoice" title="fileAttachInvoice" type="file" name="files[]" multiple="multiple" class="form-control" style="background: #fff;" /></div>
+              <!--     <div  id="additionalDocs" style="display:block;margin-left:25px"> -->
+            </div>
+      </div>
+   </div>
+        <div class="form-group row">
+               <div class="form-group"> <label for="">Remark <samp style="color: red;"> * </samp></label></div>
+                <div class="form-group"><textarea id="txtRemarks" class="form-control" style="background: transparent;"></textarea></div>
+          </div>
+  
+    
+<div style="text-align: center; margin-top: 20px;"><button type="button" onclick="SubmitData()" class="btn btn-default">Approve</button><button type="button" onclick="showTaxInvoice()" class="btn btn-default">View Invoice</button><button type="button" onclick="Exit()" class="btn btn-default">Exit</button></div>
+<div class="row sectionBlockLayout text-left" style="display: flex; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;">
+  <div class="container" style="padding: 0px; display: flex; flex-wrap: wrap;"><div class="col-md-12 columnBlockLayout" style="flex-grow: 1; display: flex; flex-direction: column; min-width: 310px; word-break: break-word;"></div></div>
+</div>

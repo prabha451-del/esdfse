@@ -1,0 +1,460 @@
+<script type="text/javascript" src="~/TaxInvoices.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+<script>
+  function convertToPDF() {
+      // Select the container element
+      const element = document.getElementById('allDivcontain');
+
+      // Save the original font size
+      const originalFontSize = window.getComputedStyle(element).getPropertyValue('font-size');
+
+      // Set a smaller font size for PDF generation
+     element.style.fontSize = '10px';
+
+      // Generate PDF
+      const options = {
+          filename: 'CGApplication.pdf',
+          margin: 10, // Adjust the margin size (in millimeters) as needed
+          image: { type: 'jpeg', quality: 1 }, // Set image quality to 1 for maximum quality
+          html2canvas: { scale: 2 }, // Adjust scale to improve rendering quality
+          jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' } // Set units to millimeters and adjust page size and orientation
+      };
+      html2pdf()
+          .from(element)
+          .set(options)
+          .save()
+          .then(() => {
+              element.style.fontSize = originalFontSize;
+          });
+  }
+</script>
+<div class="row">
+  <div id="i6vkj" class="col-md-12 buttonbox cmpbtn" style="text-align: right; margin-bottom: 15px;">
+    <button id="printPageButton" type="button" onclick="convertToPDF()" class="form-control btn1" style="margin-right: 46px; color: rgb(245, 89, 5); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(245, 89, 5); border-right-color: rgb(245, 89, 5); border-bottom-color: rgb(245, 89, 5); border-left-color: rgb(245, 89, 5); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial; background-image: initial; background-position-x: initial; background-position-y: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); width: 11%; display: initial;">Download PDF</button><!--	<div class="col-md-2" style="float: right;width:9%">
+    		<button id="btnBack" type="button" class="btn btn-danger" onclick="javascript:window.open('','_self').close();">Close</button>
+		</div> -->
+  </div>
+</div>
+<div id="allDivcontain" class="container" style="margin-bottom: 10px; border: 1px solid #7e7c7c; width: 90%;">
+  <div class="row my-3">
+    <div class="col-md-12">
+      <div class="head"><h4 style="text-align: center; font-size: 16px; font-weight: 700; font-family: auto;">TAX INVOICE</h4></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="text1"><p style="text-align: center; font-family: serif;">Credit Guarantee Fund Trust for Farmer Producer Organizations</p></div>
+      <div class="text1"><p style="text-align: center; font-family: serif;">Address: Plot No. C-24,G-Block, Bandra Kurla Complex, Bandra(East), Mumbai- 400051</p></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="text"><p style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;">Phone: 022-26539241/43</p></div>
+    </div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <div class="text"><p style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;">Email: ho@nabsanrakshan.org</p></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="text"><p style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;">GSTIN: 27AACTC9635K1ZB</p></div>
+    </div>
+    <div class="col-md-4">
+      <div class="text"><p style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;">PAN: AACTC9635K</p></div>
+    </div>
+  </div>
+  <div id="i3fqel" class="row" style="border-top: 1px solid gray;">
+    <div class="col-md-5">
+      <div class="row">
+        <div class="col-md-12" style="margin-left: -12px;">
+          <label for="" class="col-md-4 col-form-label" style="font-family: serif; font-size: 18px;">Bill to Name:</label>
+          <div class="col-md-8 data"><label id="txtbillname" style="margin-top: 25px;"></label></div>
+        </div>
+        <div class="col-md-12" style="margin-left: -12px;">
+          <label for="" class="col-md-4 col-form-label" style="font-family: serif; font-size: 18px;">Address: </label>
+          <div class="col-md-8 data"><label id="txtAddress"></label></div>
+        </div>
+        <div class="col-md-12" style="margin-left: -12px;">
+          <label for="" class="col-md-4 col-form-label" style="font-family: serif; font-size: 18px;">State:</label>
+          <div class="col-md-8 data"><label id="txtState"></label></div>
+        </div>
+        <div class="col-md-12" style="margin-left: -12px;">
+          <label for="" class="col-md-4 col-form-label" style="font-family: serif; font-size: 18px;">State Code: </label>
+          <div class="col-md-8 data"><label id="txtStateCode"></label></div>
+        </div>
+        <div class="col-md-12" style="margin-left: -12px;">
+          <label for="" class="col-md-4 col-form-label" style="font-family: serif; font-size: 18px;">GSTIN:</label>
+          <div class="col-md-8 data"><label id="txtGSTIN"></label></div>
+        </div>
+        <div class="col-md-12" style="margin-left: -12px;">
+          <label for="" class="col-md-4 col-form-label" style="font-family: serif; font-size: 18px;">PAN: </label>
+          <div class="col-md-8 data"><label id="txtPAN"></label></div>
+        </div>
+        <label for="" class="col-md-12 col-form-label" style="margin-left: -3px; font-family: serif; font-size: 18px;">Tax is payable on Reverse Charge: No </label>
+      </div>
+    </div>
+    <div id="i09ysi" class="col-md-3" style="border-left: 1px solid gray; border-right: 1px solid gray; height: 310px;">
+      <div class="row my-2 mx-2">
+        <div class="col-md-12">
+          <div class="form-group"><label for="" style="font-family: serif; font-size: 18px;">Place of Supply:</label><label id="txtPlaceofSupply"></label></div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group"><label for="" id="i17gu7" style="margin-top: 10px; font-family: serif; font-size: 18px;">State Code: </label><label id="txtStateCode1" class="data"></label></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="row">
+        <label for="" class="col-sm-5 col-form-label" style="font-family: serif; font-size: 18px;">Invoice No:</label>
+        <div class="col-md-7 data"><label id="txtTaxNo"></label></div>
+      </div>
+      <div id="ixhwg8" class="row" style="display: none;">
+        <div class="col-md-12">
+          <div class="text"><p style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;">SFPO/00___/2022-23</p></div>
+        </div>
+      </div>
+      <div id="irg49n" class="row" style="display: none;">
+        <div class="col-md-12"><textarea rows="1" class="form-control"></textarea></div>
+      </div>
+      <div class="row">
+        <label for="" class="col-md-4 col-form-label" style="font-family: serif; font-size: 18px;">Date:</label>
+        <div class="col-md-8 data"><label id="InvoiceDt"></label></div>
+      </div>
+    </div>
+  </div>
+  <div id="irxebi" class="row" style="border-top: 1px solid #7e7c7c;">
+    <div class="col-md-9">
+      <div class="row text bod" style="border-right-width: 1px; border-right-style: solid; border-right-color: rgb(126, 124, 124);">
+        <div id="i2o9eu" class="col-md-12" style="text-align: center; border-bottom: 1px solid gray;">
+          <p style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;"><b>Description</b></p>
+        </div>
+      </div>
+    </div>
+    <div id="i2lwnl" class="col-md-3" style="border-bottom: 1px solid #7e7c7c;">
+      <div class="text">
+        <p style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;"><b>Amount (₹)</b></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="row text bod" style="border-right-width: 1px; border-right-style: solid; border-right-color: rgb(126, 124, 124);">
+        <div class="col-md-12">
+          <p style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; font-size: 18px;"><b>Credit Guarantee Fee (SAC: 997119):</b></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="text"><label id="txtCGFee"></label></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="row text bod" style="border-right-width: 1px; border-right-style: solid; border-right-color: rgb(126, 124, 124);">
+        <div class="col-md-12">
+          <p style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; font-size: 18px;"><b>Penalty (SAC: 997119):</b></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="text"><p style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;"></p></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="row text bod" style="border-right-width: 1px; border-right-style: solid; border-right-color: rgb(126, 124, 124);">
+        <div class="col-md-12">
+          <p style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; font-size: 18px;"><b>FPO Name</b><span id="txtFpo" style="float: right;"></span></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="row text bod" style="border-right-width: 1px; border-right-style: solid; border-right-color: rgb(126, 124, 124);">
+        <div class="col-md-12">
+          <p style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; font-size: 18px;"><b>Loan A/c No</b><span id="txtLoanAcc" style="float: right;"></span></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="row text bod" style="border-right-width: 1px; border-right-style: solid; border-right-color: rgb(126, 124, 124);">
+        <div class="col-md-12">
+          <p style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; font-size: 18px;"><b>Sanctioned Amount (₹)</b><span id="txtsanAmt" style="float: right;"></span></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+  <!--  <div class="row">
+                    <div class="col-md-9">
+                        <div class="row text bod">
+                            <div class="col-md-12">
+                                <p><b>CG Application No.</b><span id="txtCGAppNo"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        
+                    </div>
+                </div>  -->
+  <div class="row">
+    <div class="col-md-9">
+      <div class="row text bod" style="border-right-width: 1px; border-right-style: solid; border-right-color: rgb(126, 124, 124);">
+        <div class="col-md-12">
+          <p style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; font-size: 18px;"><b>CGFAN</b><span id="txtCGFAN" style="float: right;"></span></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="row text bod" style="border-right-width: 1px; border-right-style: solid; border-right-color: rgb(126, 124, 124);">
+        <div class="col-md-12">
+          <p style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; font-size: 18px;"><b>CGPAN</b><span id="txtCGPAN" style="float: right;"></span></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="row text bod" style="border-right-width: 1px; border-right-style: solid; border-right-color: rgb(126, 124, 124);">
+        <div class="col-md-12">
+          <p style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; font-size: 18px;"><b>Eligible Guarantee Cover (₹)</b><span id="txtElig" style="float: right;"></span></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="row text bod" style="border-right-width: 1px; border-right-style: solid; border-right-color: rgb(126, 124, 124);">
+        <div class="col-md-12">
+          <p style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; font-size: 18px;"><b>Guarantee Start Date</b><span id="txtguarentystart" style="float: right;"></span></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="row text bod" style="border-right-width: 1px; border-right-style: solid; border-right-color: rgb(126, 124, 124);">
+        <div class="col-md-12">
+          <p style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; font-size: 18px;">
+            <b>Guarantee Period</b> <span style="float: right;">Loan end date or 365 days from the <br>guarantee start date, whichever is earlier. </span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="text"><p style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;"></p></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="row text">
+        <div class="col-md-12 bod2" style="border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(126, 124, 124); border-top-width: 1px; border-top-style: solid; border-top-color: rgb(126, 124, 124); border-right-width: 1px; border-right-style: solid; border-right-color: rgb(126, 124, 124);">
+          <p style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; font-size: 18px;"><b>Sub Total:</b></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 bod1" style="border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(126, 124, 124); border-top-width: 1px; border-top-style: solid; border-top-color: rgb(126, 124, 124);">
+      <div class="text"><p id="txtSubTot" style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;"></p></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="row text bod" style="border-right-width: 1px; border-right-style: solid; border-right-color: rgb(126, 124, 124);">
+        <div class="col-md-12 bod3" style="border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(126, 124, 124);">
+          <p style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; font-size: 18px;"><b>Add: GST (As applicable)</b></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="text"><p style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;"></p></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-9 rig" style="border-right-width: 1px; border-right-style: solid; border-right-color: rgb(126, 124, 124);">
+      <div class="text2"><p id="iof5hx" style="font-family: serif; margin-top: 5px; margin-bottom: 5px; margin-left: 5px; float: right; padding-right: 130px; margin-right: 2px;">IGST: 18%</p></div>
+    </div>
+    <div class="col-md-3 rig1">
+      <div class="text"><p id="txtIGST" style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;"></p></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-9 rig" style="border-right-width: 1px; border-right-style: solid; border-right-color: rgb(126, 124, 124);">
+      <div class="text2"><p style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; float: right; padding-right: 130px;">CGST: 9%</p></div>
+    </div>
+    <div class="col-md-3 rig1">
+      <div class="text"><p id="txtCGST" style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;">0</p></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-9 rig" style="border-right-width: 1px; border-right-style: solid; border-right-color: rgb(126, 124, 124);">
+      <div class="text2"><p id="isbxba" style="font-family: serif; margin-top: 5px; margin-bottom: 5px; margin-left: 5px; float: right; padding-right: 130px; margin-right: 7px;">SGST: 9%</p></div>
+    </div>
+    <div class="col-md-3 rig1">
+      <div class="text"><p id="txtSGST" style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;">0</p></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-9 rig" style="border-right-width: 1px; border-right-style: solid; border-right-color: rgb(126, 124, 124);">
+      <div class="text2"><p style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; float: right; padding-right: 130px;">UGST: 9%</p></div>
+    </div>
+    <div class="col-md-3 rig1">
+      <div class="text"><p id="txtUGST" style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;"></p></div>
+    </div>
+  </div>
+  <!--<div class="row">
+                <div class="col-md-9">
+                    <div class="row text bod2">
+                        <div class="col-md-12">
+                            <p>Sub Total:</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="text">
+                        <p></p>
+                    </div>
+                </div>
+            </div>-->
+  <div class="row">
+    <div class="col-md-9">
+      <div class="row text">
+        <div class="col-md-12 bod2" style="border-top-width: 1px; border-top-style: solid; border-top-color: rgb(126, 124, 124); border-right-width: 1px; border-right-style: solid; border-right-color: rgb(126, 124, 124);">
+          <p style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; font-size: 18px;"><b>Sub Total:</b></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 bod1" style="border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(126, 124, 124); border-top-width: 1px; border-top-style: solid; border-top-color: rgb(126, 124, 124);">
+      <div class="text"><p id="txtSubtotal1" style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;"></p></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="row text">
+        <div class="col-md-12 bod2" style="border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(126, 124, 124); border-top-width: 1px; border-top-style: solid; border-top-color: rgb(126, 124, 124); border-right-width: 1px; border-right-style: solid; border-right-color: rgb(126, 124, 124);">
+          <p style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; font-size: 18px;"><b>Grand Total:</b></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 bod1" style="border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(126, 124, 124); border-top-width: 1px; border-top-style: solid; border-top-color: rgb(126, 124, 124);">
+      <div class="text"><p id="txtgrandtotal" style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;"></p></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="row text">
+        <div class="col-md-12 bod4" style="border-right-width: 1px; border-right-style: solid; border-right-color: rgb(126, 124, 124); border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(126, 124, 124);">
+          <p style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; font-size: 18px;"><b>Amount in words:</b></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8 bod3" style="border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(126, 124, 124);">
+      <div id="iok6ti" class="text" style="text-align: center;"><p id="txtAmtWords" style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;"></p></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-7 rig" style="border-right-width: 1px; border-right-style: solid; border-right-color: rgb(126, 124, 124);">
+      <div class="form-group row">
+        <label for="staticEmail" class="col-md-3 col-form-label">Bank Name</label><!-- <div class="col-md-1"><span>:</span></div> -->
+        <div class="col-md-9 data"><input type="text" readonly="" id="staticEmail" value="ICICI BANK" class="form-control-plaintext" style="border-top-width: initial; border-right-width: initial; border-bottom-width: initial; border-left-width: initial; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-top-color: initial; border-right-color: initial; border-bottom-color: initial; border-left-color: initial; border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial;"></div>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="text"><p style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;">Authorised Signatory</p></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-7 rig" style="border-right-width: 1px; border-right-style: solid; border-right-color: rgb(126, 124, 124);">
+      <div class="form-group row">
+        <label for="staticEmail" class="col-md-3 col-form-label">Branch</label><!-- <div class="col-md-1"><span>:</span></div> -->
+        <div class="col-md-9 data"><input type="text" readonly="" id="staticEmail-2" value="BKC, G Block" class="form-control-plaintext" style="border-top-width: initial; border-right-width: initial; border-bottom-width: initial; border-left-width: initial; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-top-color: initial; border-right-color: initial; border-bottom-color: initial; border-left-color: initial; border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial;"></div>
+      </div>
+    </div>
+    <div class="col-md-5"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-7 rig" style="border-right-width: 1px; border-right-style: solid; border-right-color: rgb(126, 124, 124);">
+      <div class="form-group row">
+        <label for="staticEmail" class="col-md-3 col-form-label">IFSC</label><!-- <div class="col-md-1"><span>:</span></div> -->
+        <div class="col-md-9 data"><input type="text" readonly="" id="staticEmail-3" value=" ICIC0003449" class="form-control-plaintext" style="padding-left: 1px; border-top-width: initial; border-right-width: initial; border-bottom-width: initial; border-left-width: initial; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-top-color: initial; border-right-color: initial; border-bottom-color: initial; border-left-color: initial; border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial;"></div>
+      </div>
+    </div>
+    <div class="col-md-5"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-7 rig" style="border-right-width: 1px; border-right-style: solid; border-right-color: rgb(126, 124, 124);">
+      <div class="form-group row">
+        <label for="staticEmail" class="col-md-3 col-form-label">Account No.</label><!-- <div class="col-md-1"><span>:</span></div> -->
+        <div class="col-md-9 data"><input type="text" readonly="" id="staticEmail-4" value="344905001210" class="form-control-plaintext" style="border-top-width: initial; border-right-width: initial; border-bottom-width: initial; border-left-width: initial; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-top-color: initial; border-right-color: initial; border-bottom-color: initial; border-left-color: initial; border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial;"></div>
+      </div>
+    </div>
+    <div class="col-md-5"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-7 rig" style="border-right-width: 1px; border-right-style: solid; border-right-color: rgb(126, 124, 124);">
+      <div class="form-group row">
+        <label for="staticEmail" class="col-md-3 col-form-label">Account Type</label><!-- <div class="col-md-1"><span>:</span></div> -->
+        <div class="col-md-9 data"><input type="text" readonly="" id="staticEmail-5" value=" Current" class="form-control-plaintext" style="margin-left: -3px; border-top-width: initial; border-right-width: initial; border-bottom-width: initial; border-left-width: initial; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-top-color: initial; border-right-color: initial; border-bottom-color: initial; border-left-color: initial; border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial;"></div>
+      </div>
+    </div>
+    <div class="col-md-5"></div>
+  </div>
+  <div id="ilsq0b" class="row" style="border-bottom: 1px solid gray;">
+    <div class="col-md-7 rig" style="border-right-width: 1px; border-right-style: solid; border-right-color: rgb(126, 124, 124);">
+      <div class="form-group row">
+        <label for="staticEmail" class="col-md-3 col-form-label">Account Name</label><!-- <div class="col-md-1"><span>:</span></div> -->
+        <div class="col-md-9 data"><label type="text" readonly="" id="staticEmail-6" value="Credit Guarantee Fund Trust for Farmer Producer Organizations" class="form-control-plaintext" style="border-top-width: initial; border-right-width: initial; border-bottom-width: initial; border-left-width: initial; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-top-color: initial; border-right-color: initial; border-bottom-color: initial; border-left-color: initial; border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial;">Credit Guarantee Fund Trust for Farmer Producer Organizations</label></div>
+      </div>
+    </div>
+    <div class="col-md-5"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="text">
+        <p style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;">Terms and Conditions:</p>
+        <p style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;">1. Any dispute on the matter will be subject to the jurisdiction of the court of Mumbai.</p>
+        <p style="font-family: serif; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;">2. This is a computer generated statement and does not require a signature.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="ii23o9" class="button" style="text-align: center;"><button type="button" onclick="javascript:window.open('','_self').close();" id="ioyb9t" class="btn1" style="margin-right: 46px; color: rgb(245, 89, 5); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(245, 89, 5); border-right-color: rgb(245, 89, 5); border-bottom-color: rgb(245, 89, 5); border-left-color: rgb(245, 89, 5); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial; background-image: initial; background-position-x: initial; background-position-y: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); border-radius: 3px; min-width: 6em; padding: 7px 10px;">Exit</button></div>
+<script type="text/javascript">
+  function CreatePDFWithDynamiContent(FileName, ContentID)
+  {
+      var element = document.getElementById(ContentID);
+      html2pdf(element, {
+      	 //margin: [1, 1, 1, 1],
+         margin: [0.5, 0.5, 0.5, 0.5],
+          filename: FileName + '.pdf',
+          image: {
+              type: 'jpeg',
+              quality: 1
+          },
+          html2canvas: {
+              dpi: 192,
+              letterRendering: true,
+              scale: window.devicePixelRatio2pdf
+          },
+          jsPDF: {
+              unit: 'in',
+              format: 'a4',
+              orientation: 'portrait'
+          }
+      })
+   }
+</script>
+<div id="is4n3g" class="row sectionBlockLayout text-left" style="display: flex; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;">
+  <div id="iaih3w" class="container" style="margin-bottom: 20px; padding: 0px; display: flex; flex-wrap: wrap; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(126, 124, 124); border-right-color: rgb(126, 124, 124); border-bottom-color: rgb(126, 124, 124); border-left-color: rgb(126, 124, 124); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial;"><div class="col-md-12 columnBlockLayout" style="flex-grow: 1; display: flex; flex-direction: column; min-width: 250px; word-break: break-word;"></div></div>
+</div>

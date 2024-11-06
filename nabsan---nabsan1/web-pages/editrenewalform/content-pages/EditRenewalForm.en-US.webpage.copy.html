@@ -1,0 +1,470 @@
+<script type="text/javascript" src="~/EditRenewalForm.js"></script>
+<input type="hidden" id="hdnTitle">
+<input type="hidden" id="hdnELICheckerEmail">
+<input type="hidden" id="hdnlendingInstitute">
+<input type="hidden" id="hdnELIMakerEmailID">
+<input type="hidden" id="hdnsanctiondate">
+<input type="hidden" id="hdnDigitalRequestNo">
+<input type="hidden" id="hdnCounterItemID">
+<input type="hidden" id="hdnCounterItemID1">
+<input type="hidden" id="hdnGurenteeStartDt">
+<input type="hidden" id="hdnGurenteeEndDt">
+<input type="hidden" id="hdnCGStatus">
+<input type="hidden" id="hdnTotalFPOPlainMember">
+<input type="hidden" id="hdnTotalFPONorthenMember">
+<input type="hidden" id="hdnCGFeeCGApplicationDt">
+<!-- <input type="hidden" id="hdnCGFeeRenewalCGApplicationDt"> -->
+<input type="hidden" id="hdnValidityEndDate">
+<input type="hidden" id="divELICheckerRemark">
+<body>
+        
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="discover">
+            <div class="design-process-content">
+            	
+                <div class="row mx-0">
+                <h4 class="col-md-12 title">CG Basic Details</h4>
+                   </div>
+                   
+         <div class="form-group row mx-0">
+      		<div class="form-group col-md-3">
+              <label for="">CGPAN<span style="color:red"><b>*</b></span></label>
+              <input type="text" id="CGPAN" class="form-control" readonly="readonly"> 
+            </div>
+           <div class="form-group col-md-3">
+             <label for=""> Name of FPO<span style="color:red"><b>*</b></span></label>
+             <input type="text" id="txtNameOfFPO" class="form-control" readonly="readonly"> 
+           </div>
+
+          
+          <div class="form-group col-md-3">
+           <label for="">PAN<span style="color:red"><b>*</b></span></label>
+           <input type="text" id="PANFPO" class="form-control" readonly="readonly"> 
+         </div>
+         
+         
+
+         <div class="form-group col-md-3">
+            <label for="">Region of the FPO<span style="color:red"><b>*</b></span></label>
+            <select id="RegionOfFPO" class="form-control" readonly="readonly" disabled onchange="FunRegionofFPO()"><option value="0">Select</option><option value="1">FPO in Plains</option><option value="2">FPO in North Eastern or Hilly Areas</option></select>
+          </div>
+         <div class="form-group col-md-3">
+		    <label for="">Customer ID<span style="color:red"><b>*</b></span></label>
+		    <input type="text" id="CustomerID" class="form-control" readonly="readonly"> 
+		 </div> 
+			<div class="form-group col-md-3">
+			<label for="TypeofFacility">Type of Facility</label>
+                <!--<input type="text" id="TypeofFacility" class="form-control" readonly="readonly">--> 
+			<select id="TypeofFacility" class="form-control" disabled readonly="readonly">
+			<option value="">-Select--</option>
+			<option value = "Term Loan OR WCTL (Working Capital Term Loan)">Term Loan OR WCTL (Working Capital Term Loan)</option>
+			<option value="WC/CC Limit">WC/CC Limit</option>
+			</select>
+			</div>
+			
+			<div class="col-md-3">
+			<div class="form-group">
+			<label for="">Account No<span style="color:red"><b>*</b></span></label>
+			<input type="text" id="AccountNo" class="form-control" readonly="readonly"> 
+			</div>
+			</div>
+			
+			<div class="form-group col-md-3">
+			<label for="">Sanctioned Amount(₹)<span style="color:red"><b>*</b></span></label>
+			<input type="number" id="SanctionedAmount" class="form-control" readonly="readonly">
+			<small id="SanctionedAmountinwords"></small> 
+			</div>
+			<div class="form-group col-md-3">
+			<label for="">Date of Sanction</label>
+			<input type="date" id="SanctionDate" class="form-control" readonly="readonly"> 
+			</div>
+
+
+			</div>
+			<div class="row mx-0">
+            <h4 class="col-md-12 title">Renewal Details</h4>
+            </div>
+        <div class="form-group row m-0">
+            <div class="col-md-12">
+            	<div class="form-group row m-0">
+            		<div class="form-group col-md-3">
+                <label for="">Farmer Members Size<span style="color:red"><b>*</b></span></label>
+                <input type="text" id="FarmerMemberSize" class="form-control"> 
+              </div>
+			<div class="form-group col-md-3">
+		    <label for="">Modified Sanctioned Amount(₹)<span style="color:red"><b>*</b></span></label>
+		    <input type="number" id="ModifiedSanctionedAmount" class="form-control" onchange="ModifiedSanctionedAmountss();"> 
+		    <small id="ModifiedSanctionedAmountiinwords"></small>
+		  	</div>
+		  	
+		  	<div class="form-group col-md-3">
+			<label for="">Date of Modified Sanction<span style="color:red"><b>*</b></span></label>
+			<input type="date" id="DateModifiedSanction" class="form-control"> 
+			</div>
+            	</div>
+            </div>									  	
+		  	
+		  	<div class="col-md-12">
+		  	
+		  		<div id="1" class="form-group row m-0">
+			
+
+			<div class="form-group col-md-3">
+			<label for="DisbursmentLoan">Any Disbursement under Loan?</label>
+			<select id="DisbursmentLoan" class="form-control" onchange="DisbursmentLoan($(this).val)">
+			<option value="Select" >Select</option>
+			<option value="Yes">Yes</option>
+			<option value="No">No</option>
+			</select>
+			</div>
+								  
+			<div class="form-group col-md-3" id="3">
+			<label for="">Date of First Disbursement<span style="color:red"><b>*</b></span></label>
+			<input type="date" id="Date" class="form-control"> 
+			</div>
+			
+			<div class="form-group col-md-3" id="4">
+			<label for="">Principal Outstanding(₹)<span style="color:red"><b>*</b></span></label>
+			<input type="number" id="PrincipalOutstanding" class="form-control" onchange="PrincipalOutstandinginwords();"> 
+			<small id="PrincipalOutstandinginwords"></small>
+			</div>
+			
+			<div class="form-group col-md-3" id="5">
+			<label for="">End Date of Interest Moratorium<span style="color:red"><b>*</b></span></label>
+			<input type="date" id="EndDateinterest" class="form-control"> 
+			</div>
+			
+			<div class="form-group col-md-3" id="6">
+			<label for="">End Date of Principal Moratorium<span style="color:red"><b>*</b></span></label>
+			<input type="date" id="EndDateprincipal" class="form-control"> 
+			</div>
+			
+			<div class="form-group col-md-3" id="7">
+			<label for="">Date of last Instalment<span style="color:red"><b>*</b></span></label>
+			<input type="date" id="DatelastInstalment" class="form-control"> 
+			</div>
+			
+			<div class="form-group col-md-3" id="8">
+			<label for="Loanfullydisbursed">Is the Loan fully disbursed</label>
+			<select id="Loanfullydisbursed" class="form-control" onchange="Loanfullydisbursed($(this).val)">
+			<option value="Select">Select</option>
+			<option value="Yes">Yes</option>
+			<option value="No">No</option>
+			</select>
+
+			</div>
+			
+			<div class="form-group col-md-3" id="9">
+			<label for="LoanClosed">Loan closed?</label>
+			<select id="LoanClosed" class="form-control" onchange="LoanClosed($(this).val)">
+			<option value="Select" >Select</option>
+			<option value="Yes">Yes</option>
+			<option value="No">No</option>
+			</select>
+
+			</div>
+
+			<div class="form-group col-md-3" id="10" style="display:none">
+			<label for="">Date of Closure of Loan<span style="color:red"><b>*</b></span></label>
+			<input type="date" id="DateclosureLoan" class="form-control">
+			</div>
+			</div>
+		  	
+		  	</div>
+		  	
+
+			<div class="col-md-12">
+				
+				<div id="2" class="form-group row m-0">
+			<!--<div class="form-group col-md-3">
+			<label for="">Date of Modified Sanction<span style="color:red"><b>*</b></span></label>
+			<input type="date" id="DateModifiedSanction" class="form-control"> 
+			</div>-->
+		
+			<div class="form-group col-md-3">
+			<label for="Loanfullydisbursed">Any Utilisation under the Limit?</label>
+			<select id="UtilisationLimit" class="form-control">
+			<option value="Select">Select</option>
+			<!--<option value = "Yes">Yes</option>-->
+			<option value = "Yes">Yes</option>
+			<option value="No">No</option>
+			</select>
+			</div>
+			
+			<div class="form-group col-md-3" id="202" style="display: none">
+			<label for="">Date of First Withdrawal<span style="color:red"><b>*</b></span></label>
+			<input type="date" id="DatefirstWithdrawl" class="form-control"> 
+			</div>
+			
+			<div class="form-group col-md-6">
+			<label for="Loanfullydisbursed">Was the Limit operational for full previous Financial Year ?</label>
+			<select id="Limitoperational" class="form-control">
+			<option value="Select">select</option>
+			<!--<option value = "Yes">Yes</option>-->
+			<option value = "Yes">Yes</option>
+			<option value="No">No</option>
+			</select>
+			</div>
+			
+			<div class="form-group col-md-3" id="22" style="display:none">
+		    <label for="">Peak Outstanding(₹)<span style="color:red"><b>*</b></span></label>
+		    <input type="number" id="PeakOutstanding2" class="form-control" onchange="PeakOutstanding();">
+		    <small id="PeakOutstandinginwords"></small> 
+		  	</div>
+		  			  
+			<div class="form-group col-md-3">
+			<label for="">End Date of Limit Validity<span style="color:red"><b>*</b></span></label>
+			<input type="date" id="DateLimitValidity" class="form-control"> 
+			</div>
+			
+			<div class="form-group col-md-3">
+			<label for="EndLimitClosed">Limit Closed?</label>
+			<select id="EndLimitClosed2" class="form-control">
+			<option value="Select">Select</option>
+			<!--<option value = "Yes">Yes</option>-->
+			<option value = "Yes">Yes</option>
+			<option value="No">No</option>
+			</select>
+			</div>
+			
+			
+			<div class="form-group col-md-3" id="201" style="display:none">
+			<label for="">Date of Closure of Limit<span style="color:red"><b>*</b></span></label>
+			<input type="date" id="DateClosureLimit2" class="form-control"> 
+			</div>
+			</div>
+				
+			</div>						
+									
+			<div class="col-md-12">
+				<div class="form-group row m-0">
+				
+					<div class="form-group col-md-3" id="11">
+				<label for="">IRAC classification <span style="color:red"><b>*</b></span></label> 
+					<select id="IRACclassification" class="form-control">
+							<option value="Select">Select</option>
+							<!--<option value = "Yes">Yes</option>-->
+							<option value = "SMA- 0">SMA- 0</option>
+							<option value = "SMA- 1">SMA- 1</option>
+							<option value = "SMA- 2">SMA- 2</option>
+							<option value = "Standard - 0 Days Past Due (DPD)">Standard - 0 Days Past Due (DPD)</option>
+							<option value = "Substandard">Substandard</option>
+							<option value="Doubtful">Doubtful</option>
+							<option value="Loss">Loss</option>
+					</select>
+			</div>
+				<div class="form-group col-md-3" id="20" style="display:none">
+						<label for="">Date of NPA<span style="color:red"><b>*</b></span></label>
+						<input type="date" id="DateofNPA" class="form-control"> 
+				</div>		
+				
+					<div  class="col-md-3" style="display:none" id="NSCheckerDiv">
+							<label > Maker Remark:</label>
+							<div id="txtCheckerRemark1"></div>
+						<label style="display:none; font-size:20px; " id="txtCheckerRemark"></label>
+					</div>
+					<div class="col-md-3" id="NSDiv" style="display:none">
+						<label >Checker  Remark:</label>
+						<div id="txtNSAppproverRemark1" style="font-size:20px;"></div>
+					</div>				
+			<div class="col-md-6">
+			              <div class="form-group row" id="nscheckerapproval">
+				         <label class="col-sm-4 form-control-label">Documents Attached:-</label>
+						    <div class="col-sm-4">
+								  <div id="additionalDocsNSChecker" style="display:block;margin-left:25px"></div>
+						    </div>
+ 			  </div>          
+			</div>
+				
+				</div>
+			</div>
+					 
+
+			
+			
+
+			</div>
+			</div>
+			</div>
+			</div>
+			<br>
+			<br>			
+			<div class="tab-content">
+			<div role="tabpanel" class="tab-pane active" id="discover">
+			<div class="design-process-content">
+			<div class="row mx-0">
+			
+			
+			
+			<div class="form-group col-md-6">
+					<label>Attachments<span style="color:red"><b>*</b></span></label>
+				<div class="files" id="attachFilesHolder">
+			<input id="ELIChekerAttach" title="file_input" type="file" name="files[]" multiple="multiple" class="form-control"> 			
+				</div>
+			</div>
+			<div class="col-md-6">
+			<div class="form-group">	
+			<label style="color:black">Remark<span style="color:red"><b>*</b></span></label>
+			<textarea id="txtmakerComment" class="form-control"></textarea> 
+			</div>
+			
+			
+			
+			
+			
+			</div>
+			</div>
+			</div>
+			</div>
+			
+			
+        
+        
+        
+        
+        
+        
+        
+               
+				<input type="hidden" id="ELICheckerEmail">
+
+
+
+   
+   <div>
+     <span us-spinner spinner-key="spinner-1"></span>
+         
+                    <div class="col-sm-12 col-md-12 mt-5">	
+		
+                        <div class="buttons" style="text-align:center">
+                      <!--<button type="button" class="btn btn-primary mr-2" id="btnSave" onclick="javascript:SubmitData('Draft');">Save as Draft</button>-->
+                
+							<button type="button" class="btn btn-default" onclick="javascript:Submit('Draft');">Save as Draft</button>
+							
+							<button type="button" class="btn btn-default" onclick="javascript:Submit('Submitted');">Send for Approval</button>
+							<button type="button" class="btn btn-default" onclick="javascript:cancel();">Exit</button>
+
+                     <!--<button type="button" class="btn btn-default" onclick="javascript:cancel();" >Exit</button>-->
+                   </div>                
+                    </div> 
+	</div>
+
+
+<script type="text/javascript">
+    // script for tab steps
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+
+        var href = $(e.target).attr('href');
+        var $curr = $(".process-model  a[href='" + href + "']").parent();
+
+        $('.process-model li').removeClass();
+
+        $curr.addClass("active");
+         $curr.addClass("afpo");
+        
+       // $curr.prevAll().addClass("visited");
+    });
+           
+
+// end  script for tab steps
+    </script>
+    
+    <script>
+    $(document).on('keydown', 'input[pattern]', function(e){
+  var input = $(this);
+  var oldVal = input.val();
+  var regex = new RegExp(input.attr('pattern'), 'g');
+
+  setTimeout(function(){
+    var newVal = input.val();
+    if(!regex.test(newVal)){
+      input.val(oldVal); 
+    }
+  }, 1);
+});
+     function onlyNumberKey(evt) {
+              
+            // Only ASCII character in that range allowed
+            var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+            if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+                return false;
+            return true;
+        }
+    </script>
+    <script type="text/javascript">
+    $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
+ 
+    </script>
+    <!--function 2-3-2023-->
+    
+   <!--<script type="text/javascript">
+    $( document ).ready(function() {
+      $(".afpo").removeClass('active');
+   
+});</script>-->
+
+    <script type="text/javascript">
+function fpomyFunction() {
+  
+  $("#strategy").addClass("active show");
+    $("#discover").removeClass("active show");
+     $("optimization").removeClass("active");
+    $("#content").removeClass("active show");
+    $(".fposmd").addClass('active');
+    $(".afpo").removeClass('active');
+     $(".cfd").removeClass('active');
+     $(".sd").removeClass('active');
+     
+  
+
+}
+
+</script>
+<script type="text/javascript">
+function cfdmyFunction() {
+ 
+  $("#optimization").addClass("active show");
+   $("#strategy").removeClass("active show");
+     $("#content").removeClass("active show");
+    $(".cfd").addClass('active');
+  $(".fposmd").removeClass('active');
+    $(".afpo").removeClass('active');
+    $(".sd").removeClass('active');
+
+}
+
+</script>
+<script type="text/javascript">
+function sdmyFunction() {
+ 
+  $("#content").addClass("li active show");
+   $("#optimization").removeClass("li active show");
+   $("#strategy").removeClass("active show");
+$(".sd").addClass('active');
+    $(".fposmd").removeClass('active');
+    $(".afpo").removeClass('active');
+     $(".cfd").removeClass('active');
+     
+
+
+}
+
+</script>
+
+    <!--<script>
+     $(function() {
+
+        $( "#DateofSanction" ).datepicker({ 
+            changeYear: true,
+            minDate: '-365D',
+            maxDate: '+0D',
+        });
+    });
+    </script>-->
+
+</body>
+
+</html>

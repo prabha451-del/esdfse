@@ -1,0 +1,502 @@
+<input type="hidden" id="ELIMaker"><input type="hidden" id="hdnDigitalRequestNo"><input type="hidden" id="hdnCounterItemID"><input type="hidden" id="hdnCounterItemID1"><input type="hidden"><input type="hidden" id="hdnNSMaker"><input type="hidden" id="hdnNSChecker"><input type="hidden" id="hdnNSApprover"><input type="hidden" id="hdnRequestStatus">
+<script type="text/javascript" src="~/ELIMakerRegistrationForm1.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!--<form action="/CGApplicationForm" method="post"><input name="__RequestVerificationToken" type="hidden" value="R3lHASuBVfnizJs-ruMWD40Y2tEXssO1HiUhCtQMnV4Xi2y57xEnfTEDq1_rGeyqh770IH81rFHhle6iNnhWQJpR4QMfMfwy7j5CvcSzW3c1">-->
+<div id="process-tab" class="design-process-section">
+  <div class="container-fluid">
+    <div class="formheadingWrap formtitle"><h1>ELI Registration Form1</h1></div>
+    <div class="row">
+      <div class="col-xs-12">
+        <!-- design process steps--><!-- Nav tabs -->
+        <div class="row top-tab">
+          <div class="col-md-12">
+            <ul role="tablist" class="nav nav-tabs process-model more-icon-preocess">
+              <li role="presentation" class="active afpo afpq">
+                <a href="#discover" aria-controls="discover" role="tab" data-toggle="tab"><p>ELI Details</p>
+                  <i aria-hidden="true" class="fa fa-dot-circle-o"></i></a>
+              </li>
+              <li role="presentation" class="fposmd fposmb">
+                <a href="#strategy" aria-controls="strategy" role="tab" data-toggle="tab"><p>Authorized Signatory</p>
+                  <i aria-hidden="true" class="fa fa-dot-circle-o"></i></a>
+              </li>
+              <li role="presentation" class="cfd cfb">
+                <a href="#optimization" aria-controls="optimization" role="tab" data-toggle="tab"><p>Delegated Authority</p>
+                  <i aria-hidden="true" class="fa fa-dot-circle-o"></i></a>
+              </li>
+              <li role="presentation" class="sd sb">
+                <a href="#content" aria-controls="content" role="tab" data-toggle="tab"><p>Administrator</p>
+                  <i aria-hidden="true" class="fa fa-dot-circle-o"></i></a>
+              </li>
+              <!--  <li role="presentation"><a href="#reporting" aria-controls="reporting" role="tab" data-toggle="tab">
+              <p>Reporting</p>
+            <i class="fa fa-clipboard" aria-hidden="true"></i></a></li>-->
+            </ul>
+          </div>
+        </div>
+        <!-- end design process steps--><!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" id="discover" class="tab-pane active">
+            <div class="design-process-content">
+              <div><h4 class="col-md-12 title">ELI Details</h4></div>
+              <div class="form-group row mx-0">
+                <div class="form-group col-md-3">
+                  <label for="">
+                    Bank Name<span style="color: red;"><b>*</b></span></label><input type="text" id="txtBankName" class="form-control">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="">Registration Name<span style="color: red;"><b>*</b></span></label><input type="text" id="txtRegistrationName" class="form-control">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="">Type of Bank<span style="color: red;"><b>*</b></span></label><input type="text" id="txtTypeofBank" class="form-control">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="">
+                    Address<span style="color: red;"><b>*</b></span></label><textarea id="txtAddress" class="form-control"></textarea>
+                </div>
+              </div>
+              <div class="form-group row mx-0">
+                <div class="form-group col-md-3">
+                  <label for="">
+                    City<span style="color: red;"><b>*</b></span></label><input type="text" id="txtCity" class="form-control">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="">
+                    Town<span style="color: red;"><b>*</b></span></label><input type="text" id="txtTown" class="form-control">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="">
+                    State<span style="color: red;"><b>*</b></span></label><select id="ddlState" class="form-control"></select>
+                </div>
+                <div class="form-group col-md-3"><label for="">GSTIN</label><input type="text" maxlength="15" id="GSTINFPO" class="form-control"></div>
+              </div>
+              <div class="form-group row mx-0">
+                <div class="form-group col-md-3"><label for="">Website</label><input type="text" id="txtWebsite" class="form-control"></div>
+                <div class="form-group col-md-3"><label for="">Email ID</label><input type="text" id="txtEmailID" class="form-control"></div>
+                <div class="form-group col-md-3"><label for="">Contact No.</label><input type="text" maxlength="15" onkeypress="return onlyNumberKey(event)" id="txtContactNo" class="form-control"></div>
+              </div>
+              <div class="form-group row mx-0"></div>
+              <button type="button" onclick="fpomyFunction()" class="btn btn-primary Proceed pro1">Proceed</button>
+            </div>
+          </div>
+          <div role="tabpanel" id="strategy" class="tab-pane">
+            <div class="design-process-content">
+              <div><h4 class="col-md-12 title">Authorized Signatory</h4></div>
+              <div>
+                <div class="col-lg-12 col-xs-12 GView">
+                  <table cellpadding="0" cellspacing="0" border="0" id="tblData" class="table tbl">
+                    <thead>
+                      <tr>
+                        <th style="text-align: center;" align="center">Name</th>
+                        <th style="text-align: center;" align="center">Designation</th>
+                        <th style="text-align: center;" align="center">Mobile No.</th>
+                        <th style="text-align: center;" align="center">Address</th>
+                        <th style="text-align: center;" align="center">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tbodyRequestor"></tbody>
+                    <tbody>
+                      <tr>
+                        <td style="text-align: center;" align="center"><input type="text" id="txtNameAuthorized" class="form-control"></td>
+                        <td style="text-align: center;" align="center"><input type="text" id="txtDesignationAuthorized" class="form-control"></td>
+                        <td style="text-align: center;" align="center"><input type="text" maxlength="15" onkeypress="return onlyNumberKey(event)" id="txtMobileNoAuthorized" class="form-control"></td>
+                        <td style="text-align: center;" align="center"><textarea id="txtAddressAuthorized" class="form-control"></textarea></td>
+                        <td>
+                          <button type="button" id="addBtn" onclick="AddData();" class="btn btn-primary btn-xs" style="min-width: auto;"><span class="glyphicon glyphicon-plus"></span></button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row mb-4" style="margin-bottom: 10px; display: flex;">
+                <label for="Creative" class="col-md-4"><b>Aadhar Card</b><span></span></label>
+                <div style="width: 30%;">
+                  <div id="attachFilesHolderAuthorityAadhar" class="files"><input id="fileAuthorityAadharAttach" title="Attachment Files" type="file" name="files[]" multiple="multiple" class="form-control"></div>
+                </div>
+              </div>
+              <div class="row mb-4" style="margin-bottom: 10px; display: flex;">
+                <label for="Creative" class="col-md-4"><b>PAN Card</b><span></span></label>
+                <div style="width: 30%;">
+                  <div id="attachFilesHolderAuthorityPANCard" class="files"><input id="fileAuthorityPANCardAttach" title="Attachment Files" type="file" name="files[]" multiple="multiple" class="form-control"></div>
+                </div>
+              </div>
+              <div class="row mb-4" style="margin-bottom: 10px; display: flex;">
+                <label for="Creative" class="col-md-4"><b>Driving License</b><span></span></label>
+                <div style="width: 30%;">
+                  <div id="attachFilesHolderAuthorityDrivingLicense" class="files"><input id="fileAuthorityDrivingLicenseAttach" title="Attachment Files" type="file" name="files[]" multiple="multiple" class="form-control"></div>
+                </div>
+              </div>
+              <div class="row mb-4" style="margin-bottom: 10px; display: flex;">
+                <label for="Creative" class="col-md-4"><b>Passport</b><span></span></label>
+                <div style="width: 30%;">
+                  <div id="attachFilesHolderAuthorityPassport" class="files"><input id="fileAuthorityPassportAttach" title="Attachment Files" type="file" name="files[]" multiple="multiple" class="form-control"></div>
+                </div>
+              </div>
+              <button type="button" onclick="back1Function()" class="btn btn-primary back pro2">back</button><button type="button" onclick="cfdmyFunction()" class="btn btn-primary Proceed pro2">Proceed</button>
+            </div>
+          </div>
+          <div role="tabpanel" id="optimization" class="tab-pane">
+            <div class="design-process-content">
+              <div style="padding-top: 10px;"><h4 class="col-md-12 title">Delegated Authority</h4></div>
+              <div>
+                <div class="col-lg-12 col-xs-12 GView">
+                  <table cellpadding="0" cellspacing="0" border="0" id="tblDataDelegated" class="table tbl">
+                    <thead>
+                      <tr>
+                        <th style="text-align: center;" align="center">Name</th>
+                        <th style="text-align: center;" align="center">Designation</th>
+                        <th style="text-align: center;" align="center">Mobile No.</th>
+                        <th style="text-align: center;" align="center">Address</th>
+                        <th style="text-align: center;" align="center">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tbodyRequestorDelegated"></tbody>
+                    <tbody>
+                      <tr>
+                        <td style="text-align: center;" align="center"><input type="text" id="txtNameDelegated" class="form-control"></td>
+                        <td style="text-align: center;" align="center"><input type="text" id="txtDesignationDelegated" class="form-control"></td>
+                        <td style="text-align: center;" align="center"><input type="text" maxlength="15" id="txtMobileNoDelegated" class="form-control"></td>
+                        <td style="text-align: center;" align="center"><textarea id="txtAddressDelegated" class="form-control"></textarea></td>
+                        <td>
+                          <button type="button" onclick="AddDataDelegated();" class="btn btn-primary btn-xs" style="min-width: auto;"><span class="glyphicon glyphicon-plus"></span></button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row mb-4" style="margin-bottom: 10px; display: flex;">
+                <label for="Creative" class="col-md-4"><b>Aadhar Card</b><span></span></label>
+                <div style="width: 30%;">
+                  <div id="attachFilesHolderDelegatedAadhar" class="files"><input id="fileDelegatedAadharAttach" title="Attachment Files" type="file" name="files[]" multiple="multiple" class="form-control"></div>
+                </div>
+              </div>
+              <div class="row mb-4" style="margin-bottom: 10px; display: flex;">
+                <label for="Creative" class="col-md-4"><b>PAN Card</b><span></span></label>
+                <div style="width: 30%;">
+                  <div id="attachFilesHolderDelegatedPANCard" class="files"><input id="fileDelegatedPANCardAttach" title="Attachment Files" type="file" name="files[]" multiple="multiple" class="form-control"></div>
+                </div>
+              </div>
+              <div class="row mb-4" style="margin-bottom: 10px; display: flex;">
+                <label for="Creative" class="col-md-4"><b>Driving License</b><span></span></label>
+                <div style="width: 30%;">
+                  <div id="attachFilesHolderDelegatedDrivingLicense" class="files"><input id="fileDelegatedDrivingLicenseAttach" title="Attachment Files" type="file" name="files[]" multiple="multiple" class="form-control"></div>
+                </div>
+              </div>
+              <div class="row mb-4" style="margin-bottom: 10px; display: flex;">
+                <label for="Creative" class="col-md-4"><b>Passport</b><span></span></label>
+                <div style="width: 30%;">
+                  <div id="attachFilesHolderDelegatedPassport" class="files"><input id="fileDelegatedPassportAttach" title="Attachment Files" type="file" name="files[]" multiple="multiple" class="form-control"></div>
+                </div>
+              </div>
+              <button type="button" onclick="back2Function()" class="btn btn-primary back pro2">back</button><button type="button" onclick="sdmyFunction()" class="btn btn-primary Proceed pro2">Proceed</button>
+            </div>
+          </div>
+          <div role="tabpanel" id="content" class="tab-pane">
+            <div class="design-process-content">
+              <div>
+                <h4 class="col-md-12 title">Administrator</h4>
+                <div class="form-group col-md-2">
+                  <label for="">Name<span style="color: red;"><b>*</b></span></label><input type="text" id="txtNameAdministrator" class="form-control">
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="">Designation<span style="color: red;"><b>*</b></span></label><input type="text" id="txtDesignationAdministrator" class="form-control">
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="">Mobile No.<span style="color: red;"><b>*</b></span></label><input type="text" id="txtMobileNoAdministrator" class="form-control">
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="">Email Id.<span style="color: red;"><b>*</b></span></label><input type="text" id="txtEmailIdAdministrator" class="form-control">
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="">Address<span style="color: red;"><b>*</b></span></label><textarea id="txtAddressAdministrator" class="form-control"></textarea>
+                </div>
+              </div>
+              <div class="row mb-4" style="margin-bottom: 10px; display: flex;">
+                <label for="Creative" class="col-md-4"><b>Aadhar Card</b><span></span></label>
+                <div style="width: 30%;">
+                  <div id="attachFilesHolderAdminAadhar" class="files"><input id="fileAdminAadharAttach" title="Attachment Files" type="file" name="files[]" multiple="multiple" class="form-control"></div>
+                </div>
+              </div>
+              <div class="row mb-4" style="margin-bottom: 10px; display: flex;">
+                <label for="Creative" class="col-md-4"><b>PAN Card</b><span></span></label>
+                <div style="width: 30%;">
+                  <div id="attachFilesHolderAdminPANCard" class="files"><input id="fileAdminPANCardAttach" title="Attachment Files" type="file" name="files[]" multiple="multiple" class="form-control"></div>
+                </div>
+              </div>
+              <div class="row mb-4" style="margin-bottom: 10px; display: flex;">
+                <label for="Creative" class="col-md-4"><b>Driving License</b><span></span></label>
+                <div style="width: 30%;">
+                  <div id="attachFilesHolderAdminDrivingLicense" class="files"><input id="fileAdminDrivingLicenseAttach" title="Attachment Files" type="file" name="files[]" multiple="multiple" class="form-control"></div>
+                </div>
+              </div>
+              <div class="row mb-4" style="margin-bottom: 10px; display: flex;">
+                <label for="Creative" class="col-md-4"><b>Passport</b><span></span></label>
+                <div style="width: 30%;">
+                  <div id="attachFilesHolderAdminPassport" class="files"><input id="fileAdminPassportAttach" title="Attachment Files" type="file" name="files[]" multiple="multiple" class="form-control"></div>
+                </div>
+              </div>
+              <br>
+              <div>
+                <h4 class="col-md-12 title">ELI Maker</h4>
+                <div class="form-group col-md-3">
+                  <label for="">Name<span style="color: red;"><b>*</b></span></label><input type="text" id="txtNameELIMaker" class="form-control">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="">Email<span style="color: red;"><b>*</b></span></label><input type="text" id="txtEmailELIMaker" class="form-control">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="">Mobile No.<span style="color: red;"><b>*</b></span></label><input type="text" id="txtMobileNoELIMaker" class="form-control">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="">Designation<span style="color: red;"><b>*</b></span></label><input type="text" id="txtDesignationELIMaker" class="form-control">
+                </div>
+              </div>
+              <div class="row mb-4" style="margin-bottom: 10px; display: flex;">
+                <label for="Creative" class="col-md-4"><b>Aadhar Card</b><span></span></label>
+                <div style="width: 30%;">
+                  <div id="attachFilesHolderELIMakerAadhar" class="files"><input id="fileELIMakerAadharAttach" title="Attachment Files" type="file" name="files[]" multiple="multiple" class="form-control"></div>
+                </div>
+              </div>
+              <div class="row mb-4" style="margin-bottom: 10px; display: flex;">
+                <label for="Creative" class="col-md-4"><b>PAN Card</b><span></span></label>
+                <div style="width: 30%;">
+                  <div id="attachFilesHolderELIMakerPANCard" class="files"><input id="fileELIMakerPANCardAttach" title="Attachment Files" type="file" name="files[]" multiple="multiple" class="form-control"></div>
+                </div>
+              </div>
+              <div class="row mb-4" style="margin-bottom: 10px; display: flex;">
+                <label for="Creative" class="col-md-4"><b>Driving License</b><span></span></label>
+                <div style="width: 30%;">
+                  <div id="attachFilesHolderELIMakerDrivingLicense" class="files"><input id="fileELIMakerDrivingLicenseAttach" title="Attachment Files" type="file" name="files[]" multiple="multiple" class="form-control"></div>
+                </div>
+              </div>
+              <div class="row mb-4" style="margin-bottom: 10px; display: flex;">
+                <label for="Creative" class="col-md-4"><b>Passport</b><span></span></label>
+                <div style="width: 30%;">
+                  <div id="attachFilesHolderELIMakerPassport" class="files"><input id="fileELIMakerPassportAttach" title="Attachment Files" type="file" name="files[]" multiple="multiple" class="form-control"></div>
+                </div>
+              </div>
+              <br>
+              <div>
+                <h4 class="col-md-12 title">ELI Checker</h4>
+                <div class="form-group col-md-3">
+                  <label for="">Name<span style="color: red;"><b>*</b></span></label><input type="text" id="txtNameELIChecker" class="form-control">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="">Email<span style="color: red;"><b>*</b></span></label><input type="text" id="txtEmailELIChecker" class="form-control">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="">Mobile No.<span style="color: red;"><b>*</b></span></label><input type="text" id="txtMobileNoELIChecker" class="form-control">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="">Designation<span style="color: red;"><b>*</b></span></label><input type="text" id="txtDesignationELIChecker" class="form-control">
+                </div>
+              </div>
+              <div class="row mb-4" style="margin-bottom: 10px; display: flex;">
+                <label for="Creative" class="col-md-4"><b>Aadhar Card</b><span></span></label>
+                <div style="width: 30%;">
+                  <div id="attachFilesHolderELICheckerAadhar" class="files"><input id="fileELICheckerAadharAttach" title="Attachment Files" type="file" name="files[]" multiple="multiple" class="form-control"></div>
+                </div>
+              </div>
+              <div class="row mb-4" style="margin-bottom: 10px; display: flex;">
+                <label for="Creative" class="col-md-4"><b>PAN Card</b><span></span></label>
+                <div style="width: 30%;">
+                  <div id="attachFilesHolderELICheckerPANCard" class="files"><input id="fileELICheckerPANCardAttach" title="Attachment Files" type="file" name="files[]" multiple="multiple" class="form-control"></div>
+                </div>
+              </div>
+              <div class="row mb-4" style="margin-bottom: 10px; display: flex;">
+                <label for="Creative" class="col-md-4"><b>Driving License</b><span></span></label>
+                <div style="width: 30%;">
+                  <div id="attachFilesHolderELICheckerDrivingLicense" class="files"><input id="fileELICheckerDrivingLicenseAttach" title="Attachment Files" type="file" name="files[]" multiple="multiple" class="form-control"></div>
+                </div>
+              </div>
+              <div class="row mb-4" style="margin-bottom: 10px; display: flex;">
+                <label for="Creative" class="col-md-4"><b>Passport</b><span></span></label>
+                <div style="width: 30%;">
+                  <div id="attachFilesHolderELICheckerPassport" class="files"><input id="fileELICheckerPassportAttach" title="Attachment Files" type="file" name="files[]" multiple="multiple" class="form-control"></div>
+                </div>
+              </div>
+              <br>
+              <div>
+                <h4 class="col-md-12 title">Register User Details</h4>
+                <div class="form-group col-md-3">
+                  <label for="">Name<span style="color: red;"><b>*</b></span></label><input type="text" id="txtNameRegister" class="form-control">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="">Email<span style="color: red;"><b>*</b></span></label><input type="text" id="txtEmailRegister" class="form-control">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="">Mobile No.<span style="color: red;"><b>*</b></span></label><input type="text" id="txtMobileNoRegister" class="form-control">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="">Designation<span style="color: red;"><b>*</b></span></label><input type="text" id="txtDesignationRegister" class="form-control">
+                </div>
+              </div>
+              <button type="button" onclick="back3Function()" class="btn btn-primary back pro2">back</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-md-12">
+  <div class="form-group col-md-6">
+    <label style="color: black;">Remark<span style="color: red;"><b>*</b></span></label><textarea id="txtmakerComment" class="form-control"></textarea>
+  </div>
+</div>
+<input type="hidden" id="ELICheckerEmail">
+<div>
+  <span us-spinner="" spinner-key="spinner-1"></span>
+  <div class="col-sm-12 col-md-12 mt-5">
+    <div class="buttons" style="text-align: center;"><button type="button" id="btn1" onclick="javascript:SubmitData('Submitted');" class="btn btn-primary mr-2">Send for Approval</button><button type="button" onclick="javascript:cancel();" class="btn btn-default">Exit</button></div>
+  </div>
+</div>
+<script type="text/javascript">
+  // script for tab steps
+  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+
+    var href = $(e.target).attr('href');
+    var $curr = $(".process-model  a[href='" + href + "']").parent();
+
+    $('.process-model li').removeClass();
+
+    $curr.addClass("active");
+    $curr.addClass("afpo");
+
+    // $curr.prevAll().addClass("visited");
+  });
+
+
+  // end  script for tab steps
+</script>
+<script>
+  $(document).on('keydown', 'input[pattern]', function (e) {
+    var input = $(this);
+    var oldVal = input.val();
+    var regex = new RegExp(input.attr('pattern'), 'g');
+
+    setTimeout(function () {
+      var newVal = input.val();
+      if (!regex.test(newVal)) {
+        input.val(oldVal);
+      }
+    }, 1);
+  });
+  function onlyNumberKey(evt) {
+
+    // Only ASCII character in that range allowed
+    var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+    if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+      return false;
+    return true;
+  }
+</script>
+<script type="text/javascript">
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+<!--function 2-3-2023--><!--<script type="text/javascript">
+    $( document ).ready(function() {
+      $(".afpo").removeClass('active');
+   
+});</script>-->
+<script type="text/javascript">
+  function fpomyFunction() {
+
+    $("#strategy").addClass("active show");
+    $("#discover").removeClass("active show");
+    $("optimization").removeClass("active");
+    $("#content").removeClass("active show");
+    $(".fposmd").addClass('active');
+    $(".afpo").removeClass('active');
+    $(".cfd").removeClass('active');
+    $(".sd").removeClass('active');
+
+
+
+  }
+</script>
+<script type="text/javascript">
+  function cfdmyFunction() {
+
+    $("#optimization").addClass("active show");
+    $("#strategy").removeClass("active show");
+    $("#content").removeClass("active show");
+    $(".cfd").addClass('active');
+    $(".fposmd").removeClass('active');
+    $(".afpo").removeClass('active');
+    $(".sd").removeClass('active');
+
+  }
+</script>
+<script type="text/javascript">
+  function sdmyFunction() {
+
+    $("#content").addClass("li active show");
+    $("#optimization").removeClass("li active show");
+    $("#strategy").removeClass("active show");
+    $(".sd").addClass('active');
+    $(".fposmd").removeClass('active');
+    $(".afpo").removeClass('active');
+    $(".cfd").removeClass('active');
+
+
+
+  }
+</script>
+<script type="text/javascript">
+  function back1Function() {
+
+    $("#strategy").removeClass("active show");
+    $("#discover").addClass("active show");
+    $("optimization").removeClass("active");
+    $("#content").removeClass("active show");
+    $(".afpq").addClass('active');
+    $(".cfb").removeClass('active');
+    $(".fposmb").removeClass('active');
+    $(".sb").removeClass('active');
+  }
+</script>
+<script type="text/javascript">
+  function back2Function() {
+
+    $("#strategy").addClass("active show");
+    $("#discover").removeClass("active show");
+    $("#optimization").removeClass("active show");
+    $("#content").removeClass("active show");
+    $(".afpq").removeClass('active');
+    $(".cfb").removeClass('active');
+    $(".fposmb").addClass('active');
+    $(".sb").removeClass('active');
+
+  }
+</script>
+<script type="text/javascript">
+  function back3Function() {
+
+    $("#strategy").removeClass("active show");
+    $("#discover").removeClass("active show");
+    $("#optimization").addClass("active show");
+    $("#content").removeClass("active show");
+    $(".afpq").removeClass('active');
+    $(".cfb").addClass('active');
+    $(".fposmb").removeClass('active');
+    $(".sb").removeClass('active');
+
+  }
+</script>
+<!--<script>
+     $(function() {
+
+        $( "#DateofSanction" ).datepicker({ 
+            changeYear: true,
+            minDate: '-365D',
+            maxDate: '+0D',
+        });
+    });
+    </script>-->
+<div class="row sectionBlockLayout text-left" style="display: flex; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;">
+  <div class="container" style="padding: 0px; display: flex; flex-wrap: wrap;"><div class="col-md-12 columnBlockLayout" style="flex-grow: 1; display: flex; flex-direction: column; min-width: 310px; word-break: break-word;"></div></div>
+</div>
+<!--</form>-->

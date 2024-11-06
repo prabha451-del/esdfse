@@ -1,0 +1,14 @@
+- adx_managecontentsnippets: true
+  adx_managesitemarkers: true
+  adx_manageweblinksets: true
+  adx_name: Administrative permissions for Site design 005
+  adx_previewunpublishedentities: true
+  adx_websiteaccess_webrole:
+  - 691626fe-bf7a-4753-89e5-5bba3a6e7c24
+  adx_websiteaccessid: 9e553233-93e6-4a10-bee7-a2e323cfa531
+- adx_managecontentsnippets: false
+  adx_managesitemarkers: false
+  adx_manageweblinksets: false
+  adx_name: Preview permission for Site design 005
+  adx_previewunpublishedentities: true
+  adx_websiteaccessid: c7f22741-8d77-4df7-b7cc-5c6002486de9

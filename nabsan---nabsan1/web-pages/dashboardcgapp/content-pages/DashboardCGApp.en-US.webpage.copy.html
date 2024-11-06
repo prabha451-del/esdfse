@@ -1,0 +1,102 @@
+<script type="text/javascript" src="~/DashBoardCGApp.js" data-ppid="82f331e4-6e8c-00c7-edf6-0d2dede0a1ba"></script>
+
+<style>
+ #tblDataMain_filter input{
+   border:1px solid black !important ;   
+ }
+</style>
+<div class="col-md-2 pl-0">
+  <div id="leftnavigation">
+    <div class="navside">
+      <ul class="nav nav-pills">
+        <span id="Navdiv"></span>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="col-md-10 pl-0">
+  <div class="container-fluid">
+    <div class="row mx-0 head">
+      <div class="col-md-12" style="background: #f55905; height: 45px;">
+        <div class="row">
+          <div class="col-md-5">
+            <div style="margin: 8px 1px;"><label data-ppid="afed6c36-5a97-73a4-19fb-53764c235c7e" style="display: inline-block; font-size: 15px; font-weight: 700; color: white !important; margin-bottom: 0px;">CG Application</label></div>
+          </div>
+          <div class="col-md-7">
+            <div class="form-group row" style="margin-top: 7px; float: right;">
+              <label data-ppid="f5a277a4-7471-c570-7cd6-85560e18a22d" class="col-md-3col-form-label" style="margin-top: 5px; float: left; display: inline-block; font-size: 15px; font-weight: 700; color: white !important; margin-bottom: 0px;">Status</label>
+              <div class="col-md-9">
+                <select id="ddlStatus" title="ddlStatus" onchange="BindHomeDetails();" data-ppid="7a9f3eb9-b2b3-55e8-7781-1f17dc59274c" class="form-control" style="border: #fdac19; float: right; font-size: 10px;">
+                  TextTextTextTextText "
+                  <option value="All" data-ppid="b8ae6bd1-cf91-8ed4-5196-25554840254d" aria-label="Text All Press enter to edit" style="background-image: initial; background-position-x: initial; background-position-y: initial; background-size: initial; background-repeat-x: initial; background-repeat-y: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); position: relative;">All</option>
+                  <option value="4" data-ppid="5e3a6ef4-68b9-0961-62fd-800d5b1b6db8" aria-label="Text Sent Back by ELI Checker Press enter to edit" style="background-image: initial; background-position-x: initial; background-position-y: initial; background-size: initial; background-repeat-x: initial; background-repeat-y: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); position: relative;">Sent Back by ELI Checker</option>
+                  <option value="2" data-ppid="1f3a14c0-9b38-01a0-8727-ca550583f7c9" aria-label="Text Saved Press enter to edit" style="background-image: initial; background-position-x: initial; background-position-y: initial; background-size: initial; background-repeat-x: initial; background-repeat-y: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); position: relative;">Saved</option>
+                  <option value="1" data-ppid="fd7f76f1-96d7-d6df-c591-77b75f80b084" aria-label="Text Pending For Approval Press enter to edit" style="background-image: initial; background-position-x: initial; background-position-y: initial; background-size: initial; background-repeat-x: initial; background-repeat-y: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); position: relative;">Pending For Approval</option>
+                  <option value="5" data-ppid="a0d79d9f-1b90-34a0-8ab4-7eb6071a34d0" aria-label="Text Rejected by ELI Checker Press enter to edit" style="background-image: initial; background-position-x: initial; background-position-y: initial; background-size: initial; background-repeat-x: initial; background-repeat-y: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); position: relative;">Rejected by ELI Checker</option>
+                  <option value="9" data-ppid="a75eaf97-4d0a-6e28-4f90-474504a96690" aria-label="Text Rejected by NABSaranrakshan Press enter to edit" style="background-image: initial; background-position-x: initial; background-position-y: initial; background-size: initial; background-repeat-x: initial; background-repeat-y: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); position: relative;">Rejected by NABSaranrakshan</option>
+                  <option value="7" data-ppid="64886b8d-8ed7-1ec3-a792-e0ea9d441779" aria-label="Text Review by NABSaranrakshan Press enter to edit" style="background-image: initial; background-position-x: initial; background-position-y: initial; background-size: initial; background-repeat-x: initial; background-repeat-y: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); position: relative;">Review by NABSaranrakshan</option>
+                  <option value="16" data-ppid="4e9f9203-d941-4a32-bad1-be87dd3adad8" aria-label="Text Recommend for Rejection Press enter to edit" style="background-image: initial; background-position-x: initial; background-position-y: initial; background-size: initial; background-repeat-x: initial; background-repeat-y: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); position: relative;">Recommend for Rejection</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row my-3">
+      <div class="col-md-12">
+        <div style="float: right;">
+          <button type="button" onclick="SubmitData();" data-ppid="2d3b1aec-ad20-e863-234e-b11aa8fa9f89" class="button" style="font-size: 13px; margin-right: 10px; font-weight: 600; height: 26px; margin-top: 10px; margin-bottom: 10px;">New Request Single Entry</button
+          ><!--<button type="button" class="button" onclick="javascript:OpenXL();" style="font-size: 13px;font-weight:600;">New Request Bulk Upload</button>-->
+        </div>
+      </div>
+    </div>
+    <!---	<div class="row my-3"style="padding-left: 16px;">
+   					<div class="button2" style="margin-right:20px;">
+               <button type="button" class="button" onclick="javascript:SubmitData();" style="font-size: 15px;">New Request Single Entry</button>
+            </div>
+            <br>
+            <div class="button1" style="margin-right:20px;">
+               <button type="button" class="button" onclick="javascript:OpenXL();" style="font-size: 15px;">New Request Bulk Upload</button>
+            </div>
+         
+   			
+   		</div>  -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="main-box table-responsive table-responsive-md table-responsive-lg">
+          <table id="tblDataMain" bgcolor="#f55905" data-ppid="997b113d-09f4-e33a-f082-6f4b872a6426" class="table" style="width: 99.9%; border: 1px solid;">
+            <thead data-ppid="8623317f-8c93-cc28-8cda-64014d3f33aa">
+              <tr data-ppid="de695fca-8d75-4670-267e-b639f1d7ea4d">
+                <th bgcolor="rgb(255, 255, 255)" align="left" data-ppid="6b5a3ab0-7e03-7930-a742-ce38f8305f27" style="font-size: 13px; background-color: rgb(255, 255, 255); color: rgb(26, 25, 25); text-align: left;">CG Application No .</th>
+                <th bgcolor="rgb(255, 255, 255)" align="left" data-ppid="fec78de1-320f-c498-7083-3afb3ec2d822" style="font-size: 13px; background-color: rgb(255, 255, 255); color: rgb(26, 25, 25); text-align: left;">Entry Date</th>
+                <th bgcolor="rgb(255, 255, 255)" align="left" data-ppid="7a842ab7-1079-2e20-e849-0d8e43799105" style="font-size: 13px; background-color: rgb(255, 255, 255); color: rgb(26, 25, 25); text-align: left;">Name of FPO</th>
+                <th bgcolor="rgb(255, 255, 255)" align="left" data-ppid="ec1f4ded-1ed8-1a17-c762-8d74b9bdf5b3" style="font-size: 13px; background-color: rgb(255, 255, 255); color: rgb(26, 25, 25); text-align: left;">Account No</th>
+                <th bgcolor="rgb(255, 255, 255)" align="left" data-ppid="105acce2-d746-0a7f-439f-c33d7c2bb225" style="font-size: 13px; background-color: rgb(255, 255, 255); color: rgb(26, 25, 25); text-align: left;">Sanctioned Amount</th>
+                <!--  <th style="text-align:center">Date Of Sanction</th> -->
+                <th bgcolor="rgb(255, 255, 255)" align="left" data-ppid="849df6c6-de44-7a6f-62db-128ad29880e9" style="font-size: 13px; background-color: rgb(255, 255, 255); color: rgb(26, 25, 25); text-align: left;">Status</th>
+                <th bgcolor="rgb(255, 255, 255)" align="left" data-ppid="828132e7-d7ec-99c2-739e-39cd0964cb24" style="font-size: 13px; background-color: rgb(255, 255, 255); color: rgb(26, 25, 25); text-align: left;">Action</th>
+                <th bgcolor="rgb(255, 255, 255)" align="left" data-ppid="e67f2c6b-e5cc-250a-e555-1eefaeb60d16" style="font-size: 13px; display: none; background-color: rgb(255, 255, 255); color: rgb(26, 25, 25); text-align: left;">ID</th>
+              </tr>
+            </thead>
+            <tbody id="tbodyRequestor" data-ppid="9ddf668b-02a1-3245-2972-0cdf72981434" class="abcd">
+              <!--  <tr class="row">
+                <td class="cell"></td>
+              </tr>-->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script data-ppid="5521aa80-b082-1164-f610-c725ad8b8629">
+         	$(document).ready(function()
+       {
+
+       $('li >a:contains("CG Applications")').addClass('active');
+    });
+  </script>
+  <div data-ppid="1957bfc3-7fe1-7d75-eba3-9c8828bace90" class="row sectionBlockLayout text-left" style="display: flex; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;">
+    <div data-ppid="32223f8b-5a29-d7df-37e1-a2ed20b22659" class="container" style="padding: 0px; display: flex; flex-wrap: wrap;"><div data-ppid="47dd7ae6-0a47-acf2-8e16-75ad9f077de2" class="col-md-12 columnBlockLayout" style="flex-grow: 1; display: flex; flex-direction: column; min-width: 310px; word-break: break-word;"></div></div>
+  </div>
+</div>

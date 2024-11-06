@@ -1,0 +1,135 @@
+<meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>ELI Checker UTR App Form</title>
+<script type="text/javascript" src="~/ELICheckerUTRApproverForm1.js"></script>
+<script type="text/javascript" src="~/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="~/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="~/jquery-ui.min.js"></script>
+<script type="text/javascript" src="~/select2.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" /><link href="~/jquery.dataTables.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+<!--[if gte mso 9
+  ]><xml>
+    <mso:CustomDocumentProperties>
+      <mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">Pankaj Katkar</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+      <mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">Pankaj Katkar</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+      <mso:_ExtendedDescription msdt:dt="string"></mso:_ExtendedDescription>
+      <mso:ContentTypeId msdt:dt="string">0x01010084A8FBB1EC53F54993F844BBAB0498BB</mso:ContentTypeId>
+    </mso:CustomDocumentProperties>
+  </xml><!
+[endif]-->
+<style>
+.ui-dialog{width: 840px !important; left: 317px !important;position:fixed !important ;}
+.btn-default{margin-right:15px !important; font-weight: 500; color: rgb(241, 95, 45); background-color: rgb(255, 255, 255); border-top-color: rgb(243, 122, 81); border-right-color: rgb(243, 122, 81); border-bottom-color: rgb(243, 122, 81); border-left-color: rgb(243, 122, 81); padding-top: 4px; padding-right: 16px; padding-bottom: 4px; padding-left: 16px; font-size: 15px; margin-bottom: 15px !important;}
+</style>
+<input type="hidden" id="hdnDigitalRequestNo" /><input type="hidden" id="hdnCounterItemID" /><input type="hidden" id="hdnCounterItemID1" /><input type="hidden" id="hdnDigitalRequestNoCGFAN" /><input type="hidden" id="hdnCounterItemIDCGFAN" /><input type="hidden" id="hdnCounterItemID1CGFAN" /><input type="hidden" id="CGFANId" /><input type="hidden" id="CGPANNo" /><input type="hidden" id="txtELiCheckerComments" /><input type="hidden" id="txtELiMakerComments" /><input type="hidden" id="CGApplicationNo"/>
+<div class="container-fluid">
+  <div class="formheadingWrap formtitle" style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: transparent;"><h1 style="font-size: 22px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; color: rgb(52, 52, 52); font-weight: 600; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">CG Fee Payment Details</h1></div>
+  <div class="design-process-content">
+    <div class="p-10" style="padding-top: 13px; padding-right: 13px; padding-bottom: 13px; padding-left: 13px;">
+      <div class="row">
+        <div class="col-md-12 title">
+          <h4 class="col-md-6" style="margin-top: auto; margin-right: auto; margin-bottom: auto; margin-left: auto;">Approval Form</h4>
+          <div class="viewbtnwrap" style="float:right !important;"><button type="button" onclick="showSOW();" class="btn btn-default" style="height: auto !important; font-weight: 500; color: rgb(241, 95, 45); background-color: rgb(255, 255, 255); border-top-color: rgb(243, 122, 81); border-right-color: rgb(243, 122, 81); border-bottom-color: rgb(243, 122, 81); border-left-color: rgb(243, 122, 81); padding-top: 4px; padding-right: 16px; padding-bottom: 4px; padding-left: 16px; font-size: 15px; margin-bottom: 15px !important;">View SOE</button></div>
+        </div>
+      </div>
+      <div class="row" style="padding-top: 10px;">
+        <div class="form-group col-md-4" style="margin-bottom: 0px;">
+          <label for="" style="color: black;">Name of FPO</label>
+          <div><label id="txtFPOName" class="form-control" style="height: auto !important; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; font-size: 13px; background-image: initial; background-position-x: initial; background-position-y: initial; background-size: initial; background-repeat-x: initial; background-repeat-y: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(233, 236, 239); height: auto; color: black;"></label></div>
+        </div>
+        <div class="form-group col-md-4" style="margin-bottom: 0px;">
+          <label for="" style="color: black;">SOE No.</label>
+          <div><label id="txtSOENo" class="form-control" style="padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; height: 32px; font-size: 13px; background-image: initial; background-position-x: initial; background-position-y: initial; background-size: initial; background-repeat-x: initial; background-repeat-y: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(233, 236, 239); color: black;"></label></div>
+        </div>
+        <div class="form-group col-md-4" style="margin-bottom: 0px;">
+          <label for="" style="color: black;">SOE Date</label>
+          <div><label id="txtSOEdt" class="form-control" style="padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; height: 32px; font-size: 13px; background-image: initial; background-position-x: initial; background-position-y: initial; background-size: initial; background-repeat-x: initial; background-repeat-y: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(233, 236, 239); color: black;"></label></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-4" style="margin-bottom: 0px;">
+          <label for="" style="color: black;">Credit Gurantee Fee</label>
+          <div><label id="txtCreditGuranteeFee" class="form-control" style="padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; height: 32px; font-size: 13px; background-image: initial; background-position-x: initial; background-position-y: initial; background-size: initial; background-repeat-x: initial; background-repeat-y: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(233, 236, 239); color: black;"></label></div>
+          <small id="txtCreditGuranteeFeeinwords" style="color: #f55905; font-size: 15px;"></small>
+        </div>
+        <div class="form-group col-md-4" style="margin-bottom: 0px;">
+          <label for="" style="color: black;">GST</label>
+          <div><label id="txtTaxAmt" class="form-control" style="padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; height: 32px; font-size: 13px; background-image: initial; background-position-x: initial; background-position-y: initial; background-size: initial; background-repeat-x: initial; background-repeat-y: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(233, 236, 239); color: black;"></label></div>
+          <small id="txtTaxAmtinwords" style="color: #f55905; font-size: 15px;"></small>
+        </div>
+        <div class="form-group col-md-4" style="margin-bottom: 0px;">
+          <label for="" style="color: black;">Total CG fee </label>
+          <div><label id="txtGrandTotal" class="form-control" style="padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; height: 32px; font-size: 13px; background-image: initial; background-position-x: initial; background-position-y: initial; background-size: initial; background-repeat-x: initial; background-repeat-y: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(233, 236, 239); color: black;"></label></div>
+          <small id="txtGrandTotalinwords" style="color: #f55905; font-size: 15px;"></small>
+        </div>
+        <div class="form-group col-md-4" style="margin-bottom: 0px;">
+          <label for="" style="color: black;">Paid Amount</label>
+          <div><label id="txtAmount" class="form-control" style="padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; height: 32px; font-size: 13px; background-image: initial; background-position-x: initial; background-position-y: initial; background-size: initial; background-repeat-x: initial; background-repeat-y: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(233, 236, 239); color: black;"></label></div>
+          <small id="txtAmountinwords" style="color: #f55905; font-size: 15px;"></small>
+        </div>
+        <div class="form-group col-md-4" style="margin-bottom: 0px;">
+          <label for="" style="color: black;">UTR </label>
+          <div><label id="txtUTRNo" class="form-control" style="padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; height: 32px; font-size: 13px; background-image: initial; background-position-x: initial; background-position-y: initial; background-size: initial; background-repeat-x: initial; background-repeat-y: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(233, 236, 239); color: black;"></label></div>
+        </div>
+        <div class="form-group col-md-4" style="margin-bottom: 0px;">
+          <label for="" style="color: black;">Payment Date</label>
+          <div><label id="txtPaymentdt" class="form-control" style="padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; height: 32px; font-size: 13px; background-image: initial; background-position-x: initial; background-position-y: initial; background-size: initial; background-repeat-x: initial; background-repeat-y: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(233, 236, 239); color: black;"></label></div>
+        </div>
+      </div>
+      <div class="row"></div>
+      <div class="row">
+        <div class="form-group col-md-4" style="margin-bottom: 0px;">
+          <label for="" style="color: black;">Remark<samp style="color: red;">*</samp></label>
+          <div><textarea id="txtRemarksComments" class="form-control" style="padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; height: 32px; font-size: 13px; background-image: initial; background-position-x: initial; background-position-y: initial; background-size: initial; background-repeat-x: initial; background-repeat-y: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(233, 236, 239); background: transparent;"></textarea></div>
+        </div>
+        <div id="divMakerHide" class="form-group col-md-4" style="margin-bottom: 0px;">
+          <label style="color: black;"
+            >ELI Maker <span style="color: red;"><b>*</b></span></label
+          >
+          <div id="divELIMakerRemark"></div>
+        </div>
+        <div id="divCheckerHide" class="form-group col-md-4" style="margin-bottom: 0px;">
+          <label style="color: black;"
+            >ELI Checker <span style="color: red;"><b>*</b></span></label
+          >
+          <div id="divELICheckerRemark"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="inputDialog2" style="display: none;">
+  <div class="container" style="border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(206, 212, 218); border-right-color: rgb(206, 212, 218); border-bottom-color: rgb(206, 212, 218); border-left-color: rgb(206, 212, 218); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial; box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.19) 0px 0px 3px 1px; background-image: initial; background-position-x: initial; background-position-y: initial; background-size: initial; background-repeat-x: initial; background-repeat-y: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); margin-top: 3px; margin-bottom: auto;">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="head"><h6 style="text-align: center;">Management Certificate (Payment)</h6></div>
+      </div>
+    </div>
+    <div class="form-group row" style="margin-bottom: 0px;">
+      <label class="col-md-7 col-form-label" style="text-align: right; margin-left: -67px; font-size: 10px; color: black;">CG Application No</label>
+      <div class="col-md-4 box" style="margin: 3px -18px;"><input type="text" id="txtCGApplicationNo" readonly="readonly" class="form-control" style="padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; background-image: initial; background-position-x: initial; background-position-y: initial; background-size: initial; background-repeat-x: initial; background-repeat-y: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(233, 236, 239); font-size: 12px; height: auto;" /></div>
+    </div>
+    <div class="form-group row" style="margin-bottom: 0px;">
+      <label class="col-md-2 col-form-label" style="font-size: 10px; color: black;">Name Of FPO</label>
+      <div class="col-md-6 box" style="margin: 3px -22px;"><label type="text" id="txtNameOfFPO1" readonly="readonly" class="form-control" style="height: auto !important; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; background-image: initial; background-position-x: initial; background-position-y: initial; background-size: initial; background-repeat-x: initial; background-repeat-y: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(233, 236, 239); height: auto; font-size: 10px; color: black;"></label></div>
+    </div>
+    <div class="form-group" style="margin-bottom: 0px;">
+      <div style="display: flex;">
+        <label style="padding-right: 10px; font-size: 10px; color: black;"><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" style="font-size: 10px; height: auto;" /></label
+        ><label for="vehicle1" style="font-size: 10px; color: black;"
+          ><label style="font-size: 10px; color: black;">
+            We
+            <!--<label style="margin-bottom: 0 !important;color: grey;" id="instituteId"></label>-->
+            certify&nbsp;that</label
+          ><label class="text" style="font-weight: 300; font-size: 10px; color: black;">1.There&nbsp;are no dues from the Borrower that have become overdue and/or is not an overdue/NPA credit facility taken over by us and/or /is not Credit'. Facility/which has been rescheduled or restructured on becoming overdue </label><br /><label class="text" style="font-weight: 300; font-size: 10px; color: black;">2.The business or activity of the borrower for which the Credit Facility was granted has not ceased.</label><br /><label class="text" style="font-weight: 300; font-size: 10px; color: black;">3.The Credit&nbsp;Facility has not been utilized, wholly or partly, for adjustment of any debt deemed as bad or doubtful of recovery.</label><br /><label class="text" style="font-weight: 300; font-size: 10px; color: black;">4.The Credit Facility abides by the extant guidelines of Credit Guarantee Scheme for FPO Financing.</label><br /><label style="font-size: 10px; color: black;">Name: <label id="txtELICheckerName" style="margin-bottom: 0; font-size: 10px; color: black;"></label></label><br /><label style="font-size: 10px; color: black;">Lending Institution: <label id="instituteIdNew" style="margin-bottom: 0; font-size: 10px; color: black;"></label></label><br /><label style="font-size: 10px; color: black;">Date: <label id="dtproceed" style="margin-bottom: 0; font-size: 10px; color: black;"></label></label><br /><label style="font-size: 10px; color: black;">This is a computer generated management certificate, physical signature is notrequired.</label></label
+        >
+      </div>
+    </div>
+    <div class="button my-3" style="text-align: center;"><button type="button" id="MangmentCheck" onclick="Proceed();" class="btn btn-default" style="font-weight: 700; border: 1px solid #f55905; color: rgb(241, 95, 45); background-color: rgb(255, 255, 255); border-top-color: rgb(243, 122, 81); border-right-color: rgb(243, 122, 81); border-bottom-color: rgb(243, 122, 81); border-left-color: rgb(243, 122, 81); padding-top: 4px; padding-right: 16px; padding-bottom: 4px; padding-left: 16px; font-size: 13px;">Accept and Proceed</button></div>
+  </div>
+</div>
+<div style="text-align: center; margin-top: 20px;"><button type="button" onclick=" SubmitData();" class="btn btn-default">Approve</button><button type="button" onclick="SendbackData();" class="btn btn-default">Send Back</button><button type="button" onclick="Exit();" class="btn btn-default">Exit</button></div>
+<!-- <button type="button" class="btn btn-primary" onclick="ShowPopUp('Hi')">View</button></div> --><br /><br />
+<div class="row sectionBlockLayout text-left" style="display: flex; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;">
+  <div class="container" style="border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(206, 212, 218); border-right-color: rgb(206, 212, 218); border-bottom-color: rgb(206, 212, 218); border-left-color: rgb(206, 212, 218); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial; box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.19) 0px 0px 3px 1px; background-image: initial; background-position-x: initial; background-position-y: initial; background-size: initial; background-repeat-x: initial; background-repeat-y: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); margin-top: 3px; margin-bottom: auto; padding: 0px; display: flex; flex-wrap: wrap;"><div class="col-md-12 columnBlockLayout" style="flex-grow: 1; display: flex; flex-direction: column; min-width: 250px; word-break: break-word;"></div></div>
+</div>

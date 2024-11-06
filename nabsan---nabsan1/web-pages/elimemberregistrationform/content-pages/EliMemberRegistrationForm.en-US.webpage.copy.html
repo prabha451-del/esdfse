@@ -1,0 +1,110 @@
+<!-- <div class="row sectionBlockLayout text-left" style="min-height: auto; padding: 8px;">
+  <div class="container" style="display: flex; flex-wrap: wrap;">
+    <div class="col-md-12 columnBlockLayout" style="padding: 16px; margin: 60px 0px; min-height: 200px;"></div>
+  </div>
+</div> --><input type="hidden" id="ELIMaker" /><input type="hidden" id="hdnDigitalRequestNo" /><input type="hidden" id="hdnCounterItemID" /><input type="hidden" id="hdnCounterItemID1" /><input type="hidden" /><input type="hidden" id="hdnNSMaker" /><input type="hidden" id="hdnNSChecker" /><input type="hidden" id="hdnNSApprover" /><input type="hidden" id="hdnRequestStatus" />
+<input type="hidden" id="ElimakeremailID" /><input type="hidden" id="EliCheckerEmailID" /><input type="hidden" id="GSTIN" /><input type="hidden" id="PANNO" /><input type="hidden" id="LendingInstitute" />
+<input type="hidden" id="ELIAddress" /><input type="hidden" id="state" /><input type="hidden" id="administratorEmail" /><input type="hidden" id="MRID" />
+<script type="text/javascript" src="~/ELIMemberRegistrationForm.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<div role="tabpanel" id="content" class="tab-pane">
+  <div class="design-process-content">
+    <div><h4 class="col-md-12 title">Create Maker and Checker</h4></div>
+    <div class="row">
+      <div class="col-xl-12 col-lg-12">
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-3">
+              <label id="tblData">User type</label
+              ><select id="ddlUserType" class="form-control">
+                <option value="0">Select</option>
+                <option value="1">ELI Maker</option>
+                <option value="2">ELI Checker</option>
+              </select>
+            </div>
+            <div class="form-group col-md-3"><label for="tblData">First Name</label><input type="text" id="txtFirstName" placeholder="First Name" class="form-control" /></div>
+            <div class="form-group col-md-3"><label>Last Name</label><input type="text" id="txtLastName" placeholder="Last Name" class="form-control" /></div>
+            <div class="form-group col-md-3"><label>Designation</label><input type="text" id="txtDesignation" placeholder="Designation" class="form-control" /></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-3"><label>Email</label><input type="text" id="txtEmail" placeholder="Email" class="form-control" /></div>
+            <div class="form-group col-md-3"><label>Mobile No.</label><input type="number" maxlength="10" id="txtMobileNo" placeholder="Mobile No." class="form-control" /></div>
+            <div class="form-group col-md-3"><label>Effective Date</label><input type="date" id="txtEffectiveDate" placeholder="Effective Date" class="form-control" /></div>
+            <div class="form-group col-md-3"><label>Remarks</label><textarea id="txtRemarks" class="form-control"></textarea></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label>Address Proof Type</label
+              ><select id="ddlAddressProofType" class="form-control">
+                <option value="0">Select</option>
+                <option value="1">Passport</option>
+                <option value="2">Driving Licence</option>
+                <option value="3">PAN</option>
+                <option value="4">Proof of possession of Aadhaar number</option>
+                <option value="5">Voters Identity Card issued by the Election Commission of India</option>
+              </select>
+            </div>
+            <div class="form-group col-md-4"><label>Address Proof No.</label><input type="text" id="txtAddressProofNumber" class="form-control" /></div>
+            <div class="form-group col-md-4"><label>Address Proof Upload</label><input type="file" id="fAddressProof" class="form-control" onchange="validateFile(this)"/></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label>Identity Proof Type</label
+              ><select id="ddlIdentityProofType" class="form-control">
+                <option value="0">Select</option>
+                <option value="1">Passport</option>
+                <option value="2">Driving Licence</option>
+                <option value="3">Proof of possession of Aadhaar number</option>
+                <option value="4">Voters Identity Card issued by the Election Commission of India</option>
+              </select>
+            </div>
+            <div class="form-group col-md-4"><label>Identity Proof No.</label><input type="text" id="txtIdentityProofNumber" class="form-control" /></div>
+            <div class="form-group col-md-4"><label>Identity Proof Upload</label><input type="file" name="fIdentityProof" id="fIdentityProof" class="form-control" onchange="validateFile(this)"/></div>
+          </div>
+          <div class="form-group col-md-4">
+            <button type="button" id="addBtn" onclick="AddData();" class="btn btn-primary btn-xs" style="min-width: auto;"><span class="glyphicon glyphicon-plus"></span></button>
+          </div>
+        </form>
+        <div class="row mb-4">
+          <div class="col-lg-12 col-xs-12 GView">
+            <table cellpadding="0" cellspacing="0" border="0" class="table tbl">
+              <thead>
+                <tr>
+                  <th align="center" style="text-align: center;">User Type</th>
+                  <th align="center" style="text-align: center;">First Name</th>
+                  <th align="center" style="text-align: center;">Last Name</th>
+                  <th align="center" style="text-align: center;">Designation</th>
+                  <th align="center" style="text-align: center;">Email</th>
+                  <th align="center" style="text-align: center;">Mobile No.</th>
+                  <th align="center" style="text-align: center;">Effective Date</th>
+                  <th align="center" style="text-align: center;">Remarks</th>
+                  <th align="center" style="text-align: center;">Address Proof Type</th>
+                  <th align="center" style="text-align: center;">Address Proof No.</th>
+                  <th align="center" style="text-align: center;">Address Proof Upload</th>
+                  <th align="center" style="text-align: center;">Identity Proof Type</th>
+                  <th align="center" style="text-align: center;">Identity Proof No.</th>
+                  <th align="center" style="text-align: center;">Identity Proof Upload</th>
+                  <th align="center" style="text-align: center;">Action</th>
+                </tr>
+              </thead>
+              <tbody id="tbodyMakerChecker">
+                <tr class="row">
+                  <td class="cell"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <span us-spinner="" spinner-key="spinner-1"></span>
+    <div class="col-sm-12 col-md-12 mt-5">
+      <div class="buttons" style="text-align: center;"><button type="button" id="btn1" onclick="javascript:registerEliMakerChecker();" class="btn btn-primary mr-2">Submit</button><button type="button" onclick="javascript:cancel();" class="btn btn-default">Exit</button></div>
+    </div>
+  </div>
+  <div data-ppid="94a26718-0c2e-5090-3f09-6c8a2da1c29e" class="row sectionBlockLayout text-left" style="display: flex; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;">
+    <div class="container" style="padding: 0px; display: flex; flex-wrap: wrap;"><div class="col-md-12 columnBlockLayout" style="flex-grow: 1; display: flex; flex-direction: column; min-width: 250px; word-break: break-word;"></div></div>
+  </div>
+</div>

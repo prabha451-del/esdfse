@@ -1,0 +1,299 @@
+<script src = "https://secure.aadcdn.microsoftonline-p.com/lib/1.0.0/js/msal.js"></script> 
+ <style>
+    /* Styles for the popup */
+    #popup {
+      display: none;
+     /* position: absolute;
+      top: 10%;
+      left: 0;
+      padding: 10px;*/
+      background-color: #fff;
+      border: 0px solid #ccc;
+     /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;*/
+    }
+  </style>
+  
+<script>
+$(document).ready(function() {
+
+    // Code to add custom first name and last name fields
+    $('a[title="Register"]').text('New User Registration'); 
+	//$('#ContentContainer_MainContent_MainContent_ShowEmail').before('<div class="form-group"><label class="col-sm-4 control-label required" for="FirstNameTextBox"><span id="ContentContainer_MainContent_MainContent_FirstNameLabel"><span class="xrm-editable-text xrm-attribute"><span class="xrm-attribute-value">First Name</span></span></span></label><div class="col-sm-8"><input name="ctl00$ctl00$ContentContainer$MainContent$MainContent$FirstNameTextBox" type="text" autocomplete="off" id="FirstNameTextBox" class="form-control" aria-required="true"></div></div><div class="form-group"><label class="col-sm-4 control-label required" for="LastNameTextBox"><span id="ContentContainer_MainContent_MainContent_LastNameLabel"><span class="xrm-editable-text xrm-attribute"><span class="xrm-attribute-value">Last Name</span></span></span></label><div class="col-sm-8"><input name="ctl00$ctl00$ContentContainer$MainContent$MainContent$LastNameTextBox" type="text" autocomplete="off" id="LastNameTextBox" class="form-control" aria-required="true"></div></div><div class="form-group"><label class="col-sm-4 control-label required" for="LendingInstNameTextBox"><span id="ContentContainer_MainContent_MainContent_LendingInstNameLabel"><span class="xrm-editable-text xrm-attribute"><span class="xrm-attribute-value">Name of Lending Institution</span></span></span></label><div class="col-sm-8"><input name="ctl00$ctl00$ContentContainer$MainContent$MainContent$LendingInstNameTextBox" type="text" autocomplete="off" id="LendingInstNameTextBox" class="form-control" aria-required="true"></div></div>');
+    $('#ContentContainer_MainContent_MainContent_ShowEmail').before('<div class="form-group"><label class="col-sm-4 control-label required" for="LendingInstNameTextBox"><span id="ContentContainer_MainContent_MainContent_LendingInstNameLabel"><span class="xrm-editable-text xrm-attribute"><span class="xrm-attribute-value">Name of Lending <br> Institution(LI)</span></span></span></label><div class="col-sm-8"><select name="ctl00$ctl00$ContentContainer$MainContent$MainContent$LendingInstNameTextBox" type="text" autocomplete="off" id="LendingInstNameTextBox" class="form-control" aria-required="true"></select></div></div><div class="form-group"><label class="col-sm-4 control-label required" for="FirstNameTextBox"><span id="ContentContainer_MainContent_MainContent_FirstNameLabel"><span class="xrm-editable-text xrm-attribute"><span class="xrm-attribute-value">First and Middle Name</span></span></span></label><div class="col-sm-8"><input name="ctl00$ctl00$ContentContainer$MainContent$MainContent$FirstNameTextBox" type="text" autocomplete="off" id="FirstNameTextBox" class="form-control" aria-required="true"></div></div><div class="form-group"><label class="col-sm-4 control-label required" for="LastNameTextBox"><span id="ContentContainer_MainContent_MainContent_LastNameLabel"><span class="xrm-editable-text xrm-attribute"><span class="xrm-attribute-value">Last Name</span></span></span></label><div class="col-sm-8"><input name="ctl00$ctl00$ContentContainer$MainContent$MainContent$LastNameTextBox" type="text" autocomplete="off" id="LastNameTextBox" class="form-control" aria-required="true"></div></div><div class="form-group"><label class="col-sm-4 control-label required" for="DesignationTextBox"><span id="ContentContainer_MainContent_MainContent_DesignationLabel"><span class="xrm-editable-text xrm-attribute"><span class="xrm-attribute-value">Designation</span></span></span></label><div class="col-sm-8"><input name="ctl00$ctl00$ContentContainer$MainContent$MainContent$DesignationTextBox" type="text" autocomplete="off" id="DesignationTextBox" class="form-control" aria-required="true"></div></div><div class="form-group"><label class="col-sm-4 control-label required" for="MobileTextBox"><span id="ContentContainer_MainContent_MainContent_MobileLabel"><span class="xrm-editable-text xrm-attribute"><span class="xrm-attribute-value">Mobile No.</span></span></span></label><div class="col-sm-8"><input name="ctl00$ctl00$ContentContainer$MainContent$MainContent$MObileTextBox" type="text" onkeypress="return onlyNumberKey(event)" autocomplete="off" id="MobileTextBox" maxlength="10" class="form-control" aria-required="true"></div></div>');    //$('#ContentContainer_MainContent_MainContent_ShowUserName').next().next().after('<div class="form-group"><label class="col-sm-4 control-label required"><span id="ContentContainer_MainContent_MainContent_utype"><span class="xrm-editable-text xrm-attribute"><span class="xrm-attribute-value">Select User Type</span></span></span></label><div class="col-sm-8"><select name="utype" id="utypefield" class="form-control" aria-required="true"><option value="1">ELI Maker</option><option value="2">ELI Checker</option><option value="3">NS Checker</option><option value="4">NS Approver</option></select></div></div>');
+
+    //Code to Add Custom 'Register' Button
+
+    $('#SubmitButton').after('<input type="submit" name="ctl00$ctl00$ContentContainer$MainContent$MainContent$customSubmitButton"  value="Register" id="customSubmitButton" class="btn btn-primary">');
+    //Adding html after pasword tag
+    $('#PasswordTextBox').after('<span id="popup">Passwords must be at least 8 characters. Passwords must contain characters from at least three of the following four classes: uppercase, lowercase, digit, and non-alphanumeric (special).</span>')
+    
+    var myInput = $("#PasswordTextBox");
+  var popup = $("#popup");
+        populateBankNames();
+  // Show popup on input hover
+  myInput.hover(
+    function() {
+      popup.show();
+    },
+    function() {
+      popup.hide();
+    }
+  );
+
+  // Position the popup relative to the input
+  myInput.mousemove(function(event) {
+    var inputOffset = myInput.offset();
+    popup.css({
+      top: inputOffset.top + myInput.outerHeight(),
+      left: inputOffset.left
+    });
+  });
+   
+   
+    //Hide the original submit button      
+
+    $('#SubmitButton').hide();
+    $('#ContentContainer_MainContent_MainContent_ShowUserName').hide();
+
+        $("#EmailTextBox").change(function () {
+        var SelVal = $(this).val();
+        if(SelVal!='' && SelVal!=null)
+        {
+            $("#UserNameTextBox").val(SelVal);
+        }
+
+    })
+    $("#customSubmitButton").click(function()
+        {
+
+            //Save custom field values in local storage
+
+            localStorage.setItem("firstname", $("#FirstNameTextBox").val());
+
+            localStorage.setItem("lastname", $("#LastNameTextBox").val());
+
+            localStorage.setItem("lendinginstitutionname", $("#LendingInstNameTextBox").val());
+
+            localStorage.setItem("Designation", $("#DesignationTextBox").val());
+
+			localStorage.setItem("Mobile", $("#MobileTextBox").val());
+            debugger;
+
+            localStorage.setItem("utype", "5");
+            
+            //trigger standard submit click
+            
+            
+            var cr6fc_useremail = $("#EmailTextBox").val();
+            
+            localStorage.setItem("username", cr6fc_useremail);
+            var PasswordTextBox=$("#PasswordTextBox").val();
+            function validatePassword(password) {
+                if (password.length < 8) {
+                    return "Password must be at least 8 characters long.";
+                }
+                 var uppercaseRegex = /[A-Z]/;
+                    var lowercaseRegex = /[a-z]/;
+                    var digitRegex = /\d/;
+                    var specialCharRegex = /[^A-Za-z0-9]/;
+                     var characterClassesCount = 0;
+                    if (uppercaseRegex.test(password)) {
+                        characterClassesCount++;
+                    }
+                    if (lowercaseRegex.test(password)) {
+                        characterClassesCount++;
+                    }
+                    if (digitRegex.test(password)) {
+                        characterClassesCount++;
+                    }
+                    if (specialCharRegex.test(password)) {
+                        characterClassesCount++;
+                    }
+                     if (characterClassesCount < 3) {
+                return "Password must contain characters from at least three of the following four classes: uppercase, lowercase, digit, and non-alphanumeric (special).";
+                    }
+
+                    return "Password is valid.";
+            }
+            var passwordInput = document.getElementById("PasswordTextBox");
+
+            var validationResult = document.getElementById("validationResult");
+                 
+
+            var result = validatePassword(passwordInput.value);
+                  
+            if(result !="Password is valid."){
+               alert(result);
+               return false;
+            }
+            var ConfirmPasswordTextBox=$("#ConfirmPasswordTextBox").val();
+            var UserNameTextBox=$('#UserNameTextBox').val();
+            if(PasswordTextBox != ConfirmPasswordTextBox){
+                   // console.log('password matched');
+                    alert("The password and confirm password does not match.");
+                    return false;
+                }
+            if ((cr6fc_useremail != null && cr6fc_useremail != '' && cr6fc_useremail != undefined) && (PasswordTextBox == ConfirmPasswordTextBox) && (UserNameTextBox!=null && UserNameTextBox!='' && UserNameTextBox!=undefined))  {
+                var cr6fc_useremail = $("#EmailTextBox").val();
+                var cr6fc_username = $("#UserNameTextBox").val();
+                //var cr6fc_usertype = $("#utypefield").val();
+                var cr6fc_userfirstname = $("#FirstNameTextBox").val();
+                var cr6fc_userlastname = $("#LastNameTextBox").val();
+                var cr6fc_lendinginstitutionname = $("#LendingInstNameTextBox").val();
+                var lendinginstitutionname = checkNameOfLI();
+                if(lendinginstitutionname){
+                    alert("Name of Lending Institution Already Exists");
+                    return false;
+                }
+
+                var cr6fc_designation = $("#DesignationTextBox").val();
+				var cr6fc_mobilenumber = $("#MobileTextBox").val();
+                // var Password = $("#PasswordTextBox").val();
+                // var ConfirmPassword = $("#ConfirmPasswordTextBox").val();
+                
+                if(cr6fc_useremail!=null && cr6fc_useremail!="" && cr6fc_useremail!=undefined)
+                {
+                    var check=ReportsMenu();
+                    if(check)
+                    {
+                        alert("Email Address already exists")
+                        return false;
+                    }
+                }
+                var form = $('#Register');
+                var token = $('input[name="__RequestVerificationToken"]', form).val()
+               var data1 = JSON.stringify({
+
+                    cr6fc_useremail: cr6fc_useremail,
+                    cr6fc_username: cr6fc_username,
+                    cr6fc_usertype: "5",
+					cr6fc_mobilenumber:cr6fc_mobilenumber,
+                   cr6fc_lendinginstitutionname: cr6fc_lendinginstitutionname,
+                    cr6fc_userfirstname: cr6fc_userfirstname,
+                    cr6fc_userlastname: cr6fc_userlastname,
+                    cr6fc_designation:cr6fc_designation,
+                });
+                var header={__RequestVerificationToken:token,
+                            contentType: "application/json;odata=verbose"
+                }
+                $.ajax({
+                    url: "/_api/cr6fc_fpocontacts",
+                    type: "POST",
+                    headers:header,
+                    async: false,
+                    data: data1,
+                    success: function(success) {
+                        alert("successfully registered!!Use your Email as User Name");
+                        $('#SubmitButton').click();
+                    },
+                    error: function(error) {
+                        console.log(error);
+                        //alert('Some error occured. Please try again later.');
+                        alert('Some error occured while adding data in Tasks list. Please try again later.');
+                        console.log(error);
+
+                    }
+                })
+
+            }
+            return false;
+
+        });
+
+
+});
+
+function ReportsMenu() {
+        var flag = false;
+        var username=$('#EmailTextBox').val();
+        var Surl = location.origin + "/_api/contacts?$filter=adx_identity_username eq '"+username+"'";
+        $.ajax({
+            url: Surl,
+            type: "GET",
+            async: false,
+            headers: {
+                "accept": "application/json;odata=verbose",
+                "content-type": "application/json;odata=verbose"
+            },
+            success: function onSuccess(data) {
+                var items = data.value;
+                if(items.length>0)
+                {
+                   flag = true;
+                }
+                
+            },
+            error: function onError(error) {
+                console.log(JSON.stringify(error));
+            }
+        });
+        return flag;
+    }
+    function checkNameOfLI() {
+        var flags = false;
+        var username=$('#LendingInstNameTextBox option:selected').text();
+        var Surl = location.origin + "/_api/cr6fc_fpocontacts?$filter=cr6fc_lendinginstitutionname eq '"+username+"'";
+        $.ajax({
+            url: Surl,
+            type: "GET",
+            async: false,
+            headers: {
+                "accept": "application/json;odata=verbose",
+                "content-type": "application/json;odata=verbose"
+            },
+            success: function onSuccess(data) {
+                var item = data.value;
+                if(item.length>0)
+                {
+                   flags = true;
+                }
+                
+            },
+            error: function onError(error) {
+                console.log(JSON.stringify(error));
+            }
+        });
+        return flags;
+    }
+</script>
+<script>
+function populateBankNames() {
+	var requestUri = location.origin + "/_api/cr6fc_banknames?$select=*";
+	var requestHeaders = { "accept": "application/json;odata=verbose" };
+	$.ajax({
+	  url: requestUri,
+	  type: "GET",
+	  async: false,
+	  headers: {
+		"accept": "application/json;odata=verbose",
+		"content-type": "application/json;odata=verbose"
+	  },
+	  success: function (data) {
+		try {
+		  if (data.value && data.value.length > 0) {
+			var txtBankNameSelect = document.getElementById("LendingInstNameTextBox");
+			txtBankNameSelect.innerHTML = ""; // Clear existing options
+			txtBankNameSelect.options[0] = new Option("Select", "0");
+			for (var i = 0; i < data.value.length; i++) {
+			  txtBankNameSelect.options[txtBankNameSelect.options.length] = new Option(data.value[i].cr6fc_name, data.value[i].cr6fc_name);
+			}
+		  }
+		} catch (e) {
+		  console.error(e);
+		}
+	  },
+	  error: function () {
+		console.log("error");
+	  }
+	});
+  }
+function onlyNumberKey(evt) {
+
+              // Only ASCII character in that range allowed
+              var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+              if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+                  return false;
+              return true;
+          }
+</script>

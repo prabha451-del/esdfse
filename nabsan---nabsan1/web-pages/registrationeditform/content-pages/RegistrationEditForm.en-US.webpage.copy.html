@@ -1,0 +1,409 @@
+<input type="hidden" id="ELIMaker"><input type="hidden" id="hdnDigitalRequestNo"><input type="hidden" id="hdnCounterItemID"><input type="hidden" id="hdnCounterItemID1"><input type="hidden"><input type="hidden" id="hdnNSMaker"><input type="hidden" id="hdnNSChecker"><input type="hidden" id="hdnNSApprover"><input type="hidden" id="hdnRequestStatus"><input type="hidden" id="hdnContactId">
+<script type="text/javascript" src="~/RegistrationEditForm1.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!--<form action="/CGApplicationForm" method="post"><input name="__RequestVerificationToken" type="hidden" value="R3lHASuBVfnizJs-ruMWD40Y2tEXssO1HiUhCtQMnV4Xi2y57xEnfTEDq1_rGeyqh770IH81rFHhle6iNnhWQJpR4QMfMfwy7j5CvcSzW3c1">-->
+<div id="process-tab" class="design-process-section">
+  <div class="container-fluid">
+    <div class="formheadingWrap formtitle"><h1>ELI Registration Form</h1></div>
+    <div class="row">
+      <div class="col-xs-12">
+        <!-- design process steps--><!-- Nav tabs -->
+        <div class="row top-tab">
+          <div class="col-md-12">
+            <ul role="tablist" class="nav nav-tabs process-model more-icon-preocess">
+              <li role="presentation" class="active afpo afpq">
+                <a href="#discover" aria-controls="discover" role="tab" data-toggle="tab"><p>ELI Details</p>
+                  <i aria-hidden="true" class="fa fa-dot-circle-o"></i></a>
+              </li>
+              <li role="presentation" class="fposmd fposmb">
+                <a href="#strategy" aria-controls="strategy" role="tab" data-toggle="tab"><p>Authorized Signatory</p>
+                  <i aria-hidden="true" class="fa fa-dot-circle-o"></i></a>
+              </li>
+              <li role="presentation" class="cfd cfb">
+                <a href="#optimization" aria-controls="optimization" role="tab" data-toggle="tab"><p>Delegated Authority</p>
+                  <i aria-hidden="true" class="fa fa-dot-circle-o"></i></a>
+              </li>
+              <li role="presentation" class="sd sb">
+                <a href="#content" aria-controls="content" role="tab" data-toggle="tab"><p>Administrator</p>
+                  <i aria-hidden="true" class="fa fa-dot-circle-o"></i></a>
+              </li>
+              <!--  <li role="presentation"><a href="#reporting" aria-controls="reporting" role="tab" data-toggle="tab">
+              <p>Reporting</p>
+            <i class="fa fa-clipboard" aria-hidden="true"></i></a></li>-->
+            </ul>
+          </div>
+        </div>
+        <!-- end design process steps--><!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" id="discover" class="tab-pane active">
+            <div class="design-process-content">
+              <div><h4 class="col-md-12 title">ELI Details</h4></div>
+              <div class="form-group row mx-0">
+                <div class="form-group col-md-3">
+                  <label for="">
+                    Name of LI <span style="color: red;"><b>*</b></span></label><input type="text" id="txtBankName" disabled="disabled" class="form-control">
+                </div>
+                <!-- <div class="form-group col-md-3">
+                  <label for="">Registration Name<span style="color: red;"><b>*</b></span></label><input type="text"
+                    id="txtRegistrationName" class="form-control" />
+                </div>-->
+                <div class="form-group col-md-3">
+                  <label for="">Type of LI<span style="color: red;"><b>*</b></span></label><select type="text" id="txtTypeofBank" class="form-control"></select>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="">PAN<span style="color: red;"><b>*</b></span></label><input type="text" id="txtPan" class="form-control">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="">GSTIN<span style="color: red;"><b>*</b></span></label><input type="text" maxlength="15" id="GSTINFPO" class="form-control">
+                </div>
+              </div>
+              <div class="form-group row mx-0">
+                <div class="form-group col-md-3">
+                  <label for="">Website <span style="color: red;"><b>*</b></span></label><input type="text" id="txtWebsite" class="form-control">
+                </div>
+                <!--  <div class="form-group col-md-3"><label for="">Email ID<span style="color: red;"><b>*</b></span></label><input type="text" id="txtEmailID" class="form-control" /></div>-->
+                <div class="form-group col-md-3">
+                  <label for="">
+                    Address<span style="color: red;"><b>*</b></span></label><textarea id="txtAddress" class="form-control"></textarea>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="">
+                    City<span style="color: red;"><b>*</b></span></label><input type="text" id="txtCity" class="form-control">
+                </div>
+                <!--  <div class="form-group col-md-3">
+                  <label for="">
+                    Town<span style="color: red;"><b>*</b></span></label
+                  ><input type="text" id="txtTown" class="form-control" />
+                </div>-->
+                <div class="form-group col-md-3">
+                  <label for="">
+                    State<span style="color: red;"><b>*</b></span></label><select id="ddlState" class="form-control"></select>
+                </div>
+              </div>
+              <div class="form-group row mx-0">
+                <div class="form-group col-md-3">
+                  <label for="">PinCode<span style="color: red;"><b>*</b></span></label><input type="text" maxlength="6" onkeypress="return onlyNumberKey(event)" id="txtpincode" class="form-control">
+                </div>
+                <!-- <div class="form-group col-md-3"><label for="">Mobile No.<span style="color: red;"><b>*</b></span></label><input type="text" maxlength="15" onkeypress="return onlyNumberKey(event)" id="txtContactNo" class="form-control" /></div>-->
+                <div class="form-group col-md-3"><label for="">Telephone No.</label><input type="text" maxlength="15" onkeypress="return onlyNumberKey(event)" id="txttelephnno" class="form-control"></div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-12"><h4 class="col-md-12 title">Details of Guest User- Form</h4></div>
+              </div>
+              <div class="form-group row mx-0">
+                <div class="form-group col-md-3"><label>First and Middle name</label><label id="userfirstname" class="form-control"></label></div>
+                <div class="form-group col-md-3"><label>Last name</label><label id="userlastname" class="form-control"></label></div>
+                <div class="form-group col-md-3"><label>Designation</label><label id="userDesignation" class="form-control"></label></div>
+                <div class="form-group col-md-3"><label>Mobile No.</label><label id="userMobilenumber" class="form-control"></label></div>
+              </div>
+              <div class="form-group row">
+                <div>
+                  <h4 class="col-md-12 title">
+                    Documents (Please attach the mandatory documents marked with <span style="color: red;"><b>*</b></span>)
+                  </h4>
+                </div>
+              </div>
+              <div class="form-group row mx-0">
+                <div class="form-group col-md-8">
+                  <label for="">Certified copy of Resolution from Board of Directors<span style="color: red;"><b>*</b></span></label>
+                </div>
+                <div class="form-group col-md-4">
+                  <input id="fBodReslCert" title="Certified copy of Resolution from Board of Directors" type="file" name="fBodReslCert" onchange="getFileDetails(this, 0, 'cr6fc_bodresolutioncertificate');" class="form-control">
+                  <div class="form-group col-md-4 d-flex"><a href="" id="anchBodReslCert" target="_blank"></a><i onclick="" class="fa fa-times" style="color: #ed0202; margin: 0 5px 0;"></i></div>
+                </div>
+              </div>
+              <div class="form-group row mx-0">
+                <div class="form-group col-md-8">
+                  <label for="">Certified copy of Permanent Account Number of LI<span style="color: red;"><b>*</b></span></label>
+                </div>
+                <div class="form-group col-md-4">
+                  <input id="fPANLICert" title="Certified copy of Permanent Account Number of LI*" type="file" name="fPANLICert" onchange="getFileDetails(this, 1, 'cr6fc_lipan');" class="form-control">
+                  <div class="form-group col-md-4 d-flex"><a href="" id="anchPANLICert" target="_blank"></a><i onclick="" class="fa fa-times" style="color: #ed0202; margin: 0 5px 0;"></i></div>
+                </div>
+              </div>
+              <div class="form-group row mx-0">
+                <div class="form-group col-md-8"><label for="">Certified copy of Delegation granted to transact business</label></div>
+                <div class="form-group col-md-4">
+                  <input id="fDelTranBussCert" title="Certified copy of Delegation granted to transact business" type="file" name="fDelTranBussCert" onchange="getFileDetails(this, 2, 'cr6fc_bussinesstransdelcertificate');" class="form-control">
+                  <div class="form-group col-md-4 d-flex"><a href="" id="anchDelTranBussCert" target="_blank"></a><i onclick="" class="fa fa-times" style="color: #ed0202; margin: 0 5px 0;"></i></div>
+                </div>
+              </div>
+              <div class="form-group row mx-0">
+                <div class="form-group col-md-8">
+                  <label for="">Address Proof (Certified copy of not more than three months old utility bills in the name of LI)<span style="color: red;"><b>*</b></span></label>
+                </div>
+                <div class="form-group col-md-4">
+                  <input id="fAddProofUtility" title="Address Proof (Certified copy of not more than three months old utility bills in the name of LI)*" type="file" name="fAddProofUtility" onchange="getFileDetails(this, 3, 'cr6fc_liutilityaddressproof');" class="form-control">
+                  <div class="form-group col-md-4 d-flex"><a href="" id="anchAddProofUtility" target="_blank"></a><i onclick="" class="fa fa-times" style="color: #ed0202; margin: 0 5px 0;"></i></div>
+                </div>
+              </div>
+              <div class="form-group row mx-0">
+                <div class="form-group col-md-8">
+                  <label for="">Original Undertaking(On Stamp Paper)<span style="color: red;"><b>*</b></span></label>
+                </div>
+                <div class="form-group col-md-4">
+                  <input id="fOrgUndertaking" title="Original Undertaking*" type="file" name="fOrgUndertaking" onchange="getFileDetails(this, 4, 'cr6fc_originalundertaking');" class="form-control">
+                  <div class="form-group col-md-4 d-flex"><a href="" id="anchOrgUndertaking" target="_blank"></a><i onclick="" class="fa fa-times" style="color: #ed0202; margin: 0 5px 0;"></i></div>
+                </div>
+              </div>
+              <div class="form-group row mx-0">
+                <div class="form-group col-md-8"><label for="">Copy of MoU signed with Ministry of Agriculture and Farmers Welfare, GoI under Agriculture Infrastructure Fund(AIF)</label></div>
+                <div class="form-group col-md-4">
+                  <input id="fMOU" title="Copy of MoU signed with Ministry of Agriculture and Farmers Welfare, GoI under Agriculture Infrastructure Fund" type="file" name="fMOU" onchange="getFileDetails(this, 5, 'cr6fc_agriculturemou');" class="form-control">
+                  <div class="form-group col-md-4 d-flex"><a href="" id="anchMOU" target="_blank"></a><i onclick="" class="fa fa-times" style="color: #ed0202; margin: 0 5px 0;"></i></div>
+                </div>
+              </div>
+              <div class="form-group row mx-0">
+                <div class="form-group col-md-8">
+                  <label for="">Certified Copy of GSTIN<span style="color: red;"><b>*</b></span></label>
+                </div>
+                <div class="form-group col-md-4">
+                  <input id="fCertGSTIN" title="Certified GSTIN*" type="file" name="fCertGSTIN" onchange="getFileDetails(this, 6, 'cr6fc_certifiedgstin');" class="form-control">
+                  <div class="form-group col-md-4 d-flex"><a href="" id="anchCertGSTIN" target="_blank"></a><i onclick="" class="fa fa-times" style="color: #ed0202; margin: 0 5px 0;"></i></div>
+                </div>
+                <div class="form-group row mx-0">
+                  <div class="form-group col-md-8">
+                    <label for="">Letter of Authority for Administrator<span style="color: red;"><b>*</b></span></label>
+                  </div>
+                  <div class="form-group col-md-4"><input id="letterAuthorityAdd" title="Certified GSTIN*" type="file" name="fCertGSTIN" onchange="getFileDetails(this, 7, 'cr6fc_letterauthorityadministrator');" class="form-control"><a href="" id="viewletterAuthority" target="_blank"></a><i onclick="" class="fa fa-times" style="color: #ed0202; margin: 0 5px 0;"></i></div>
+                </div>
+                <div class="form-group row mx-0">
+                  <div class="form-group col-md-8"><label for="">Other Documents</label></div>
+                  <div id="attachFilesHolderOther" class="form-group col-md-4"><input id="OtherDocument" title="Other Documents*" type="file" name="OtherDocument" multiple="multiple" class="form-control"><a href="" id="viewotherDocuments" target="_blank"></a></div>
+                  <!--onchange="getFileDetails(this, 7, 'cr6fc_otherdocument');"-->
+                </div>
+              </div>
+              <div class="form-group row mx-0"></div>
+              <button type="button" onclick="fpomyFunction()" class="btn btn-primary Proceed pro1">Proceed</button>
+            </div>
+          </div>
+          <div role="tabpanel" id="strategy" class="tab-pane">
+            <div class="design-process-content">
+              <div><h4 class="col-md-12 title">Authorized Signatory</h4></div>
+              <div>
+                <div class="col-lg-12 col-xs-12 GView">
+                  <table cellpadding="0" cellspacing="0" border="0" id="tblData" class="table tbl">
+                    <thead>
+                      <tr>
+                        <th align="center" style="text-align: center;">First and Middle Name</th>
+                        <th align="center" style="text-align: center;">Last Name</th>
+                        <th align="center" style="text-align: center;">Designation</th>
+                        <th align="center" style="text-align: center;">Mobile No.</th>
+                        <th align="center" style="text-align: center;">E-Mail</th>
+                        <th align="center" style="text-align: center;">Address Proof Type</th>
+                        <!--<th style="text-align: center;" align="center">Address Proof No.</th>-->
+                        <th align="center" style="text-align: center;">Address Proof Upload</th>
+                        <th align="center" style="text-align: center;">Identity Proof Type</th>
+                        <!-- <th style="text-align: center;" align="center">Identity Proof No.</th>-->
+                        <th align="center" style="text-align: center;">Identity Proof Upload</th>
+                        <th align="center" style="text-align: center;">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="ExistingAuthorizedtbodyRequestor">
+                      <tr class="row">
+                        <td class="cell"></td>
+                      </tr>
+                    </tbody>
+                    <tbody id="tbodyRequestor">
+                      <tr class="row">
+                        <td class="cell"></td>
+                      </tr>
+                    </tbody>
+                    <tbody id="tbodyone">
+                      <tr>
+                        <td align="center" style="text-align: center;"><input type="text" id="txtFirstNameAuthorized" class="form-control"></td>
+                        <td align="center" style="text-align: center;"><input type="text" id="txtLastNameAuthorized" class="form-control"></td>
+                        <td align="center" style="text-align: center;"><input type="text" id="txtDesignationAuthorized" class="form-control"></td>
+                        <td align="center" style="text-align: center;"><input type="text" maxlength="10" onkeypress="return onlyNumberKey(event)" id="txtMobileNoAuthorized" class="form-control"></td>
+                        <td align="center" style="text-align: center;"><input type="text" id="txtAddressAuthorized" class="form-control"></td>
+                        <td align="center" style="text-align: center;">
+                          <select id="ddlAuthSignAddressProofType" class="form-control">
+                            <option value="0">Select</option>
+                            <option value="1">Passport</option>
+                            <option value="2">Driving Licence</option>
+                            <option value="3">Proof of possession of Aadhaar number</option>
+                            <option value="4">Voters Identity Card issued by the Election Commission of India</option>
+                          </select>
+                        </td>
+                        <!-- <td style="text-align: center;" align="center"><input type="text" id="txtAuthSignAddressProofNumber" class="form-control" /></td>-->
+                        <td align="center" style="text-align: center;"><input id="fAuthSignAddressProof" title="Address Proof Type" type="file" name="fAuthSignAddressProof" onchange="validateFile(this)" class="form-control"></td>
+                        <td align="center" style="text-align: center;">
+                          <select id="ddlAuthSignIdentityProofType" class="form-control">
+                            <option value="0">Select</option>
+                            <option value="1">Passport</option>
+                            <option value="2">Driving Licence</option>
+                            <option value="3">PAN</option>
+                            <option value="4">Proof of possession of Aadhaar number</option>
+                            <option value="5">Voters Identity Card issued by the Election Commission of India</option>
+                          </select>
+                        </td>
+                        <!--  <td style="text-align: center;" align="center"><input type="text" id="txtAuthSignIdentityProofNumber" class="form-control" /></td>-->
+                        <td align="center" style="text-align: center;"><input id="fAuthSignIdentityProof" title="Identity Proof Type" type="file" name="fAuthSignIdentityProof" onchange="validateFile(this)" class="form-control"></td>
+                        <td>
+                          <button type="button" id="addBtn" onclick="AddData();" class="btn btn-primary btn-xs" style="min-width: auto;"><span class="glyphicon glyphicon-plus"></span></button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <button type="button" onclick="back1Function()" class="btn btn-primary back pro2">Back</button><button type="button" onclick="cfdmyFunction()" class="btn btn-primary Proceed pro2">Proceed</button>
+            </div>
+          </div>
+          <div role="tabpanel" id="optimization" class="tab-pane">
+            <div class="design-process-content">
+              <div style="padding-top: 10px;"><h4 class="col-md-12 title">Delegated Authority(Optional)</h4></div>
+              <div>
+                <div class="col-lg-12 col-xs-12 GView">
+                  <table cellpadding="0" cellspacing="0" border="0" id="tblDataDelegated" class="table tbl">
+                    <thead>
+                      <tr>
+                        <th align="center" style="text-align: center;">First and Middle Name</th>
+                        <th align="center" style="text-align: center;">Last Name</th>
+                        <th align="center" style="text-align: center;">Designation</th>
+                        <th align="center" style="text-align: center;">Mobile No.</th>
+                        <th align="center" style="text-align: center;">E-Mail</th>
+                        <th align="center" style="text-align: center;">Address Proof Type</th>
+                        <!-- <th style="text-align: center;" align="center">Address Proof No.</th>-->
+                        <th align="center" style="text-align: center;">Address Proof Upload</th>
+                        <th align="center" style="text-align: center;">Identity Proof Type</th>
+                        <!-- <th style="text-align: center;" align="center">Identity Proof No.</th>-->
+                        <th align="center" style="text-align: center;">Identity Proof Upload</th>
+                        <th align="center" style="text-align: center;">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="ExistingdelegatetbodyRequestor">
+                      <tr class="row">
+                        <td class="cell"></td>
+                      </tr>
+                    </tbody>
+                    <tbody id="tbodyRequestorDelegated">
+                      <tr class="row">
+                        <td class="cell"></td>
+                      </tr>
+                    </tbody>
+                    <tbody>
+                      <tr>
+                        <td align="center" style="text-align: center;"><input type="text" id="txtFirstNameDelegated" class="form-control"></td>
+                        <td align="center" style="text-align: center;"><input type="text" id="txtNameDelegated" class="form-control"></td>
+                        <td align="center" style="text-align: center;"><input type="text" id="txtDesignationDelegated" class="form-control"></td>
+                        <td align="center" style="text-align: center;"><input type="text" maxlength="10" id="txtMobileNoDelegated" onkeypress="return onlyNumberKey(event)" class="form-control"></td>
+                        <td align="center" style="text-align: center;"><input type="text" id="txtAddressDelegated" class="form-control"></td>
+                        <td align="center" style="text-align: center;">
+                          <select id="ddlDelAuthAddressProofType" class="form-control">
+                            <option value="0">Select</option>
+                            <option value="1">Passport</option>
+                            <option value="2">Driving Licence</option>
+                            <option value="3">Proof of possession of Aadhaar number</option>
+                            <option value="4">Voters Identity Card issued by the Election Commission of India</option>
+                          </select>
+                        </td>
+                        <!-- <td style="text-align: center;" align="center"><input type="text" id="txtDelAuthAddressProofNumber" class="form-control" /></td>-->
+                        <td align="center" style="text-align: center;"><input id="fDelAuthAddressProof" title="Address Proof Type" type="file" name="fDelAuthAddressProof" onchange="validateFile(this)" class="form-control"></td>
+                        <td align="center" style="text-align: center;">
+                          <select id="ddlDelAuthIdentityProofType" class="form-control">
+                            <option value="0">Select</option>
+                            <option value="1">Passport</option>
+                            <option value="2">Driving Licence</option>
+                            <option value="3">PAN</option>
+                            <option value="4">Proof of possession of Aadhaar number</option>
+                            <option value="5">Voters Identity Card issued by the Election Commission of India</option>
+                          </select>
+                        </td>
+                        <!--<td style="text-align: center;" align="center"><input type="text" id="txtDelAuthIdentityProofNumber" class="form-control" /></td>-->
+                        <td align="center" style="text-align: center;"><input id="fDelAuthIdentityProof" title="Identity Proof Type" type="file" name="fDelAuthIdentityProof" onchange="validateFile(this)" class="form-control"></td>
+                        <td>
+                          <button type="button" onclick="AddDataDelegated();" class="btn btn-primary btn-xs" style="min-width: auto;"><span class="glyphicon glyphicon-plus"></span></button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <button type="button" onclick="back2Function()" class="btn btn-primary back pro2">Back</button><button type="button" onclick="sdmyFunction()" class="btn btn-primary Proceed pro2">Proceed</button>
+            </div>
+          </div>
+          <div role="tabpanel" id="content" class="tab-pane">
+            <div class="design-process-content">
+              <div class="form-group row mb-4">
+                <h4 class="col-md-12 title">Administrator</h4>
+                <div class="col-lg-12 col-xs-12 GView">
+                  <table cellpadding="0" cellspacing="0" border="0" id="tbladministrater" class="table tbl">
+                    <thead>
+                      <tr>
+                        <th align="center" style="text-align: center;">First and Middle Name</th>
+                        <th align="center" style="text-align: center;">Last Name</th>
+                        <th align="center" style="text-align: center;">Designation</th>
+                        <th align="center" style="text-align: center;">Mobile No.</th>
+                        <th align="center" style="text-align: center;">E-Mail</th>
+                        <th align="center" style="text-align: center;">Address Proof Type</th>
+                        <th align="center" style="text-align: center;">Address Proof Upload</th>
+                        <th align="center" style="text-align: center;">Identity Proof Type</th>
+                        <th align="center" style="text-align: center;">Identity Proof Upload</th>
+                        <th align="center" style="text-align: center;">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tbodyRequestorAdministrator"></tbody>
+                    <tbody>
+                      <tr>
+                        <td align="center" style="text-align: center;"><input type="text" id="txtFirstNameAdministrator" onchange="testrecord();" class="form-control"></td>
+                        <td align="center" style="text-align: center;"><input type="text" id="txtLastNameAdministrator" class="form-control"></td>
+                        <td align="center" style="text-align: center;"><input type="text" id="txtDesignationAdministrator" class="form-control"></td>
+                        <td align="center" style="text-align: center;"><input type="text" onkeypress="return onlyNumberKey(event)" id="txtMobileNoAdministrator" maxlength="10" class="form-control"></td>
+                        <td align="center" style="text-align: center;"><input type="text" id="txtEmailIdAdministrator" class="form-control"></td>
+                        <td align="center" style="text-align: center;">
+                          <select id="ddlAddressProofType" class="form-control">
+                            <option value="0">Select</option>
+                            <option value="1">Passport</option>
+                            <option value="2">Driving Licence</option>
+                            <option value="3">Proof of possession of Aadhaar number</option>
+                            <option value="4">Voters Identity Card issued by the Election Commission of India</option>
+                          </select>
+                        </td>
+                        <td align="center" style="text-align: center;">
+                          <input id="fAddressProof" title="Address Proof Type" type="file" name="fAddressProof" onchange="validateFile(this)" class="form-control">
+                          <div class="form-group col-md-12 d-flex"><a href="" id="anchAdminAddProof" target="_blank"></a><i onclick="" class="fa fa-times" style="color: #ed0202; margin: 0 5px 0;"></i></div>
+                        </td>
+                        <td align="center" style="text-align: center;">
+                          <select id="ddlIdentityProofType" class="form-control">
+                            <option value="0">Select</option>
+                            <option value="1">Passport</option>
+                            <option value="2">Driving Licence</option>
+                            <option value="3">PAN</option>
+                            <option value="4">Proof of possession of Aadhaar number</option>
+                            <option value="5">Voters Identity Card issued by the Election Commission of India</option>
+                          </select>
+                        </td>
+                        <td align="center" style="text-align: center;">
+                          <input id="fIdentityProof" title="Identity Proof Type" type="file" name="fIdentityProof" onchange="validateFile(this)" class="form-control">
+                          <div class="form-group col-md-12 d-flex"><a href="" id="anchAdminIdProof" target="_blank"></a><i onclick="" class="fa fa-times" style="color: #ed0202; margin: 0 5px 0;"></i></div>
+                        </td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <button type="button" onclick="back3Function()" class="btn btn-primary back pro2">Back</button>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group col-md-6"><label style="color: black;">Remark</label><textarea id="txtmakerComment" class="form-control"></textarea></div>
+            </div>
+            <input type="hidden" id="ELICheckerEmail">
+            <div>
+              <span us-spinner="" spinner-key="spinner-1"></span>
+              <div class="col-sm-12 col-md-12 mt-5">
+                <div class="buttons" style="text-align: center;"><button type="button" id="btn1" onclick="javascript:SubmitData('Submitted');" class="btn btn-default mr-2">Submit to NABSanrakshan For Approval</button></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-12 mt-5">
+      <div class="buttons" style="text-align: center;"><button type="button" id="btnSave" onclick="javascript:SubmitData('Draft');" class="btn btn-default mr-2" style="margin-right: 10px;">Save as Draft</button><button type="button" onclick="javascript:cancel();" class="btn btn-default">Exit</button></div>
+    </div>
+  </div>
+</div>
+<div class="row sectionBlockLayout text-start" style="display: flex; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;">
+  <div class="container" style="padding: 0px; display: flex; flex-wrap: wrap;"><div class="col-lg-12 columnBlockLayout" style="flex-grow: 1; display: flex; flex-direction: column; min-width: 250px; word-break: break-word;"></div></div>
+</div>

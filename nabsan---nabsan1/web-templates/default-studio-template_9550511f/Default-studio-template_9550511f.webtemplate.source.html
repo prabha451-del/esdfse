@@ -1,0 +1,124 @@
+<!-- Default studio template. Please do not modify -->
+<link href="~/jquery.dataTables.min.css"/>
+<script type="text/javascript" src="~/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="~/bootstrap-multiselect.min.js"></script>
+<script type="text/javascript" src="~/fSelect.js"></script>
+<script type="text/javascript" src="~/jquery.dataTables.min.js"></script>
+<div id="mainContent" class = "wrapper-body" role="main">
+    {% include 'Page Copy' %}
+<input type="hidden" id="fpo-user-contact-id"      value="{{user.id}}" />
+<input type="hidden" id="fpo-user-contact-name" value="{{user.fullname}}" />  
+<input type="hidden" id="fpo-user-email"   value="{{user.emailaddress1}}" />
+</div>
+<!-- Default studio template. Please do not modify -->
+{% if user %}
+
+{% else %}
+    <script>
+        window.location.href="./SignIn"
+    </script>
+{% endif %}
+<script>
+
+    function ReportsMenu() {
+        var flag = false;
+        var username=$('#fpo-user-email').val();
+        var usernametxt=$('.username').text();
+        var Surl = location.origin+"/_api/contacts?$filter=adx_identity_username eq '"+username+"'";
+        $.ajax({
+            url: Surl,
+            type: "GET",
+            async: false,
+            headers: {
+                "accept": "application/json;odata=verbose",
+                "content-type": "application/json;odata=verbose"
+            },
+            success: function onSuccess(data) {
+                var items = data.value;
+                if(items.length>0)
+                {
+                    localStorage.setItem("isLoggedIn", "Yes");
+                    if(items[0].cr6fc_alreadyloggedin==2)
+                    {
+                        if(items[0].cr6fc_usertype==1)
+                        {
+                            window.location.href= window.origin + "/DashboardCGApp/"
+                             //window.location.href= window.origin + "/ClosureUpdateForm/"
+                        } 
+                        else if(items[0].cr6fc_usertype==2)
+                        {
+                            window.location.href= window.origin + "/ELICheckerDashBoardCGApp/"
+                        }
+                        else if(items[0].cr6fc_usertype==3)
+                        {
+                            window.location.href= window.origin + "/NSCheckerDashboard/"
+                        }
+                        else if(items[0].cr6fc_usertype==4)
+                        {
+                            window.location.href= window.origin + "/NSApproverDashboard/"
+                        }
+                        else if(items[0].cr6fc_usertype==5)
+                        {
+                            window.location.href= window.origin + "/RegisterDashboard/"
+                        }
+                        else if(items[0].cr6fc_usertype==6)
+                        {
+                            window.location.href= window.origin + "/ELIMemberRegistrationForm/"
+                        }
+                        else if(items[0].cr6fc_usertype==7)
+                        {
+                            window.location.href= window.origin + "/ClosureDashboard/"
+                        }
+
+                    }
+                    else
+                    {
+                        if(usernametxt=="Profile name")
+                        {
+                           window.location.href= window.origin + "/account/login/logoff"
+                        }
+                        else
+                        {
+                            window.location.href= window.origin + "/en-US/Account/Manage/ChangePassword"
+                        }
+                    }
+                   
+                }
+                
+            },
+            error: function onError(error) {
+                console.log(JSON.stringify(error));
+            }
+        });
+        return flag;
+    }
+    //document.getElementsByTagName("BODY")[0].style.display = "none";
+
+$(document).ready(function() {
+        debugger;
+        var isLoggedIn=localStorage.getItem("isLoggedIn");
+        if(isLoggedIn!="Yes")
+        {
+            var usernametxt=$('.username').text()
+            if(usernametxt!='')
+            {
+               // document.getElementsByTagName("BODY")[0].style.display = "none"; comm 9 25 24
+            }
+            else
+            {
+                document.getElementsByClassName("weblink ")[0].style.display = "none";
+                document.getElementsByClassName("weblink ")[1].style.display = "none";
+                document.getElementsByClassName("weblink ")[2].style.display = "none";
+                document.getElementsByClassName("divider-vertical ")[0].style.display = "none";
+                document.getElementsByClassName("divider-vertical ")[1].style.display = "none";
+                document.getElementsByClassName("divider-vertical ")[2].style.display = "none";
+                document.getElementsByClassName("divider-vertical ")[3].style.display = "none";
+                document.getElementsByClassName("dropdown")[0].style.display = "none";
+                document.getElementsByClassName("dropdown")[1].style.display = "none";
+            }
+           // ReportsMenu();
+        }
+
+
+})
+</script>

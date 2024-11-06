@@ -1,0 +1,434 @@
+<style>
+    .ui-dialog {
+        width: 72% !important;
+        top: 20% !important;
+        left: 12% !important;
+    }
+
+    .text {
+        font-size: 13px !important;
+        font-weight: 500 !important;
+    }
+</style>
+<script type="text/javascript" src="~/jquery-ui.min.js"></script>
+<script type="text/javascript" src="~/NSCheckerAPF.js"
+    nonce="MmQ2NmMzYzEtN2FkZi00MGRlLTkyZmItNTBkNWMwNzlkYWMx"></script>
+
+<input type="hidden" id="hdnTitle" />
+<input type="hidden" id="hdnELICheckerEmail" />
+<input type="hidden" id="hdnlendingInstitute" />
+<input type="hidden" id="hdnEIlCheckerRemark" />
+<input type="hidden" id="hdnStatus" />
+<input type="hidden" id="hdnELIMaker" />
+<input type="hidden" id="hdnSanctionAmt" />
+<input type="hidden" id="hdnPreviousSanctionAmt" />
+<input type="hidden" id="hdnPrincipalAmt" />
+<input type="hidden" id="hdnAccountNo" />
+<input type="hidden" id="hdnCGStatus" />
+<input type="hidden" id="hdnDateOfLastInstall" />
+<input type="hidden" id="hdnDateofClosure" />
+<input type="hidden" id="hdnParentId" />
+<input type="hidden" id="hdnLoanClosed" />
+<input type="hidden" id="ELICheckerEmail" />
+<input type="hidden" id="hdnNABApproverComment" />
+<input type="hidden" id="hdnNABCheckerComment" />
+<input type="hidden" id="stateID" />
+<input type="hidden" id="hdnDigitalRequestNo" />
+<input type="hidden" id="hdnCounterItemID" />
+<input type="hidden" id="hdnCounterItemID1" />
+<input type="hidden" id="hdnDigitalRequestNoCGFAN" />
+<input type="hidden" id="hdnCounterItemIDCGFAN" />
+<input type="hidden" id="hdnCounterItemID1CGFAN" />
+<input type="hidden" id="hdnTypeOfFacility" />
+<input type="hidden" id="hdnTotalSanctionAmt" />
+<input type="hidden" id="hdnTotalSOEIssuedSanctionAmt" />
+<input type="hidden" id="hdnAnyUtiliseUnder" />
+<input type="hidden" id="hdnLimitOperationalForPreFY" />
+<input type="hidden" id="hdnPeakOutstanding" />
+<input type="hidden" id="hdnDisbursmentLoan" />
+<input type="hidden" id="hdnCGFeeInDays" />
+<input type="hidden" id="txtApplicantID" />
+<input type="hidden" id="hdnTotalWCCGSanctionAmt" />
+<input type="hidden" id="hdnTotalRenewalCGSanctionAmt" />
+<input type="hidden" id="hdnTypeOfFacility" />
+<input type="hidden" id="hdnTypeOfRequest" />
+<input type="hidden" id="hdnEnhancementDate" />
+<input type="hidden" id="hdnAlreadyTakenCGFeedays" />
+<input type="hidden" id="hdnRemainingCGFeesindays" />
+<div>
+    <h1 class="text-center">Credit Guarantee Renewal Form</h1>
+    <div class="tab-content">
+        <div role="tabpanel" id="discover" class="tab-pane active">
+            <div class="design-process-content">
+                <div class="row mx-0">
+                    <h4 class="col-md-12 title">CG Basic Details</h4>
+                </div>
+                <div class="form-group row mx-0 py-5">
+                    <div class="form-group col-md-3"><label for="">CGPAN</label><input type="text" id="CGPAN"
+                            readonly="readonly" class="form-control" /></div>
+                    <div class="form-group col-md-3"><label for=""> Name of FPO</label><input type="text"
+                            id="txtNameOfFPO" readonly="readonly" class="form-control" /></div>
+                    <div class="form-group col-md-3"><label for="">PAN</label><input type="text" id="PANFPO"
+                            readonly="readonly" class="form-control" /></div>
+                    <div class="form-group col-md-3">
+                        <label for="">Region of the FPO</label><select id="RegionOfFPO" disabled="" readonly="readonly"
+                            onchange="FunRegionofFPO()" class="form-control">
+                            <option value="0">Select</option>
+                            <option value="1">FPO in Plains</option>
+                            <option value="2">FPO in North Eastern or Hilly Areas</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3"><label for="">Customer ID</label><input type="text" id="CustomerID"
+                            readonly="readonly" class="form-control" /></div>
+                    <div class="form-group col-md-3">
+                        <label for="TypeofFacility">Type of
+                            Facility</label><!--<input type="text" id="TypeofFacility" class="form-control" readonly="readonly">--><select
+                            id="TypeofFacility" disabled="" readonly="readonly" class="form-control">
+                            <option value="">-Select Type of Facility--</option>
+                            <option value="Term Loan OR WCTL (Working Capital Term Loan)">Term Loan OR WCTL (Working
+                                Capital Term Loan)</option>
+                            <option value="WC/CC Limit">WC/CC Limit</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group"><label for="">Account No</label><input type="text" id="AccountNo"
+                                readonly="readonly" class="form-control" /></div>
+                    </div>
+                    <div class="form-group col-md-3"><label for="">Sanctioned Amount(Rs)</label><input type="number"
+                            id="SanctionedAmount" readonly="readonly" class="form-control" /><small
+                            id="SanctionedAmountinwords"> </small></div>
+                    <div class="form-group col-md-3"><label for="">Date of Sanction</label><input type="date"
+                            id="SanctionDate" readonly="readonly" class="form-control" /></div>
+                </div>
+                <div class="row mx-0 py-5">
+                    <h4 class="col-md-12 title">Renewal Details</h4>
+                </div>
+                <div class="row mx-0">
+                    <div class="form-group col-md-3">
+                        <label for="">Farmer Members Size<span id="i6hwln" style="color: red;"><b>*</b></span><i
+                                aria-hidden="true" data-toggle="tooltip" data-placement="right"
+                                title="Shareholder Members No."
+                                class="fa fa-question-circle red-tooltip"></i></label><!-- <label for="">Farmer Members size</label> --><input
+                            type="text" id="FarmerMemberSize" readonly="readonly" class="form-control" />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="">Modified Sanctioned Amount(Rs)<span id="i4kstn"
+                                style="color: red;"><b>*</b></span><i aria-hidden="true" data-toggle="tooltip"
+                                data-placement="right" title="If Limit is increased/decreased"
+                                class="fa fa-question-circle red-tooltip"></i></label><!-- <label for="">Modified Sanctioned Amount(Rs)</label> --><input
+                            type="number" id="ModifiedSanctionedAmount" readonly="readonly"
+                            class="form-control" /><small id="ModifiedSanctionedAmountinwords"></small>
+                    </div>
+                    <div class="col-md-12">
+                        <div id="1" class="row">
+                            <div class="form-group col-md-3">
+                                <label for="DisbursmentLoan">Any Disbursement under Loan</label><select
+                                    id="DisbursmentLoan" onchange="DisbursmentLoan($(this).val)" disabled=""
+                                    readonly="readonly" class="form-control">
+                                    <option value="" selected="">-Any Disbursement under Loan--</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                            <div id="3" class="form-group col-md-3"><label for="">Date Of First
+                                    Disbursement</label><input type="date" id="Date" readonly="readonly"
+                                    class="form-control" /></div>
+                            <div id="4" class="form-group col-md-3"><label for="">Principal
+                                    Outstanding(Rs)</label><input type="number" id="PrincipalOutstanding"
+                                    readonly="readonly" class="form-control" /><small
+                                    id="PrincipalOutstandinginwords"></small></div>
+                            <div id="5" class="form-group col-md-3"><label for="">End Date of interest
+                                    moratorium</label><input type="date" id="EndDateinterest" readonly="readonly"
+                                    class="form-control" /></div>
+                            <div class="clearfix"></div>
+                            <div id="6" class="form-group col-md-3"><label for="">End Date of principal
+                                    moratorium</label><input type="date" id="EndDateprincipal" readonly="readonly"
+                                    class="form-control" /></div>
+                            <div id="7" class="form-group col-md-3"><label for="">Date of Last Instalment</label><input
+                                    type="date" id="DatelastInstalment" readonly="readonly" class="form-control" />
+                            </div>
+                            <div id="8" class="form-group col-md-3">
+                                <label for="Loanfullydisbursed">Is Loan fully disbursed?</label><select
+                                    id="Loanfullydisbursed" onchange="DisbursmentLoan($(this).val)" disabled=""
+                                    readonly="readonly" class="form-control">
+                                    <option value="" selected="">-Is Loan fully disbursed--</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                            <div id="9" class="form-group col-md-3">
+                                <label for="LoanClosed">Loan Closed?</label><select id="LoanClosed" disabled=""
+                                    readonly="readonly" class="form-control">
+                                    <option value="" selected="">-Loan Closed?--</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                            <div id="10" class="form-group col-md-3"><label for="">Date of closure of Loan</label><input
+                                    type="date" id="DateclosureLoan" readonly="readonly" class="form-control" /></div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div id="2" class="row">
+                            <div class="form-group col-md-3"><label for="">Date Of Modified Sanction</label><input
+                                    type="date" id="DateModifiedSanction" readonly="readonly" class="form-control" />
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="Loanfullydisbursed">Any Utilisation under the Limit?</label><select
+                                    id="UtilisationLimit" disabled="" readonly="readonly" class="form-control">
+                                    <option value="">-Any Utilisation under the Limit?--</option>
+                                    <!--<option value = "Yes">Yes</option>-->
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                            <div id="202" class="form-group col-md-3"><label for="">Date Of first
+                                    Withdrawal</label><input type="date" id="DatefirstWithdrawl" readonly="readonly"
+                                    class="form-control" /></div>
+                            <div class="form-group col-md-6">
+                                <label for="Loanfullydisbursed">Was the Limit operational for full previous Financial
+                                    Year ?</label><select id="Limitoperational" disabled="" readonly="readonly"
+                                    class="form-control">
+                                    <option value="">-Was the Limit operational for full p--</option>
+                                    <!--<option value = "Yes">Yes</option>-->
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                            <div id="22" class="form-group col-md-3">
+                                <!-- <label for="">Peak Outstanding(₹)</label>--><label for="">Peak Outstanding(Rs)<span
+                                        id="izanxx" style="color: red;"><b>*</b></span><i aria-hidden="true"
+                                        data-toggle="tooltip" data-placement="right"
+                                        title="Maximum Limit availed During Last FY"
+                                        class="fa fa-question-circle red-tooltip"></i></label><input type="number"
+                                    id="PeakOutstanding2" readonly="readonly" class="form-control" /><small
+                                    id="PeakOutstandinginwords"></small>
+                            </div>
+                            <div class="form-group col-md-3"><label for="">End Date of Limit Validity</label><input
+                                    type="date" id="DateLimitValidity" readonly="readonly" class="form-control" /></div>
+                            <div class="form-group col-md-3">
+                                <label for="EndLimitClosed">Limit Closed</label><select id="EndLimitClosed2" disabled=""
+                                    readonly="readonly" class="form-control">
+                                    <option value="">-Select Limit Closed--</option>
+                                    <!--<option value = "Yes">Yes</option>-->
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                            <div id="201" class="form-group col-md-3"><label for="">Date of Closure of
+                                    Limit</label><input type="date" id="DateClosureLimit2" readonly="readonly"
+                                    class="form-control" /></div>
+                        </div>
+                        <div class="col-md-12">
+                            <div id="11" class="form-group col-md-3"><label for="">IRAC Classification </label><input
+                                    type="text" id="IRACclassification" readonly="readonly" class="form-control" />
+                            </div>
+                            <div id="20" class="form-group col-md-3"><label for="">Date of NPA</label><input type="date"
+                                    id="DateofNPA" readonly="readonly" class="form-control" /></div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row"></div>
+                    </div>
+                </div>
+                <div class="row mx-0 py-5">
+                    <h4 class="col-md-12 title">Comments And Documents Attached</h4>
+                </div>
+                <div class="row mx-0">
+                    <div class="col-md-6">
+                        <div id="divMaker" class="col-md-6" style="display: none; font-size: 13px;">
+                            <label class="col-md-12"> NS Checker Remark : </label>
+                            <div id="divELImaker" class="col-md-12 my-2"></div>
+                        </div>
+                        <div id="ELIMakerrenewal" class="form-group col-md-6">
+                            <label class="col-sm-12 form-control-label">Documents Attached by NS Checker :-</label>
+                            <div class="col-sm-12">
+                                <div id="additionalDocs" style="display: block; margin-left: 25px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div id="divELIChecker" class="col-md-6" style="display: none; font-size: 13px;">
+                            <label class="col-md-12"> NS Approver Remark : </label>
+                            <div id="txtELIchecker" class="col-md-12 my-2"></div>
+                        </div>
+                        <div id="nscheckerapproval" class="form-group col-md-6">
+                            <label class="col-sm-12 form-control-label">Documents Attached by NS Approver :-</label>
+                            <div class="col-sm-12">
+                                <div id="additionalDocsELIChecker" style="display: block; margin-left: 25px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="divNsChecker" class="col-md-3" style="display: none; font-size: 13px;">
+                        <label class="col-md-6"> NS Checker Remark : </label>
+                        <div id="txtNSchecker" class="col-md-10 my-2"></div>
+                    </div>
+                    <div id="divNsApproverHide" class="col-md-3" style="display: none; font-size: 13px;">
+                        <label class="col-md-6"> NS Approver Remark : </label>
+                        <div id="txtNSApproverRemark" class="col-md-10 my-2"></div>
+                    </div>
+                </div>
+                <!--<div class="col-md-12 mb-21" >
+                    
+                        
+                        
+                        
+                </div>					
+                <div class="col-md-12 ">
+                     
+                   
+                </div>-->
+            </div>
+        </div>
+    </div>
+</div>
+<br /><br />
+<div class="tab-content">
+    <div role="tabpanel" id="discover-2" class="tab-pane active">
+        <div class="design-process-content">
+            <div class="row mx-0">
+                <div class="form-group col-md-4" id="ixhf47" style="font-size: 13px;">
+                    <label id="idk151" style="color: black;">NSChecker Remarks <span id="ikf34r"
+                            style="color: red;"><b>*</b></span></label><textarea id="txtnscheckerComment"
+                        class="form-control col-md-10 my-2"></textarea>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Attachments</label>
+                    <div id="attachFilesHolder" class="files my-2"><input id="ELIChekerAttach" title="file_input"
+                            type="file" name="files[]" multiple="multiple" class="form-control" /></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <div id="dvCGApplicationData" class="form-group col-md-12 p-20"></div>
+</div>
+<div id="inputDialog2" style="display: none; width: 100px;">
+    <div class="container" id="iowaxh" style="border: 1px solid gray; background: #fff; padding: 8px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container" id="i8zjbv" style="margin-top: 0px; overflow-y: scroll;">
+                    <div class="row my-1">
+                                        <div class="col-md-12">
+                                            <div class="head">
+                                                <h4 id="izkw2l" style="text-align: center;">Management Certificate
+                                                    Renewal Application</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row box">
+                                        <label class="col-md-7 col-form-label" id="i0b6f5"
+                                            style="text-align: right; padding-right: 40px;">CGPan</label>
+                                        <div class="col-md-4" id="ib5op6" style="margin: 3px -48px;"><label type="text"
+                                                id="txtCGApplicationNo" readonly="readonly"
+                                                class="form-control heightauto"></label></div>
+                                    </div>
+                                    <div class="form-group row box">
+                                        <label class="col-md-2 col-form-label">Name Of FPO</label>
+                                        <div class="col-md-8" id="i892rf" style="margin: 3px -35px;"><label type="text"
+                                                id="txtNameOfFPO1" readonly="readonly"
+                                                class="form-control heightauto"></label></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="content">
+                                                <div class="form-group">
+                                                    <div id="ivbfgh" style="display: flex;">
+                                                        <label id="i78suh"
+                                                            style="padding-right: 15px; margin-top: 361px;"><!--   <input type="checkbox" id="flexCheckChecked" name="vehicle1" value="Bike"> --></label><label
+                                                            for="vehicle1">
+                                                            We<!-- <label style="margin-bottom: 0 !important;color: grey;" id="instituteId"></label> -->
+                                                            certify that:<br /><label class="text"> a) Information
+                                                                submitted in the Application is true and correct to the
+                                                                best of our knowledge </label><br /><label class="text">
+                                                                b) We are aware that this information shall be used for
+                                                                calculating the fee for renewing the guarantee cover for
+                                                                the loan account(s) covered under Credit Guarantee
+                                                                Scheme for FPO Financing. </label><br /><label
+                                                                class="text"> c) The credit facility is not backed by
+                                                                collateral security and/ or third-party guarantee.
+                                                            </label><br /><label class="text"> d) Risks in respect of
+                                                                the credit facility are not additionally covered under
+                                                                any scheme operated/administered by Reserve Bank of
+                                                                India/or by the Government/or by any general insurer or
+                                                                any other person or association of persons carrying on
+                                                                the business of insurance, guarantee or indemnity.
+                                                            </label><br /><label class="text"> e) The credit facility,
+                                                                conforms to, and is consistent with, the provisions of
+                                                                law, and with directives and instructions issued by the
+                                                                Central Government and the Reserve Bank of India, which
+                                                                is, for the time being, in force. </label><br /><label
+                                                                class="text"> f) The credit facility has not been
+                                                                granted to a borrower, who has himself availed of any
+                                                                other credit facility covered in clause d’ above at any
+                                                                point in time. </label><br /><label class="text"> g) The
+                                                                business or activity of the borrower for which the
+                                                                Credit facility was granted has not ceased.
+                                                            </label><br /><label class="text"> h) The borrower has not
+                                                                been classified as fraud/wilful defaulter by the lender.
+                                                            </label><br /><br /><input type="checkbox" value=""
+                                                                id="flexCheckChecked" checked=""
+                                                                class="form-check-input" style="margin: auto;" /><span
+                                                                id="i1muqi"
+                                                                style="font-size: 13px; margin-left: 15px;">We undertake
+                                                                to abide by the Terms and Conditions of the ‘Credit
+                                                                Guarantee Scheme for FPO Financing.</span><br /><br />
+                                                            Date: <label id="dtproceed"
+                                                                style="color: grey; margin-bottom: 0;"></label><br />
+                                                            Eli Name: <label id="instituteIdNew"
+                                                                style="color: grey; margin-bottom: 0;"></label><br />
+                                                            Name &amp; Designation: <label id="txtELICheckerName"
+                                                                style="color: grey; margin-bottom: 0;"></label> &#40;<label
+                                                                id="txtdesignationname"
+                                                                style="color: grey; margin-bottom: 0;"></label>&#41;<br />This
+                                                            is a computer generated management certificate, physical
+                                                            signature is not required. </label><br />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row py-2">
+                                        <div class="col-md-12">
+                                            <div class="button" id="inc9tg"
+                                                style="text-align: center; position: relative; top: -8px;"><button
+                                                    type="button" id="MangmentCheck" onclick="ClosePopup();"
+                                                    class="btn btn-primary"
+                                                    style="color: #f55905 !important; background-color: #fff; border: 1px solid #f55905; font-size: 12px;">EXIT</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <span us-spinner="" spinner-key="spinner-1"></span>
+                        <div class="col-sm-12 col-md-12 mt-5">
+                            <div class="buttons" id="iwusmk" style="text-align: center;">
+                                <!--<button type="button" class="btn btn-primary mr-2" id="btnSave" onclick="javascript:SubmitData('Draft');">Save as Draft</button>--><!--<div class="button" style="text-align:center;">
+                 <button type="button" class="btn btn-primary" onclick="javascript:FunAction('Review by NABSaranrakshan');">Recommend for Approval</button>--><span
+                                    id="ButtonHide" style="display: none;"><button type="button"
+                                        onclick="javascript:Submit('Review by NABSaranrakshan');"
+                                        class="btn btn-primary">Recommend for Approval</button><button type="button"
+                                        onclick="javascript:Submit('Recommend for Rejection');"
+                                        class="btn btn-primary">Recommend for Rejection</button><button type="button"
+                                        onclick="javascript:ShowPopUp();" class="btn btn-primary">View Management
+                                        Certificate</button></span><button type="button" onclick="javascript:Close1();"
+                                    class="btn btn-primary">Exit</button>
+                            </div>
+                        </div>
+                        <!--<button type="button" class="btn btn-primary mr-2" id="btn1" onclick="Submit('Submitted');">Send for Approval</button>--><!--<button type="button" class="btn btn-default" onclick="javascript:cancel();" >Exit</button>-->
+                    </div>
+                </div>
+                <div id="i250sq" class="row sectionBlockLayout text-left"
+                    style="display: flex; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;">
+                    <div class="container" id="ix3cej" style="padding: 0px; display: flex; flex-wrap: wrap;">
+                        <div class="col-md-12 columnBlockLayout"
+                            style="flex-grow: 1; display: flex; flex-direction: column; min-width: 250px; word-break: break-word;">
+                        </div>
+                    </div>
+                </div>

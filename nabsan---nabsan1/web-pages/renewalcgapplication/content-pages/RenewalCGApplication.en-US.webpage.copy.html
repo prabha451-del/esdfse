@@ -1,0 +1,433 @@
+<script type="text/javascript" src="~/RenewalCGApplication.js"></script>
+<!--[if gte mso 9
+  ]><xml>
+    <mso:CustomDocumentProperties>
+      <mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">Sharepoint Admin</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+      <mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">Pankaj Katkar</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+      <mso:_ExtendedDescription msdt:dt="string"></mso:_ExtendedDescription>
+      <mso:ContentTypeId msdt:dt="string">0x010100B11F5A1FC213B943BED384F275CE40E6</mso:ContentTypeId>
+    </mso:CustomDocumentProperties>
+  </xml><!
+[endif]-->
+
+<input type="hidden" id="hdnTitle">
+<input type="hidden" id="hdnELICheckerEmail">
+<input type="hidden" id="hdnlendingInstitute">
+<input type="hidden" id="hdnELIMakerEmailID">
+<input type="hidden" id="hdnsanctiondate">
+<input type="hidden" id="hdnDigitalRequestNo">
+<input type="hidden" id="hdnCounterItemID">
+<input type="hidden" id="hdnCounterItemID1">
+<input type="hidden" id="hdnCGApplicationno">
+<input type="hidden" id="hdnGurenteeStartDt">
+<input type="hidden" id="hdnGurenteeEndDt">
+<input type="hidden" id="hdnTotalFPOPlainMember">
+<input type="hidden" id="hdnTotalFPONorthenMember">
+<input type="hidden" id="hdnCGStatus">
+<input type="hidden" id="hdnValidityEndDate">
+<input type="hidden" id="hdnCGFeeCGApplicationDt">
+<input type="hidden" id="hdnCGFeeRenewalCGApplicationDt">
+<input type="hidden" id="CGfeeStartDate" name="">
+<input type="hidden" id="CGFeeEndDate" name="">
+<div>
+  <h1 class="text-center">Credit Guarantee Renewal Form</h1>
+  <div class="tab-content">
+    <div role="tabpanel" id="discover" class="tab-pane active">
+      <div class="design-process-content">
+        <div class="row mx-0">
+          <h4 class="col-md-12 title">CG Basic details</h4>
+        </div>
+        <div class="form-group row mx-0">
+          <div class="form-group col-md-3"><label for="" style="color: rgb(136, 133, 133);">CGPAN</label><input
+              type="text" id="CGPAN" readonly="readonly" class="form-control"
+              style="color: rgb(0, 0, 0); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(206, 212, 218); border-right-color: rgb(206, 212, 218); border-bottom-color: rgb(206, 212, 218); border-left-color: rgb(206, 212, 218); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial;" />
+          </div>
+          <div class="form-group col-md-3"><label for="" style="color: rgb(136, 133, 133);"> Name of FPO</label><input
+              type="text" id="txtNameOfFPO" readonly="readonly" class="form-control"
+              style="color: rgb(0, 0, 0); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(206, 212, 218); border-right-color: rgb(206, 212, 218); border-bottom-color: rgb(206, 212, 218); border-left-color: rgb(206, 212, 218); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial;" />
+          </div>
+          <div class="form-group col-md-3"><label for="" style="color: rgb(136, 133, 133);">PAN</label><input
+              type="text" id="PANFPO" readonly="readonly" class="form-control"
+              style="color: rgb(0, 0, 0); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(206, 212, 218); border-right-color: rgb(206, 212, 218); border-bottom-color: rgb(206, 212, 218); border-left-color: rgb(206, 212, 218); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial;" />
+          </div>
+          <div class="form-group col-md-3">
+            <label for="" style="color: rgb(136, 133, 133);">Region of the FPO</label><select id="RegionOfFPO1"
+               disabled="disabled" onchange="FunRegionofFPO()" class="form-control"
+              style="appearance: none; color: rgb(0, 0, 0);">
+              <option value="0">Select</option>
+             <!-- <option value="1">FPO in Plains</option>
+              <option value="2">FPO in North Eastern or Hilly Areas</option>-->
+            </select>
+          </div>
+          <div class="form-group col-md-3"><label for="" style="color: rgb(136, 133, 133);">Customer ID</label><input
+              type="text" id="CustomerID" readonly="readonly" class="form-control"
+              style="color: rgb(0, 0, 0); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(206, 212, 218); border-right-color: rgb(206, 212, 218); border-bottom-color: rgb(206, 212, 218); border-left-color: rgb(206, 212, 218); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial;" />
+          </div>
+          <div class="form-group col-md-3">
+            <label for="TypeofFacility" style="color: rgb(136, 133, 133);">Type of
+              Facility</label><!--<input type="text" id="TypeofFacility" class="form-control" readonly="readonly">--><select
+              id="TypeofFacility" disabled="" readonly="readonly" class="form-control"
+              style="appearance: none; color: rgb(0, 0, 0);">
+              <option value="">Select</option>
+              <option value="Term Loan OR WCTL (Working Capital Term Loan)">Term Loan OR WCTL (Working Capital Term Loan)</option>
+              <option value="WC/CC Limit">WC/CC Limit</option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group"><label for="" style="color: rgb(136, 133, 133);">Account No</label><input
+                type="text" id="AccountNo" readonly="readonly" class="form-control"
+                style="color: rgb(0, 0, 0); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(206, 212, 218); border-right-color: rgb(206, 212, 218); border-bottom-color: rgb(206, 212, 218); border-left-color: rgb(206, 212, 218); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial;" />
+            </div>
+          </div>
+          <div class="form-group col-md-3">
+            <label for="" style="color: rgb(136, 133, 133);">Sanctioned Amount(Rs)</label><input type="text"
+              onkeypress="return onlyNumberKey(event)" id="SanctionedAmount" readonly="readonly" class="form-control"
+              style="color: rgb(0, 0, 0); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(206, 212, 218); border-right-color: rgb(206, 212, 218); border-bottom-color: rgb(206, 212, 218); border-left-color: rgb(206, 212, 218); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial;" />
+            <small id="SanctionedAmountinwords" style="color: orange;"></small>
+          </div>
+          <div class="form-group col-md-3"><label for="" style="color: rgb(136, 133, 133);">Date of
+              Sanction</label>
+              <input type="date" id="SanctionDate" readonly="readonly" class="form-control" style="color: rgb(0, 0, 0);" /></div>
+        </div>
+        <div class="row mx-0">
+          <h4 class="col-md-12 title">Renewal Details</h4>
+        </div>
+        <div class="row mx-0">
+
+          <div class="col-md-12">
+            <div id="1" class="row m-0">
+              <div class="form-group col-md-3">
+                <label for="" style="color: rgb(136, 133, 133);">Farmer Members Size<span style="color: red;"><b>*</b></span><i aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Shareholder Members No." class="fa fa-question-circle red-tooltip"></i></label>
+                <input type="text" id="FarmerMemberSize" class="form-control" style="color: rgb(0, 0, 0); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(206, 212, 218); border-right-color: rgb(206, 212, 218); border-bottom-color: rgb(206, 212, 218); border-left-color: rgb(206, 212, 218); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial;" />
+              </div>
+              <div class="form-group col-md-3">
+                <label for="" style="color: rgb(136, 133, 133);">Modified Sanctioned Amount(Rs)<span style="color: red;"><b>*</b></span><i aria-hidden="true" data-toggle="tooltip" data-placement="right" title="If Limit is increased/decreased" class="fa fa-question-circle red-tooltip"></i></label>
+                <input type="text" onkeypress="return onlyNumberKey(event)" id="ModifiedSanctionedAmount" onchange="ModifiedSanctionedAmountss();" class="form-control" style="color: rgb(0, 0, 0); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(206, 212, 218); border-right-color: rgb(206, 212, 218); border-bottom-color: rgb(206, 212, 218); border-left-color: rgb(206, 212, 218); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial;" />
+                <small id="ModifiedSanctionedAmountiinwords" style="color: orange;"></small>
+              </div>
+              <div class="form-group col-md-3" id="18">
+                <label for="">Date of Modified Sanction</label>
+                <input type="date" id="DateModifiedSanction1" class="form-control" onchange="ModifiedSanctionedAmount($(this).val())">
+              </div>
+              <div class="form-group col-md-3">
+                <label for="DisbursmentLoan" style="color: rgb(136, 133, 133);">Any Disbursement under Loan?<span
+                    style="color: red;"><b>*</b></span></label><select id="DisbursmentLoan"
+                  onchange="DisbursmentLoan();" class="form-control" style="appearance: none; color: rgb(0, 0, 0);">
+                  <option value="Select">Select</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+              <div class="clearfix"></div>
+              <div id="3" class="form-group col-md-3">
+                <label for="" style="color: rgb(136, 133, 133);">Date of First Disbursement<span
+                    style="color: red;"><b>*</b></span></label><input type="date" id="Date" class="form-control"
+                  style="color: rgb(0, 0, 0);" />
+              </div>
+              <div id="4" class="form-group col-md-3">
+                <label for="" style="color: rgb(136, 133, 133);">Principal Outstanding(Rs)<span
+                    style="color: red;"><b>*</b></span><i aria-hidden="true" data-toggle="tooltip"
+                    data-placement="right" title="Principal Outstanding as on 31st March"
+                    class="fa fa-question-circle red-tooltip"></i></label><input type="text"
+                  onkeypress="return onlyNumberKey(event)" id="PrincipalOutstanding"
+                  onchange="PrincipalOutstandinginwords();" class="form-control"
+                  style="color: rgb(0, 0, 0); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(206, 212, 218); border-right-color: rgb(206, 212, 218); border-bottom-color: rgb(206, 212, 218); border-left-color: rgb(206, 212, 218); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial;" />
+                <small id="PrincipalOutstandinginwords" style="color: orange;"></small>
+              </div>
+              <div id="5" class="form-group col-md-3">
+                <label for="" style="color: rgb(136, 133, 133);">End Date of Interest Moratorium<span
+                    style="color: red;"><b>*</b></span><i aria-hidden="true" data-toggle="tooltip"
+                    data-placement="right" title="Interest Start Date"
+                    class="fa fa-question-circle red-tooltip"></i></label><input type="date" id="EndDateinterest"
+                  class="form-control" style="color: rgb(0, 0, 0);" />
+              </div>
+              <div id="6" class="form-group col-md-3">
+                <label for="" style="color: rgb(136, 133, 133);">End Date of Principal Moratorium<span
+                    style="color: red;"><b>*</b></span><i aria-hidden="true" data-toggle="tooltip"
+                    data-placement="right" title="Principal Start Date"
+                    class="fa fa-question-circle red-tooltip"></i></label><input type="date" id="EndDateprincipal"
+                  class="form-control" style="color: rgb(0, 0, 0);" />
+              </div>
+              <!-- <div class="clearfix"></div> -->
+              <div id="7" class="form-group col-md-3">
+                <label for="" style="color: rgb(136, 133, 133);">Date of Last Instalment<span
+                    style="color: red;"><b>*</b></span></label><input type="date" id="DatelastInstalment"
+                  class="form-control" style="color: rgb(0, 0, 0);" />
+              </div>
+              <div id="8" class="form-group col-md-3">
+                <label for="Loanfullydisbursed" style="color: rgb(136, 133, 133);">Is the Loan fully disbursed
+                  ?</label><select id="Loanfullydisbursed" onchange="Loanfullydisbursed();" class="form-control"
+                  style="appearance: none; color: rgb(0, 0, 0);">
+                  <option value="">Select</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+              <div id="9" class="form-group col-md-3">
+                <label for="LoanClosed" style="color: rgb(136, 133, 133);">Loan closed?<span style="color: red;"><b>*</b></span></label>
+                <select id="LoanClosed" onchange="LoanClosed($(this).val)" class="form-control" style="appearance: none; color: rgb(0, 0, 0);">
+                  <option value="">Select</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+              <div id="10" class="form-group col-md-3">
+                  <label for="" style="color: rgb(136, 133, 133);">Date of Closure of Loan</label>
+                  <input type="date" id="DateclosureLoan" class="form-control" style="color: rgb(0, 0, 0);" /></div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div id="2" class="row m-0">
+              <div class="form-group col-md-3">
+                <label for="" style="color: rgb(136, 133, 133);">Farmer Members Size<span style="color: red;"><b>*</b></span><i aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Shareholder Members No." class="fa fa-question-circle red-tooltip"></i></label>
+                  <input type="text" id="FarmerMemberSize1" class="form-control" style="color: rgb(0, 0, 0); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(206, 212, 218); border-right-color: rgb(206, 212, 218); border-bottom-color: rgb(206, 212, 218); border-left-color: rgb(206, 212, 218); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial;" />
+              </div>
+              <div class="form-group col-md-3">
+                <label for="" style="color: rgb(136, 133, 133);">Modified Sanctioned Amount(Rs)<span style="color: red;"><b>*</b></span><i aria-hidden="true" data-toggle="tooltip"data-placement="right" title="If Limit is increased/decreased" class="fa fa-question-circle red-tooltip"></i></label>
+                    <input type="text" onkeypress="return onlyNumberKey(event)" id="ModifiedSanctionedAmount1" onchange="ModifiedSanctionedAmountss();" class="form-control" style="color: rgb(0, 0, 0); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(206, 212, 218); border-right-color: rgb(206, 212, 218); border-bottom-color: rgb(206, 212, 218); border-left-color: rgb(206, 212, 218); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial;" />
+                <small id="ModifiedSanctionedAmountiinwords" style="color: orange;"></small>
+              </div>
+              <div class="form-group col-md-3" id="18">
+                <label for="">Date of Modified Sanction</label>
+                <input type="date" id="DateModifiedSanction" class="form-control" onchange="ModifiedSanctionedAmount($(this).val())">
+              </div>
+              <div class="form-group col-md-3">
+                <label for="UtilisationLimit" style="color: rgb(136, 133, 133);">Any Utilisation under the
+                  Limit?</label><select id="UtilisationLimit" onchange="UtilisationLimit($(this).val)"
+                  class="form-control" style="appearance: none; color: rgb(0, 0, 0);">
+                  <option value="Select">Select</option>
+                  <!--<option value = "Yes">Yes</option>-->
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+              <div id="202" class="form-group col-md-3">
+                <label for="" style="color: rgb(136, 133, 133);">Date of First Withdrawal<span
+                    style="color: red;"><b>*</b></span></label><input type="date" id="DatefirstWithdrawl"
+                  class="form-control" style="color: rgb(0, 0, 0);" />
+              </div>
+              <div class="form-group col-md-6">
+                <label for="Limitoperational" style="color: rgb(136, 133, 133);">Was the Limit operational for full
+                  previous Financial Year ?<span style="color: red;"><b>*</b></span></label><select
+                  id="Limitoperational" onchange="Limitoperational($(this).val)" class="form-control"
+                  style="appearance: none; color: rgb(0, 0, 0);">
+                  <option value="">Select</option>
+                  <!--<option value = "Yes">Yes</option>-->
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+              <div id="22" class="form-group col-md-3">
+                <label for="" style="color: rgb(136, 133, 133);">Peak Outstanding(Rs)<span
+                    style="color: red;"><b>*</b></span><i aria-hidden="true" data-toggle="tooltip"
+                    data-placement="right" title="Maximum Limit availed During Last FY"
+                    class="fa fa-question-circle red-tooltip"></i></label><input type="text"
+                  onkeypress="return onlyNumberKey(event)" id="PeakOutstanding2" onchange="PeakOutstanding();"
+                  class="form-control"
+                  style="color: rgb(0, 0, 0); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(206, 212, 218); border-right-color: rgb(206, 212, 218); border-bottom-color: rgb(206, 212, 218); border-left-color: rgb(206, 212, 218); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial;" />
+                <p id="PeakOutstandinginwords" style="color: orange;"></p>
+              </div>
+              <div class="form-group col-md-3">
+                <label for="" style="color: rgb(136, 133, 133);">End Date of Limit Validity<span
+                    style="color: red;"><b>*</b></span></label><input type="date" id="DateLimitValidity"
+                  class="form-control" style="color: rgb(0, 0, 0);" />
+              </div>
+              <div id="33" class="form-group col-md-3">
+                <label for="EndLimitClosed" style="color: rgb(136, 133, 133);">Limit Closed?<span
+                    style="color: red;"><b>*</b></span></label><select id="EndLimitClosed2"
+                  onchange="EndLimitClosed2($(this).val)" class="form-control"
+                  style="appearance: none; color: rgb(0, 0, 0);">
+                  <option value="">Select</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+              <div id="201" class="form-group col-md-3"><label for="" style="color: rgb(136, 133, 133);">Date of Closure
+                  of Limit</label><input type="date" id="DateClosureLimit2" class="form-control"
+                  style="color: rgb(0, 0, 0);" /></div>
+
+
+
+            </div>
+            <div class="col-md-12">
+              <div class="row m-0">
+                <div id="11" class="form-group col-md-3">
+                  <label for="" style="color: rgb(136, 133, 133);">IRAC Classification<span
+                      style="color: red;"><b>*</b></span></label><select id="IRACclassification"
+                    onchange="IRACclassification()" class="form-control" style="appearance: none; color: rgb(0, 0, 0);">
+                    <option value="Select">Select</option>
+                    <!--<option value = "Yes">Yes</option>-->
+                    <option value="Standard - 0 Days Past Due (DPD)">Standard - 0 Days Past Due (DPD)</option>
+                    <option value="SMA- 0">SMA- 0</option>
+                    <option value="SMA- 1">SMA- 1</option>
+                    <option value="SMA- 2">SMA- 2</option>
+                    <option value="Substandard">Substandard</option>
+                    <option value="Doubtful">Doubtful</option>
+                    <option value="Loss">Loss</option>
+                  </select>
+                </div>
+                <div id="20" class="form-group col-md-3">
+                  <label for="" style="color: rgb(136, 133, 133);">Date of NPA<span
+                      style="color: red;"><b>*</b></span></label><input type="date" id="DateofNPA" class="form-control"
+                    style="color: rgb(0, 0, 0);" />
+                </div>
+
+                <div class="form-group col-md-6">
+                  <label style="color: rgb(136, 133, 133);">Attachments</label>
+                  <div id="attachFilesHolder" class="files"><input id="ELIChekerAttach" title="file_input" type="file"
+                      name="files[]" multiple="multiple" class="form-control" style="color: rgb(0, 0, 0);" /></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br /><br />
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active">
+      <div class="design-process-content">
+        <div class="row mx-0">
+          <div class="col-md-3">
+            <div class="form-group"><label style="color: black;">Remarks</label><textarea id="txtmakerComment"
+                class="form-control" style="color: rgb(0, 0, 0);"></textarea></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <input type="hidden" id="ELICheckerEmail" />
+  <div>
+    <span us-spinner="" spinner-key="spinner-1"></span>
+    <div class="col-sm-12 col-md-12 mt-5">
+      <div class="buttons" style="text-align: center;">
+        <!--<button type="button" class="btn btn-primary mr-2" id="btnSave" onclick="javascript:SubmitData('Draft');">Save as Draft</button>--><button
+          type="button" id='saveasDraft' onclick="javascript:Submit('Draft');" class="btn btn-primary">Save as Draft</button><button
+          type="button" id="SendFormApproval" onclick="javascript:Submit('Submitted');" class="btn btn-primary">Send for
+          Approval</button><button type="button" onclick="javascript:cancel();"
+          class="btn btn-primary">Exit</button><!--<button type="button" class="btn btn-default" onclick="javascript:cancel();" >Exit</button>-->
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" nonce="YWViNzQxOTAtNjk5Yi00ZjczLWE2NzQtYWQwM2IwN2FkYjE3">
+    // script for tab steps
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+
+      var href = $(e.target).attr('href');
+      var $curr = $(".process-model  a[href='" + href + "']").parent();
+
+      $('.process-model li').removeClass();
+
+      $curr.addClass("active");
+      $curr.addClass("afpo");
+
+      // $curr.prevAll().addClass("visited");
+    });
+
+
+    // end  script for tab steps
+  </script>
+  <script nonce="YWViNzQxOTAtNjk5Yi00ZjczLWE2NzQtYWQwM2IwN2FkYjE3">
+    $(document).on('keydown', 'input[pattern]', function (e) {
+      var input = $(this);
+      var oldVal = input.val();
+      var regex = new RegExp(input.attr('pattern'), 'g');
+
+      setTimeout(function () {
+        var newVal = input.val();
+        if (!regex.test(newVal)) {
+          input.val(oldVal);
+        }
+      }, 1);
+    });
+    function onlyNumberKey(evt) {
+
+      // Only ASCII character in that range allowed
+      var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+      if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+        return false;
+      return true;
+    }
+  </script>
+  <script type="text/javascript" nonce="YWViNzQxOTAtNjk5Yi00ZjczLWE2NzQtYWQwM2IwN2FkYjE3">
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
+  <!--function 2-3-2023--><!--<script type="text/javascript">
+    $( document ).ready(function() {
+      $(".afpo").removeClass('active');
+   
+});</script>-->
+  <script type="text/javascript" nonce="YWViNzQxOTAtNjk5Yi00ZjczLWE2NzQtYWQwM2IwN2FkYjE3">
+    function fpomyFunction() {
+
+      $("#strategy").addClass("active show");
+      $("#discover").removeClass("active show");
+      $("optimization").removeClass("active");
+      $("#content").removeClass("active show");
+      $(".fposmd").addClass('active');
+      $(".afpo").removeClass('active');
+      $(".cfd").removeClass('active');
+      $(".sd").removeClass('active');
+
+
+
+    }
+  </script>
+  <script type="text/javascript" nonce="YWViNzQxOTAtNjk5Yi00ZjczLWE2NzQtYWQwM2IwN2FkYjE3">
+    function onlyNumberKey(evt) {
+
+      // Only ASCII character in that range allowed
+      var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+      if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+        return false;
+      return true;
+    }
+  </script>
+  <script type="text/javascript" nonce="YWViNzQxOTAtNjk5Yi00ZjczLWE2NzQtYWQwM2IwN2FkYjE3">
+    function cfdmyFunction() {
+
+      $("#optimization").addClass("active show");
+      $("#strategy").removeClass("active show");
+      $("#content").removeClass("active show");
+      $(".cfd").addClass('active');
+      $(".fposmd").removeClass('active');
+      $(".afpo").removeClass('active');
+      $(".sd").removeClass('active');
+
+    }
+  </script>
+  <script type="text/javascript" nonce="YWViNzQxOTAtNjk5Yi00ZjczLWE2NzQtYWQwM2IwN2FkYjE3">
+    function sdmyFunction() {
+
+      $("#content").addClass("li active show");
+      $("#optimization").removeClass("li active show");
+      $("#strategy").removeClass("active show");
+      $(".sd").addClass('active');
+      $(".fposmd").removeClass('active');
+      $(".afpo").removeClass('active');
+      $(".cfd").removeClass('active');
+
+
+
+    }
+  </script>
+  <!--<script>
+     $(function() {
+
+        $( "#DateofSanction" ).datepicker({ 
+            changeYear: true,
+            minDate: '-365D',
+            maxDate: '+0D',
+        });
+    });
+    </script>-->
+  <div class="row sectionBlockLayout text-left"
+    style="display: flex; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;">
+    <div class="container" style="padding: 0px; display: flex; flex-wrap: wrap;">
+      <div class="col-md-12 columnBlockLayout"
+        style="flex-grow: 1; display: flex; flex-direction: column; min-width: 250px; word-break: break-word;"></div>
+    </div>
+  </div>

@@ -1,0 +1,693 @@
+var vItemID;
+var TaxData;
+var landing;
+var cgPanList;
+var cgpanoffpo;
+var selectedData;
+var nameoffpo;
+var Logg;
+var typ;
+var loggedInUserId = '';
+var loggedInUserName = '';
+var loggedInUserEmail = '';
+var numOfAuthSign = 0;
+var DetailArrayAuthSign = [];
+var DateofClosure = '';
+var rowIdx = 1;
+
+$(document).ready(function (){
+    loggedInUserId = $('#fpo-user-contact-id').val();
+	loggedInUserName = $('#fpo-user-contact-name').val();
+	loggedInUserEmail = $('#fpo-user-email').val();
+
+    $('title').text('APPLICATIONEDITFORM');
+	vItemID = GetQueryStingValue()["Item"];
+	var vTaskID = GetQueryStingValue()["Task"];
+	
+	//BindRegion();
+	//BindFPOState();
+	//BindBusinessFPOcity();
+	//BindBusinessFPOState();
+	//BindELICheckerMaker();
+	BindELIMaker()
+	bindCGApplicationData(vItemID);
+	ConstitutionFPO();
+	//populatePAN();
+});
+var LoggELIMaker;
+function BindELIMaker() {
+	//var requestUri = location.origin + "/_api/cr6fc_elimasters?$select=cr6fc_emailid,cr6fc_lendinginstitute,cr6fc_elicheckeremailid&$filter=cr6fc_emailid eq '" + loggedInUserEmail + "'"; commented on 17 9 224
+	
+	var requestUri = location.origin + "/_api/cr6fc_elimasters?$select=cr6fc_emailid,cr6fc_lendinginstitute,cr6fc_elicheckeremailid";
+	//var requestUri = _spPageContextInfo.webAbsoluteUrl + "/_api/web/lists/getbytitle('ELIMaster')//items?$top=500&$select=*";
+	var requestHeaders = { "accept": "application/json;odata=verbose" };
+	$.ajax({
+		url: requestUri,
+		type: "GET",
+		async: false,
+		headers: {
+			"accept": "application/json;odata=verbose",
+			"content-type": "application/json;odata=verbose"
+		},
+		success: function (data) {
+			LoggELIMaker = data.value;
+			if (LoggELIMaker.length > 0) {
+				/*$('#NameOfLendingInstitution').val(LoggELIMaker[0].cr6fc_lendinginstitute);
+				$('#ELICheckerEmail').val(LoggELIMaker[0].cr6fc_elicheckeremailid); comm on 17 9 24*/
+				$('#NameOfLendingInstitution').val(LoggELIMaker[0].cr6fc_lendinginstitute);
+				$('#ELICheckerEmail').val(LoggELIMaker[0].cr6fc_elicheckeremailid);
+			}
+			else {
+				alert('You dont have a Permission')
+				$('.form-control').prop('disabled', true);
+
+			}
+		},
+		error: function () {
+			console.log("error");
+		}
+	});
+}
+
+function cancel(){
+    window.location.href = "/ClosureDashboard/";
+}
+function GetQueryStingValue() {
+	var vars = [], hash;
+	var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+	for (var i = 0; i < hashes.length; i++) {
+		hash = hashes[i].split('=');
+		vars.push(hash[0]);
+		vars[hash[0]] = hash[1];
+	}
+	return vars;
+}
+
+
+function ConstitutionFPO() {
+    // Get the value of 'ConstitutionFPO' (which could be the name of lending institution) from an input or dropdown
+    var lendingInstitution = document.getElementById("NameOfLendingInstitution").value ;
+
+    // Ensure that the lending institution is provided before making the request
+    if (!lendingInstitution) {
+        alert("Please select or enter a lending institution.");
+        return;
+    }
+
+    // Build the API request URI using the selected lending institution
+    var requestUri = location.origin + "/_api/cr6fc_cgaplications?$top=5000&$select=*,cr6fc_sanctionedamount,cr6fc_cgpan,cr6fc_panfpo,cr6fc_nameoflendinginstitution,cr6fc_nameoffpo,cr6fc_typeoffacility&$expand=cr6fc_FPOState($select=cr6fc_statemasterid,cr6fc_name),cr6fc_BusinessFPOState($select=cr6fc_statemasterid,cr6fc_name),cr6fc_RegionOfFPO($select=cr6fc_regionmasterid,cr6fc_name)&$filter=cr6fc_nameoflendinginstitution eq '" + lendingInstitution + "'";
+
+    $.ajax({
+        url: requestUri,
+        type: "GET",
+        async: false,
+        headers: {
+            "accept": "application/json;odata=verbose",
+            "content-type": "application/json;odata=verbose"
+        },
+        success: function onSuccess(data) {
+            var items = data.value;
+
+            try {
+                if (items.length > 0) {
+                    var ConstitutionFPO = document.getElementById("ConstitutionFPO");
+                    ConstitutionFPO.options.length = 0;
+                    ConstitutionFPO.options[ConstitutionFPO.options.length] = new Option("Select FPO", ""); // Placeholder option
+
+                    // Populate the dropdown with filtered FPOs
+                    /*for (var i = 0; i < items.length; i++) {
+                        ConstitutionFPO.options[ConstitutionFPO.options.length] = new Option(
+                            items[i].cr6fc_nameoffpo,
+                            items[i].cr6fc_cgaplicationid
+                        );
+                    }*/
+						for (var i = 0; i < items.length; i++) {
+							// Store both FPO ID and PAN in the option's value as a JSON string
+							ConstitutionFPO.options[ConstitutionFPO.options.length] = new Option(
+								items[i].cr6fc_nameoffpo,
+								//items[i].cr6fc_cgaplicationid,
+								JSON.stringify({
+									fpoId: items[i].cr6fc_cgaplicationid,
+									pan: items[i].cr6fc_panfpo,
+									nameoffpo:items[i].cr6fc_nameoffpo,
+									//CPAN:items[i].cr6fc_cgpan, //if cgpan enable on the basis of nameoffpo selection dropdown
+									TypeFacility:items[i]['cr6fc_typeoffacility@OData.Community.Display.V1.FormattedValue'],
+									sanamt:items[i].cr6fc_sanctionedamount,
+									TypeFacility1:items[i]['cr6fc_typeoffacility@OData.Community.Display.V1.FormattedValue'],
+									sanamt1:items[i].cr6fc_sanctionedamount,
+									TypeFacility2:items[i]['cr6fc_typeoffacility@OData.Community.Display.V1.FormattedValue'],
+									sanamt2:items[i].cr6fc_sanctionedamount,
+								})
+							);
+						}
+					
+                } else {
+                    // If no items match the filter, show a message
+                    var ConstitutionFPO = document.getElementById("ConstitutionFPO");
+                    ConstitutionFPO.options.length = 0;
+                    ConstitutionFPO.options[ConstitutionFPO.options.length] = new Option("No FPOs found", "");
+                }
+            }
+            catch (e) {
+                console.log('Error processing items: ', e);
+            }
+        },
+        error: function onError(error) {
+            console.log(JSON.stringify(error));
+        }
+    });
+}
+function handleFPOSelection() {
+    var ConstitutionFPO = document.getElementById("ConstitutionFPO");
+    var selectedOption = ConstitutionFPO.value;
+
+    // Clear previous entries
+    var cascadingDivContainer = document.getElementById("cascadingDivContainer");
+    cascadingDivContainer.innerHTML = ""; // Clear previous entries
+
+   /* if (!selectedOption) {
+        return; // Do nothing if no FPO is selected
+    }*/// commented 
+	if (selectedOption) {
+		// return; // Do nothing if no FPO is selected
+		 
+		selectedData = JSON.parse(selectedOption);
+		  document.getElementById("PANFPO").value = selectedData.pan; 
+	 }
+
+    // Parse the selected option to get the data (assuming it's a JSON string)
+    var fpoData = JSON.parse(selectedOption);
+    var lendingInstitutionS = fpoData.lendingInstitution; // Assuming you have the lending institution info
+    //var lendingInstitution = document.getElementById("NameOfLendingInstitution").value ;
+    // Fetch CGPAN list dynamically based on the selected FPO
+    fetchCgpanList(lendingInstitutionS);
+}
+
+function fetchCgpanList(lendingInstitutionS) {
+    // Replace with your actual API endpoint
+    //var requestUri = location.origin + "/_api/cr6fc_cgaplications?$top=5000&$select=*,cr6fc_nameoflendinginstitution&$filter=cr6fc_nameoffpo eq '"+ selectedData.nameoffpo + "'";
+	var requestUri = location.origin + "/_api/cr6fc_cgaplications?$top=5000&$select=*,cr6fc_nameoflendinginstitution&$filter=cr6fc_nameoffpo eq '"+ selectedData.nameoffpo + "' and (cr6fc_panfpo eq '" +   selectedData.pan + "')";
+	//var requestUri = location.origin + "/_api/cr6fc_cgaplications?$top=5000&$select=*,cr6fc_nameoflendinginstitution&$filter= cr6fc_panfpo eq '" +   selectedData.pan + "' && cr6fc_nameoffpo eq '"+ selectedData.nameoffpo + "'";
+	//var requestUri = location.origin + "/_api/cr6fc_cgaplications?$top=5000&$select=*,cr6fc_nameoflendinginstitution&$filter=cr6fc_nameoflendinginstitution eq '" + lendingInstitutionS + "'";
+    $.ajax({
+        url: requestUri,
+        type: "GET",
+        headers: {
+            "accept": "application/json;odata=verbose",
+            "content-type": "application/json;odata=verbose"
+        },
+        success: function(data) {
+             cgPanList = data.value; // Adjust based on your API response structure
+            // Process the CGPAN data to create dynamic input fields
+            createCgpanInputs(cgPanList);
+        },
+        error: function(error) {
+            console.error("Error fetching CGPAN list:", error);
+            // Optionally show a message to the user
+        }
+    });
+}
+
+function createCgpanInputs(cgPanList) {
+	let IncrimentalID = ++rowIdx;
+
+	var cascadingDivContainer = document.getElementById("cascadingDivContainer");
+	cascadingDivContainer.innerHTML = ""; // Clear previous entries
+  
+	if (cgPanList && cgPanList.length > 0) {
+		cgPanList.forEach(function(cgPan, index) {
+	 cgpanoffpo	= cgPan.cr6fc_panfpo;
+	 nameoffpo = cgPan.cr6fc_nameoffpo;
+	 landing = cgPan.cr6fc_nameoflendinginstitution;
+	 panfpo = cgPan.cr6fc_panfpo;
+	 typ = cgPan['cr6fc_typeoffacility@OData.Community.Display.V1.FormattedValue'];
+	  //start grep
+	  /*var filterRegion = $.grep(TaxData,function (value) {
+		return (value.cr6fc_cgid == cr6fc_cgaplicationid);
+	  })*/
+  
+	  var filteredRegion = $.grep(TaxData, function(value) {
+				return value.cr6fc_cgid == cgPan.cr6fc_cgaplicationid; 
+			});
+	
+	  var filteredcover = $.grep(Logg, function(value) {
+				return value.cr6fc_wfid == cgPan.cr6fc_cgaplicationid; 
+			});
+  
+	//	filterRegion[0].cr6fc_cgpan;
+	  //cgPan.cr6fc_panfpo
+  var cgpanValue = filteredRegion.length > 0 ? filteredRegion[0].cr6fc_cgpan : ""; 
+  var covervalue = filteredcover.length > 0 ? filteredcover[0].cr6fc_eligibleguranteecover : "";
+	  //added grep
+			var newDiv = document.createElement("div");
+			newDiv.className = "form-group row mx-0";
+  
+			newDiv.innerHTML = `
+				<div class="form-group col-md-3">
+					<label>CGPAN</label>
+					<input type="text" id="CGPAN${index}" class="form-control" value="${cgpanValue}" readonly />
+		  <input type='hidden' id='ApplicationId${index} value='${cgPan.cr6fc_cgaplicationid}'>
+				</div>
+				<div class="form-group col-md-3">
+					<label>Type of Facility</label>
+					<input type="text" id="TypeofFacility${index}" value="${typ}"  readonly />
+				</div>
+				<div class="form-group col-md-3">
+					<label>Sanctioned Amount (Rs)</label>
+					<input type="text" onkeypress="return onlyNumberKey(event)" maxlength="6" id="SanctionedAmount${index}" value="${cgPan.cr6fc_sanctionedamount}"  readonly /> 
+				</div>
+				<div class="form-group col-md-3">
+					<label>CG Cover (Rs)</label>
+					<input type="text" id="CGCover${index}" value="${covervalue}"  readonly />
+				</div>
+				
+				<div class="form-group col-md-3" style="display: none;" id="DateOfClosureWrapper${index}">
+					<label>Date of Closure<span style="color: red;">*</span></label>
+					<input type="date" id="DateofClosure${index}" class="form-control"  />
+				</div>
+				<div class="form-group col-md-3">
+					<label>Whether Credit Facility has been Closed?<span style="color: red;">*</span></label>
+				   <select id="FPODistrict${index}" class="form-control" onchange="AddtoColl(${index})">
+						<option value="Select" disabled selected>Select an option</option>
+						<option value="Yes">Yes</option>
+						<option value="No">No</option>
+					</select>
+				</div>
+			`;
+  
+			// Append the new div to the container
+			cascadingDivContainer.appendChild(newDiv);
+		});
+	} else {
+		// Optionally handle the case where no CGPANs are found
+		cascadingDivContainer.innerHTML = "<p>No CGPAN data found.</p>";
+	}
+	
+  }
+
+  
+function bindCGApplicationData(vItemID){
+    //var requestUri = location.origin +"/_api/cr6fc_cgaplications?$top=5000&$select=*&$expand=cr6fc_FPOState($select=cr6fc_statemasterid,cr6fc_name),cr6fc_BusinessFPOState($select=cr6fc_statemasterid,cr6fc_name),cr6fc_RegionOfFPO($select=cr6fc_regionmasterid,cr6fc_name)&$filter=(cr6fc_cgaplicationid eq " + vItemID + ")";
+    var requestUri = location.origin + "/_api/cr6fc_updateclosures?$top=5000&$select=*,cr6fc_updateclosureid&$filter=cr6fc_updateclosureid eq "+vItemID+"";
+    var requestHeaders = {"accept":"application/json;odata=verbose"};
+    $.ajax({
+        url : requestUri,
+        type: "GET",
+        async: false,
+        headers : {
+            "accept" : "application/json;odata=verbose",
+            "content-type" : "application/json;odata=verbose"
+        },
+        success : function (data){
+            var Logg = data.value;
+            try{
+                if(Logg.length > 0){
+                    for (var i = 0; i < Logg.length; i++) {
+                   document.getElementById("ConstitutionFPO").value = Logg[i].cr6fc_nameoffpo;
+					
+                      document.getElementById("PANFPO").value = Logg[i].cr6fc_panfpo;
+					document.getElementById("NameOfLendingInstitution").value = Logg[i].cr6fc_nameoflendinginstitution;
+					document.getElementById("TypeofFacility").value = Logg[i].cr6fc_typeoffacility;
+					//document.getElementById("TypeofFacility").value = Logg[i]['cr6fc_typeoffacility@OData.Community.Display.V1.FormattedValue'];
+					document.getElementById("SanctionedAmount").value = Logg[i].cr6fc_sanctionedamount;
+					document.getElementById("CGPAN").value = Logg[i].cr6fc_name;
+						document.getElementById("CGCover").value = Logg[i].cr6fc_cgcover;
+						document.getElementById("CreditFacility").value = Logg[i].cr6fc_creditfacility;
+						 document.getElementById("DateofClosure").value = GetCreatedDateTime(Logg[i].cr6fc_dateofclosure);
+                         $("#hdnCGStatus").val(Logg[i].cr6fc_cgstatus);
+                }
+            }
+            }
+            catch (e){
+
+            }
+        },
+        error : function(){
+            console.log(error);
+        }
+    });
+}
+
+var vtitle;
+//vItemID
+function bindSOEData(vItemID) {
+	//var requestUri = location.origin + "/_api/cr6fc_cgapplicationses?$top=5000&$select=*&$expand=cr6fc_FPOState($select=cr6fc_statemasterid,cr6fc_name),cr6fc_BusinessFPOState($select=cr6fc_statemasterid,cr6fc_name),cr6fc_RegionOfFPO($select=cr6fc_regionmasterid,cr6fc_name)&$filter=(cr6fc_cgapplicationsid eq " + vItemID + ")"; comm 9 17 24
+	// var requestUri = _spPageContextInfo.webAbsoluteUrl + "/_api/web/lists/getbytitle('CGApplications')//items?$top=5000&$select=*,FPOActivities111/FPOActivity,RegionOfFPO/ID,FPOState/ID,BusinessFPOState/Id,Title&$expand=RegionOfFPO,FPOActivities111,FPOState,BusinessFPOState&$filter=(ID eq '" + vItemID + "')";
+	var requestUri = location.origin + "/_api/cr6fc_soedetailses?$top=5000&$select=*,cr6fc_eligibleguranteecover";
+	var requestHeaders = { "accept": "application/json;odata=verbose" };
+	$.ajax({
+		url: requestUri,
+		type: "GET",
+		async: false,
+		headers: {
+			"accept": "application/json;odata=verbose",
+			"content-type": "application/json;odata=verbose"
+		},
+		success: function (data) {
+			 Logg = data.value;
+			//vtitle = Logg[0].cr6fc_name; comm on 9 17 24
+			//vtitle = Logg[0].cr6fc_wfid;
+			try {
+				if (Logg.length > 0) {
+					
+					for(var i=0;i<Logg.length;i++){
+                       /*if(i===0){
+						document.getElementById("CGCover").value = Logg[i].cr6fc_eligibleguranteecover;
+					   }
+					if(i===1){
+					document.getElementById("CGCover1").value = Logg[i].cr6fc_eligibleguranteecover;
+				}*/
+                   // document.getElementById("CGPAN").value = Logg[0].cr6fc_cgpan;
+					//document.getElementById("TypeofFacility").value = Logg[0]['cr6fc_typeoffacility@OData.Community.Display.V1.FormattedValue'];
+					//document.getElementById("SanctionedAmount").value = Logg[0].cr6fc_sanctionedamount;
+					 // Create a field ID based on the index
+					 var fieldId1 = i === 0 ? "CGCover" : "CGCover" + i; // CGPAN1, CGPAN2, etc.
+
+					 // Only set the value if the element exists
+					 var inputField1 = document.getElementById(fieldId1);
+					 if (inputField1) {
+						 inputField1.value = Logg[i].cr6fc_eligibleguranteecover || ""; // Fallback to empty string
+					 }
+				 
+					}
+				}
+				
+			}
+			catch (e) {
+			}
+		},
+		error: function () {
+			console.log("error");
+		}
+	});
+
+}
+
+
+function bindTAXData(vItemID) {
+    var requestUri = location.origin + "/_api/cr6fc_taxinvoiceses?$top=5000&$select=*";
+    var requestHeaders = { "accept": "application/json;odata=verbose" };
+
+    $.ajax({
+        url: requestUri,
+        type: "GET",
+        async: false,
+        headers: requestHeaders,
+        success: function (data) {
+             TaxData = data.value;
+
+            try {
+                // Check if TaxData is not empty
+                if (TaxData.length > 0) {
+                    // Loop through the TaxData array and populate fields dynamically
+                    for (var i = 0; i < TaxData.length; i++) {
+                        // Create a field ID based on the index
+                        var fieldId = i === 0 ? "CGPAN" : "CGPAN" + i; // CGPAN1, CGPAN2, etc.
+
+                        // Only set the value if the element exists
+                        var inputField = document.getElementById(fieldId);
+                        if (inputField) {
+                            inputField.value = TaxData[i].cr6fc_cgpan || ""; // Fallback to empty string
+                        }
+                    }
+                }
+            } catch (e) {
+                console.error("Error processing TaxData: ", e);
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error("Error fetching tax data: ", status, error);
+        }
+    });
+}
+
+
+function GetCreatedDateTime(vCreatedDate) {
+	var vCreated = vCreatedDate;
+	var today = new Date(vCreated);
+	var dd = today.getDate();
+	var mm = today.getMonth() + 1;
+	var yyyy = today.getFullYear();
+	if (dd < 10) {
+		dd = '0' + dd;
+	}
+	if (mm < 10) {
+		mm = '0' + mm;
+	}
+	var hours = today.getHours();
+	var minutes = today.getMinutes();
+	var ampm = hours >= 12 ? 'PM' : 'AM';
+	hours = hours % 12;
+	hours = hours ? hours : 12; // the hour '0' should be '12'
+	minutes = minutes < 10 ? '0' + minutes : minutes;
+	var strTime = hours + ':' + minutes + ' ' + ampm;
+	var Newtoday = mm + '/' + dd + '/' + yyyy + " " + strTime;
+	return Newtoday;
+}
+function AddtoColl(index) {
+	/*var checkselected = $("#FPODistrict"+index+"").val();
+	var DateofClosure = $("#DateofClosure"+index+"").val();
+	var cgpan = $("#CGPAN"+index+"").val();
+	var cgcover = $("#CGCover"+index+"").val();
+	var sanctionamt = $("#SanctionedAmount"+index+"").val();
+	var typeoffacility = $("#TypeofFacility"+index+"").val();*/
+
+	 
+	var checkselected = $("#FPODistrict" + index).val();
+	var DateofClosure = $("#DateofClosure" + index).val();
+    var sanctionamt = $("#SanctionedAmount" + index).val();
+    var typeoffacility = $("#TypeofFacility" + index).val();
+	var cgpan = $("#CGPAN"+index+"").val();
+	var cgcover = $("#CGCover"+index+"").val();
+
+	var DetailColl = {};
+	
+	if(checkselected === "Yes"){
+		/*if(DateofClosure.style.display=="none") {
+			DateofClosure.style.display = "block";
+		} else {
+			DateofClosure.style.display = "none";
+		}*/
+		$("#DateOfClosureWrapper" + index).show(); // Show Date of Closure field
+    } else {
+        $("#DateOfClosureWrapper" + index).hide(); // Hide Date of Closure field
+    }
+	
+	DetailColl.creaditfacility = checkselected;
+	DetailColl.DateofClosure = DateofClosure;
+	DetailColl.cgpan = cgpan;
+	DetailColl.cgcover = cgcover;
+	DetailColl.sanctionamt = sanctionamt;
+	DetailColl.typeoffacility = typeoffacility;
+	DetailColl.nameoffpo = nameoffpo;
+	DetailColl.landing = landing;
+	DetailColl.panfpo = panfpo;
+	DetailArrayAuthSign.push(DetailColl);
+	
+	//$('#cascadingDivContainer').empty();
+	//bindData(DetailArrayAuthSign);
+	}
+
+
+
+
+var SubStatus = '';
+function SubmitData(status) {
+	 
+        
+       var txtmakerComment = $("#txtmakerComment").val();
+
+	   var DateofClosure = $("#DateofClosure").val();
+
+	if ((DateofClosure == "" || DateofClosure == undefined) && status == "Submitted") {
+		//alert('Please Enter Date of Closure')
+		//return false;
+	}
+	else if (DateofClosure == "" || DateofClosure == undefined) {
+		DateofClosure = null;
+	}
+
+	//var FPODistrict = $("#FPODistrict option:selected").text();
+	var FPODistrict = $("#FPODistrict option:selected").val();
+	//var ELIMakerEmailID=_spPageContextInfo.userEmail ;
+
+	
+	/*var DateofClosure1 = $("#DateofClosure1").val();
+	if((DateofClosure1 == "" || DateofClosure1 == undefined) && status == "Submitted"){
+		alert('Please Enter Date')
+		return false;
+	}
+	else if (DateofClosure1 == " " || DateofClosure1 == undefined){
+		DateofClosure1 = null;
+	}*/
+
+	var ELIMakerEmailID = loggedInUserEmail;
+
+
+	
+	var ELICheckerEmail = $('#ELICheckerEmail').val();
+	var EILchecker;
+	if (ELICheckerEmail != null && ELICheckerEmail != undefined && ELICheckerEmail != '') {
+		//EILchecker=checker[0].EILCheckerId;
+		EILchecker = GetUserId1(ELICheckerEmail);
+	}
+	/*else
+	{
+		EILchecker=0;
+	}*/
+	if (EILchecker == -1) {
+		alert('There is no valid EIL Checker against this Lending Institute')
+		return false;
+	}
+
+	if (EILchecker == 0) {
+		alert('There is no EIL Checker against this Lending Institute')
+		return false;
+	}
+
+	//vTitle = GetCounter();
+	//$('#btnSave').prop('disabled', true);
+//	$('#btn1').prop('disabled', true);
+
+	if (status == "Draft") {
+		SubStatus = "1";
+	}
+	else if (status == "Submitted") {
+		SubStatus = "2";
+	}
+	//$('#btn1').prop("disabled", true);
+	if (DetailArrayAuthSign.length >= 0 ) {
+	var data1 = JSON.stringify({
+		// "__metadata": { "type": "SP.Data.AHDApplicationListItem"}, 
+	
+		"cr6fc_status": SubStatus,
+
+
+	});
+
+	shell.getTokenDeferred().done(function (token) {
+		var header = {
+			__RequestVerificationToken: token,
+			contentType: "application/json;odata=verbose"
+		};
+
+		$.ajax({
+			url: "/_api/cr6fc_updateclosures",
+			type: "POST",
+			headers: header,
+			async: false,
+			data: data1,
+			success: function (data, textStatus, xhr) {
+				var successId = xhr.getResponseHeader('entityid');
+				//Updatecgapplication(token, DateofClosure);
+				if (SubStatus == "2") {
+					alert('Data saved Successfully')
+				}
+			
+				else {
+					alert('Data Added Successfully')
+				}
+				//numOfAuthSign++;
+				//if (numOfAuthSign <= DetailArrayAuthSign.length - 1) {
+				//	SubmitData(status);
+				//} else {
+				//	authSignDeferred.resolve(xhr);
+				//}
+
+				// Notify user of success
+				
+				
+				// Redirect to Closure Dashboard
+				window.location.href = location.origin + "/ClosureDashboard/";
+			},
+			error: function (error) {
+				console.log(error);
+				alert('Some error occurred while adding data in CGApplications list. Please try again later.');
+			}
+		});
+	});
+}
+}
+ function Updatecgapplication(token){
+	var filterrenewaldata = $.grep(Logg, function(value) {
+		return value.cr6fc_wfid == cgPan.cr6fc_cgaplicationid; 
+	});
+	var  data = JSON.stringify({
+              
+	});
+	var header = {
+		__RequestVerificationToken : token,
+		contentType:"application/json:odata=verbose",
+		XRequestDigest: $("#__REQUESTDIGEST").val(),
+		IFMATCH : "*",
+		XHttpMethod : "PATCH",
+
+	}
+	$.ajax({
+
+		url:"/_api/cr6fc_cgaplications",
+		type:"POST",
+		async:false,
+		data:data,
+		headers:header,
+		success: function (data){
+
+		},
+		error: function(e){
+
+		}
+	})
+ }
+function GetCurrentDataToday() {
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth() + 1;
+	var yyyy = today.getFullYear();
+	var vDueDate = dd + "/" + mm + "/" + yyyy;
+	var hours = today.getHours();
+	var minutes = today.getMinutes();
+	var ampm = hours >= 12 ? 'PM' : 'AM';
+	hours = hours % 12;
+	hours = hours ? hours : 12; // the hour '0' should be '12'
+	minutes = minutes < 10 ? '0' + minutes : minutes;
+	var strTime = vDueDate;
+	return strTime;
+}
+
+
+
+
+function GetUserId1(EamilID) {
+	debugger;
+	//var vNewLoginName=EamilID.split('|')[2];
+	var requestUri = location.origin + "/_api/contacts?$top=500&$select=contactid,emailaddress1&$filter=emailaddress1 eq '" + EamilID + "'";
+	var requestHeaders = { "accept": "application/json;odata=verbose" };
+	$.ajax({
+		url: requestUri,
+		type: "GET",
+		async: false,
+		headers: {
+			"accept": "application/json;odata=verbose",
+			"content-type": "application/json;odata=verbose"
+		},
+		success: function (data) {
+			var Logg = data.value;
+
+			try {
+				returnValue = Logg[0].contactid;
+			}
+			catch (err) {
+				returnValue = -1;
+			}
+		},
+		error: function (data) {
+			returnValue = -1;
+			console.log(JSON.stringify(data));
+
+		}
+	});
+	return returnValue;
+}
+
+
+

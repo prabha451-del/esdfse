@@ -1,0 +1,127 @@
+<script>
+    (function (webapi, $) {
+        function safeAjax(ajaxOptions) {
+            var deferredAjax = $.Deferred();
+            shell.getTokenDeferred().done(function (token) {
+                // add headers for AJAX
+                if (!ajaxOptions.headers) {
+                    $.extend(ajaxOptions, {
+                        headers: {
+                            "__RequestVerificationToken": token
+                        }
+                    });
+                } else {
+                    ajaxOptions.headers["__RequestVerificationToken"] = token;
+                }
+                $.ajax(ajaxOptions)
+                    .done(function (data, textStatus, jqXHR) {
+                        validateLoginSession(data, textStatus, jqXHR, deferredAjax.resolve);
+                    }).fail(deferredAjax.reject); //AJAX
+            }).fail(function () {
+                deferredAjax.rejectWith(this, arguments); // on token failure pass the token AJAX and args
+            });
+            return deferredAjax.promise();
+        }
+        webapi.safeAjax = safeAjax;
+    })(window.webapi = window.webapi || {}, jQuery)
+
+    function GetQueryStingValue() {
+        var pageUrl = window.location.href.replace("#", "")
+        var vars = [], hash;
+        var hashes = pageUrl.slice(pageUrl.indexOf('?') + 1).split('&');
+        for (var i = 0; i < hashes.length; i++) {
+            hash = hashes[i].split('=');
+            vars.push(hash[0]);
+            vars[hash[0]] = hash[1];
+        }
+        return vars;
+    }
+    var authSignDeferred = $.Deferred();
+    var numOfAuthSign = 0;
+    function refreshCache() {
+
+        try {
+            var n = Date.now();
+            var timestamp = n.toString();
+            var id = GetQueryStingValue()["id"];
+            var guid = id.split(',');
+            var LogicalName = GetQueryStingValue()["tbl"];
+            var tableLogicalName = LogicalName.split(',');
+            var columnName = GetQueryStingValue()["col"];
+            var redirect = GetQueryStingValue()["red"];
+            var getitem = GetQueryStingValue()["Item"];
+            var redirectwithstring;
+            if (getitem != undefined) {
+                redirectwithstring = redirect + '/?Item=' + getitem;
+            }
+            else {
+                redirectwithstring = redirect + '/';
+            }
+            debugger;
+            //alert(guid);
+            /* if (guid) {
+                  webapi.safeAjax({
+                      type: "PUT",
+                      url: "/_api/" + tableLogicalName + "(" + guid + ")/" + columnName,
+                      contentType: "application/json",
+                      data: JSON.stringify({
+                          "value": timestamp
+                      }),
+                      success: function (res) {
+                          debugger;
+                          console.log(res);
+                          window.location.href = location.origin + "/" + redirect + "/";
+                      }
+                  });
+              }*/
+            if (guid) {
+
+                if (guid[numOfAuthSign] != "undefined" && guid[numOfAuthSign] != "null") {
+                    webapi.safeAjax({
+                        type: "PUT",
+                        url: "/_api/" + tableLogicalName[numOfAuthSign] + "(" + guid[numOfAuthSign] + ")/" + columnName,
+                        contentType: "application/json",
+                        data: JSON.stringify({
+                            "value": timestamp
+                        }),
+                        success: function (xhr) {
+                            debugger;
+                            console.log(xhr);
+                            numOfAuthSign++
+                            if (numOfAuthSign <= guid.length - 1) {
+                                refreshCache()
+                            } else {
+                                authSignDeferred.resolve(xhr);
+                                window.location.href = location.origin + "/" + redirectwithstring;
+                            }
+
+                        },
+                        error: function (error) {
+                            console.log(error);
+                            authSignDeferred.reject(error);
+                        }
+                    });
+                }
+                else {
+                    numOfAuthSign++
+                    if (numOfAuthSign <= guid.length - 1) {
+                        refreshCache()
+                    }
+                    else {
+                        // authSignDeferred.resolve(xhr);
+                        window.location.href = location.origin + "/" + redirectwithstring;
+                    }
+                }
+            }
+            else {
+                window.location.href = location.origin + "/" + redirectwithstring;
+            }
+        } catch (err) {
+            alert(err.message);
+        }
+    }
+
+    $(document).ready(function () {
+        refreshCache();
+    });
+</script>

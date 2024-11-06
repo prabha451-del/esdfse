@@ -1,0 +1,88 @@
+<script type="text/javascript" src="~/ELICheckerDashBoardCGApp.js" data-ppid="1487933f-4654-c417-356e-05bc22feb80a"></script>
+<style>
+table tr td a {
+    color: #f37a51 !important;
+}
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+    border-radius: 40px;
+    border: 1px solid #d4d3d3;
+    box-shadow: rgb(60 64 67 / 30%) 0px 1px 2px 0px, rgb(60 64 67 / 19%) 0px 0px 3px 1px;
+    border-radius: 0px !important;
+}
+</style>
+<div class="col-md-2">
+  <div id="leftnavigation">
+    <div class="navside">
+      <ul class="nav nav-pills">
+        <span id="Navdiv"></span>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="col-md-10">
+  <div class="container-fluid">
+    <div class="row mx-0 head">
+      <div class="col-md-12" style="background: #f55905; height: 45px;">
+        <div class="row">
+          <div class="col-md-5">
+            <div style="margin: 8px 1px;"><label data-ppid="38b0e343-493d-ba3f-77e4-14c63b40d6f2" style="display: inline-block; font-size: 15px; font-weight: 700; color: white !important; margin-bottom: 0px;">CG Application</label></div>
+          </div>
+          <div class="col-md-7">
+            <div class="form-group row" style="margin-top: 10px; float: right;">
+              <label data-ppid="44a2f321-cf08-03ec-80ed-2dfce3f7393f" class="col-md-3 col-form-label" style="display: inline-block; font-size: 15px; font-weight: 700; color: white !important; margin-bottom: 0px;">Status</label>
+              <div class="col-md-9">
+                <select id="ddlStatus" title="ddlStatus" onchange="BindHomeDetails();" class="form-control" style="font-size: 10px;">
+                  <option value="All" data-ppid="36674c57-168a-216b-4d52-85bc324baa71">All</option>
+                  <option value="1" data-ppid="45abf339-e372-1b51-dae9-a27e4d89dc6f">Pending For Approval</option>
+                  <option value="4" data-ppid="8011e7c7-93a4-b9a6-e3c5-b328f55418da">Sent Back by ELI Checker</option>
+                  <option value="5" data-ppid="c4c5f833-f22a-9d09-d0e5-9039fbab7372">Rejected by ELI Checker</option>
+                  <option value="9" data-ppid="861bb411-4f4e-2fb0-89e0-3da00020bf77">Rejected by NabSaranrakshan</option>
+                  <option value="6" data-ppid="26fb308d-d422-1dfb-69ad-652edc67263d">Submitted to NabSanrakshan</option>
+                  <option value="7" data-ppid="d424072a-7e9f-7b87-f817-53fcfe19d939">Review by NABSaranrakshan</option>
+                  <option value="16" data-ppid="acc97090-bd49-4377-4fad-3edf1b996127">Recommend for Rejection</option>
+                  <option value="8" data-ppid="c7e1e974-6808-afd1-38f9-918f9bb0c645">Approved by NABSaranrakshan</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row my-3">
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table id="tblDataMain" bgcolor="rgb(255, 255, 255)" data-ppid="93669eae-2b86-820f-c891-f70fa8304f5b" class="table no-footer tbldashboard" style="width: 99.9%; border: 1px solid; color: rgb(0 0 0); background-color: rgb(255, 255, 255); border-top-width: initial; border-right-width: initial; border-bottom-width: initial; border-left-width: initial; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-top-color: initial; border-right-color: initial; border-bottom-color: initial; border-left-color: initial; border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial; border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px;">
+            <thead data-ppid="5393ccb5-7499-fb08-100e-839450045fcd">
+              <tr data-ppid="f7409832-b07d-287a-a779-308dbfd4f49a">
+                <th data-ppid="dbf98fc0-4ec0-e7a1-23de-6646aacc3f45" align="center" style="font-size: 12px; font-weight: 700; text-transform: uppercase; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255); text-align: center;">CG Application No</th>
+                <th data-ppid="bf56385e-c3a8-00ec-2a49-c28bd76c0f65" align="center" style="font-size: 12px; font-weight: 700; text-transform: uppercase; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255); text-align: center;">Entry Date</th>
+                <th data-ppid="245c45d3-f45c-f561-9d44-d1f68c83561d" align="center" style="font-size: 12px; font-weight: 700; text-transform: uppercase; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255); text-align: center;">Name of FPO</th>
+                <th data-ppid="7b8c9650-be89-fd20-0e2e-c7d3988e8b74" align="center" style="font-size: 12px; font-weight: 700; text-transform: uppercase; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255); text-align: center;">Account No</th>
+                <th data-ppid="14e38649-d6ab-a9ec-601b-ff70e099057f" align="center" style="font-size: 12px; font-weight: 700; text-transform: uppercase; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255); text-align: center;">Sanctioned Amount</th>
+                <th data-ppid="a5a8341a-e97d-2dbd-d383-a5c796e1edc0" align="center" style="font-size: 12px; font-weight: 700; text-transform: uppercase; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255); text-align: center;">Status</th>
+                <th data-ppid="75309105-7815-71ca-6ff2-365afe3af367" align="center" style="font-size: 12px; font-weight: 700; text-transform: uppercase; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255); text-align: center;">Action</th>
+                <th align="center" data-ppid="0db890b7-3af7-0acf-a31d-5663168217e4" style="font-size: 12px; font-weight: 700; text-transform: uppercase; display: none; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255); text-align: center;">ID</th>
+              </tr>
+            </thead>
+            <tbody id="tbodyRequestor" data-ppid="ea6730ad-99f7-11a0-9b23-ffbf0eea5112">
+             
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script data-ppid="d259a134-9022-62f8-fe3e-b40f569a7b2b">
+         	$(document).ready(function()
+       {
+
+       $('li >a:contains("CG Applications")').addClass('active');
+    });
+  </script>
+  <div data-ppid="d9ffdd35-0a56-1dc2-4cb6-479203fe8911" class="row sectionBlockLayout text-left" style="display: flex; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;">
+    <div data-ppid="0461d252-9385-d220-ab87-d424608e000f" class="container" style="padding: 0px; display: flex; flex-wrap: wrap;"><div data-ppid="054f55cb-8492-a806-b90b-4f6893011164" class="col-md-12 columnBlockLayout" style="flex-grow: 1; display: flex; flex-direction: column; min-width: 310px; word-break: break-word;"></div></div>
+  </div>
+</div>

@@ -1,0 +1,827 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.fa-question-circle:before {
+  content: "\f128" !important;
+}
+</style>
+<script type="text/javascript" src="~/CGApplicationEditForm.js"></script>
+<input type="hidden" id="hdnStatus" /><input type="hidden" id="hdnELIMaker" /><input type="hidden" id="ELICheckerEmail" />
+<div id="process-tab" class="design-process-section">
+  <div class="container-fluid">
+    <div class="formheadingWrap formtitle"><h1>Credit Guarantee Closure Update Form</h1></div>
+    <div class="row">
+      <div class="col-xs-12">
+        <!-- design process steps--><!-- Nav tabs -->
+        <ul role="tablist" class="nav nav-tabs process-model more-icon-preocess">
+          <li role="presentation" class="active">
+            <a href="#discover" aria-controls="discover" role="tab" data-toggle="tab"
+              ><p>About FPO</p>
+              <i aria-hidden="true" class="fa fa-dot-circle-o"></i
+            ></a>
+          </li>
+          <li role="presentation">
+            <a href="#strategy" aria-controls="strategy" role="tab" data-toggle="tab"
+              ><p>FPO Shareholder Member Details</p>
+              <i aria-hidden="true" class="fa fa-dot-circle-o"></i
+            ></a>
+          </li>
+          <li role="presentation">
+            <a href="#optimization" aria-controls="optimization" role="tab" data-toggle="tab"
+              ><p>Credit Facility Details</p>
+              <i aria-hidden="true" class="fa fa-dot-circle-o"></i
+            ></a>
+          </li>
+          <li role="presentation">
+            <a href="#content" aria-controls="content" role="tab" data-toggle="tab"
+              ><p>Security Details</p>
+              <i aria-hidden="true" class="fa fa-dot-circle-o"></i
+            ></a>
+          </li>
+          <!--  <li role="presentation"><a href="#reporting" aria-controls="reporting" role="tab" data-toggle="tab">
+              <p>Reporting</p>
+            <i class="fa fa-clipboard" aria-hidden="true"></i></a></li>-->
+        </ul>
+        <!-- end design process steps--><!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" id="discover" class="tab-pane active">
+            <div class="design-process-content">
+              <div id="">
+                <div class="form-group row mx-0">
+                  <div class="form-group col-md-3"><label for="">CG Application ID</label><input type="text" id="txtApplicantID" readonly="readonly" class="form-control" /></div>
+                </div>
+                <div class="row mx-0"><h4 class="col-md-12 title">FPO Basic Details</h4></div>
+                <div class="form-group row mx-0">
+                  <!--    <div class="form-group col-md-3">
+                          <label for="">Applicant Name</label>
+                          <input type="text" id="txtApplicantName" class="form-control"> 
+                        </div>-->
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Name of FPO<span id="ic0osc" style="color: red;"><b>*</b></span></label
+                    ><input type="text" id="txtNameOfFPO" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Constitution<span id="i0smoh" style="color: red;"><b>*</b></span
+                      ><i aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Type of Constitution of Producer Organisation" class="fa fa-question-circle red-tooltip"></i></label
+                    ><select id="ConstitutionFPO" class="form-control">
+                      <option value="0">Select</option>
+                      <option value="1">Company</option>
+                      <option value="2">Cooperative Society</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Act/s under which the FPO is registered<span id="iinvb1" style="color: red;"><b>*</b></span
+                      ><i aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Act/s under which the FPO is registered" class="fa fa-question-circle red-tooltip"></i></label
+                    ><select id="FPOActs" class="form-control">
+                      <option value="0">Select</option>
+                      <option value="1">Companies Act</option>
+                      <option value="2">Co-operative Societies Act of the State(Including Mutually aided or self-reliant Cooperative Societies Act)</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Date of Registration<span id="itm3s1" style="color: red;"><b>*</b></span></label
+                    ><input type="date" id="DateOfRegistration" class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group row mx-0">
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Place of Registration<span id="ibh7cw" style="color: red;"><b>*</b></span></label
+                    ><input type="text" id="PlaceOfRegistration" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Registration No<span id="ijxl7j" style="color: red;"><b>*</b></span></label
+                    ><input type="text" id="RegistrationNo" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >PAN<span id="iiqmyx" style="color: red;"><b>*</b></span></label
+                    ><input type="text" id="PANFPO" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-3"><label for="">TAN/TIN</label><input type="text" id="TANTINFPO" class="form-control" /></div>
+                </div>
+                <div class="form-group row mx-0">
+                  <div class="form-group col-md-3"><label for="">GSTIN</label><input type="text" id="GSTINFPO" maxlength="15" class="form-control" /></div>
+                  <div class="form-group col-md-4">
+                    <label for=""
+                      >Business of FPO/Present Status of FPO Activities<span id="ihwkfk" style="color: red;"><b>*</b></span> <i aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Activities and services undertaken by FPO.(Multiple options can be selected)" class="fa fa-question-circle red-tooltip"></i></label
+                    ><select id="FPOActivities" multiple="multiple" class="form-control"></select>
+                  </div>
+                  <div class="form-group col-md-5">
+                    <label for="inputState"
+                      >Is FPO wholly /largely connected with Agri Business activities<span id="i6z0gi" style="color: red;"><b>*</b></span> <i aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Is FPO wholly /largely connected with Agri Business Activities" class="fa fa-question-circle red-tooltip"></i></label
+                    ><select id="FPOAgriBusinessActivity" class="form-control">
+                      <option value="0">Select</option>
+                      <option value="1">Yes</option>
+                      <option value="2">No</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for=""
+                      >Brief Details of Backward Linkages Developed by FPO<span id="iyyt67" style="color: red;"><b>*</b></span></label
+                    ><input type="text" id="BackwardLinkageFPO" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for=""
+                      >Brief Details of Forward Linkages Developed by FPO<span id="ifb7nd" style="color: red;"><b>*</b></span></label
+                    ><input type="text" id="ForwardLinkageFPO" class="form-control" />
+                  </div>
+                </div>
+                <div class="row mx-0"><h4 class="col-md-12 title2">Registered Address</h4></div>
+                <div class="form-group row mx-0">
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Existing Registered Office Address<span id="itn2b2" style="color: red;"><b>*</b></span
+                      ><i aria-hidden="true" data-toggle="tooltip" data-placement="right" title="FPO’s Registered  Address as per the Registration Certificate" class="fa fa-question-circle"></i></label
+                    ><input type="text" id="ExistingRegisteredOfficeAddress" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="inputState"
+                      >City/Town<span id="iu8l27" style="color: red;"><b>*</b></span></label
+                    ><input type="text" id="FPOCity" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Pincode<span id="ii54iq" style="color: red;"><b>*</b></span></label
+                    ><input type="text" onkeypress="return onlyNumberKey(event)" maxlength="6" id="FPOPincode" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="inputState"
+                      >District<span id="id21an" style="color: red;"><b>*</b></span></label
+                    ><input type="text" id="FPODistrict" class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group row mx-0">
+                  <div class="form-group col-md-4">
+                    <label for=""
+                      >State<span id="is2gqq" style="color: red;"><b>*</b></span></label
+                    ><select id="FPOState" class="form-control"></select>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="">Geo Location- Latitude (Decimal Degree Representative upto 5 decimal) <i aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Latitude upto 6 decimal places (Format of  xx.xxxxxx)" class="fa fa-question-circle red-tooltip"></i></label><input type="text" id="GeoLatituteLocation" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="">Geo Location- Longitude (Decimal Degree Representative upto 5 decimal) <i aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Longitude upto 6 decimal places (Format of  xx.xxxxxx)" class="fa fa-question-circle red-tooltip"></i></label><input type="text" id="GeoLongituteLocation" class="form-control" />
+                  </div>
+                </div>
+                <div class="row mx-0">
+                  <h4 class="col-md-12 title2 d-flex" id="iskqi1" style="align-items: baseline;">
+                    Bussiness Address
+
+                    <label class="col-md-6"
+                      >Is Business Address of the FPO same as its Registered Address?<span id="infjxl" style="color: red;"><b>*</b></span></label
+                    ><select id="BusinessAddress" class="form-control" style="width: 100px;">
+                      <option value="0">Select</option>
+                      <option value="1">Yes</option>
+                      <option value="2">No</option>
+                    </select>
+                  </h4>
+                </div>
+                <div id="otherdetilfpo" class="row mx-0">
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Address<span id="iibtns" style="color: red;"><b>*</b></span></label
+                    ><input type="text" id="BusinessAddressFPO" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >City/Town<span id="iaiqj4" style="color: red;"><b>*</b></span></label
+                    ><input type="text" id="BusinessFPOcity" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Pincode<span id="izih5d" style="color: red;"><b>*</b></span></label
+                    ><input type="text" onkeypress="return onlyNumberKey(event)" maxlength="6" id="BusinessFPOPincode" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >District<span id="ik1dtr" style="color: red;"><b>*</b></span></label
+                    ><input type="text" id="BusinessFPODistrict" class="form-control" />
+                  </div>
+                </div>
+                <div id="busineefpostate" class="form-group row mx-0">
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >State<span id="iix3h5" style="color: red;"><b>*</b></span></label
+                    ><select id="BusinessFPOState" class="form-control"></select>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="">Geo Location- Latitude (Decimal Degree Representative upto 5 decimal)<i aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Latitude upto 6 decimal places (Format of  xx.xxxxxx)" class="fa fa-question-circle red-tooltip"></i></label><input type="text" id="GeoLatituteLocationFPO" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="">Geo Locatio- Longitude (Decimal Degree Representative upto 5 decimal)<i aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Longitude upto 6 decimal places (Format of  xx.xxxxxx)" class="fa fa-question-circle red-tooltip"></i></label><input type="text" id="GeoLongituteLocationFPO" class="form-control" />
+                  </div>
+                </div>
+                <button type="button" onclick="fpomyFunction()" class="btn btn-default Proceed">Proceed</button>
+                <div class="form-group row mx-0"></div>
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" id="strategy" class="tab-pane">
+            <div class="design-process-content">
+              <div id="">
+                <div class="row mx-0"><h4 class="col-md-12 title">Total Shareholder Members</h4></div>
+                <div class="row mx-0">
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Region of the FPO<span id="i14shk" style="color: red;"><b>*</b></span></label
+                    ><select id="RegionOfFPO" class="form-control"></select>
+                  </div>
+                  <div id="Plains" class="form-group col-md-3">
+                    <label for=""
+                      >Total number of Members of the FPO in Plains<span id="ivvg2w" style="color: red;"><b>*</b></span
+                      ><i aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Total Number Of Members Of the FPO in Plains" class="fa fa-question-circle red-tooltip"></i></label
+                    ><select id="TotalFPOMember" class="form-control">
+                      <option value="0">Select</option>
+                      <option value="1">Less than 300</option>
+                      <option value="2">More than 300</option>
+                    </select>
+                  </div>
+                  <div id="Northen" class="form-group col-md-3">
+                    <label for=""
+                      >Total number of Members of the FPO in North Eastern or Hilly Areas<span id="i2mbqs" style="color: red;"><b>*</b></span> <i aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Hilly area means area at a height of 1000 metre or above Mean Sea Level (including such other areas of UTs)" class="fa fa-question-circle red-tooltip"></i></label
+                    ><select id="TotalMemberNorthen" class="form-control">
+                      <option value="0">Select</option>
+                      <option value="1">Less than 100</option>
+                      <option value="2">More than 100</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >No. of Landless Tenant Farmer Members<span id="iq24wf" style="color: red;"><b>*</b></span></label
+                    ><input type="text" onkeypress="return onlyNumberKey(event)" id="NoOfLandlessFarmer" onchange="calFarmerMember();validate();validateMore();validateEastern();validateMoreNorthen();" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >No. of Small Farmer Members<span id="ixtlki" style="color: red;"><b>*</b></span></label
+                    ><input type="text" onkeypress="return onlyNumberKey(event)" id="NoOfSmallFarmer" onchange="calFarmerMember();validate();validateMore();validateEastern();validateMoreNorthen();" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >No. of Marginal Farmer Member<span id="ifatdi" style="color: red;"><b>*</b></span></label
+                    ><input type="text" onkeypress="return onlyNumberKey(event)" id="NoOfMarginalFarmer" onchange="calFarmerMember();validate();validateMore();validateEastern();validateMoreNorthen();" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >No. of Big Farmers Member<span id="iqc0dp" style="color: red;"><b>*</b></span></label
+                    ><input type="text" onkeypress="return onlyNumberKey(event)" id="NoOfBigFarmer" onchange="calFarmerMember();validate();validateMore();validateEastern();validateMoreNorthen();" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Farmer Members size<span id="im6gj4" style="color: red;"><b>*</b></span> <i aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Farmer Members size (Shareholder Members No.)" class="fa fa-question-circle red-tooltip"></i></label
+                    ><input type="text" id="FarmerMemberSize" readonly="readonly" onchange="validate();validateMore();validateEastern();validateMoreNorthen();" class="form-control" />
+                  </div>
+                </div>
+                <div class="row mx-0"><h4 class="col-md-12 title2">Category</h4></div>
+                <div class="row mx-0">
+                  <div class="col-md-3">
+                    <label for=""
+                      >No. of Women Members<span id="iy8pum" style="color: red;"><b>*</b></span></label
+                    ><input type="number" id="NoOfWomenFarmer" class="form-control" />
+                  </div>
+                  <div class="col-md-3">
+                    <label for=""
+                      >No. of SC Members<span id="itzkok" style="color: red;"><b>*</b></span></label
+                    ><input type="number" id="NoOfSCFarmer" class="form-control" />
+                  </div>
+                  <div class="col-md-3">
+                    <label for=""
+                      >No. of ST Members<span id="i44q7q" style="color: red;"><b>*</b></span></label
+                    ><input type="number" id="NoOfSTFarmer" class="form-control" />
+                  </div>
+                </div>
+                <div>
+                  <div class="row mx-0"><h4 class="col-md-12 title2">Other Details related to FPO</h4></div>
+                  <div class="row mx-0">
+                    <div id="otherdetilfpo-2" class="form-group col-md-3">
+                      <label for=""
+                        >New/Existing FPO<span id="ibb6fw" style="color: red;"><b>*</b></span></label
+                      ><select id="NewFPO" class="form-control">
+                        <option value="0">Select</option>
+                        <option value="1">New FPO : FPO formed CSS for Formation and Promotion of 10,000 FPOs</option>
+                        <option value="2">Existing FPO : FPO formed prior to or outside the CSS for Formation and Promotion of 10,000 FPOs</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for=""
+                        >Has the FPO availed credit guarantee under any other scheme Of Government Of India?<span id="i4sfai" style="color: red;"><b>*</b></span> <i aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Has the FPO availed credit Guarantee under any other scheme Of Government Of India?" class="fa fa-question-circle red-tooltip"></i></label
+                      ><select id="FPOAvailedGOIScheme" class="form-control">
+                        <option value="0">Select</option>
+                        <option value="1">Yes</option>
+                        <option value="2">No</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div id="creditfacility" class="row mx-0">
+                    <h4 class="col-md-12 title2">Details of Existing Credit Guarantees</h4>
+                    <div class="form-group col-md-3">
+                      <label for=""
+                        >CGPAN<span id="ijugnf" style="color: red;"><b>*</b></span></label
+                      ><input type="text" id="CGPAN" class="form-control" />
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for="">The Credit Facility for which Credit Guarantee is being sought in this application is different from the already existing Credit Facility<i aria-hidden="true" data-toggle="tooltip" data-placement="right" title="A Credit Facility for which Credit Guarantee is being sought in this application is different from the already existing Credit Facility" class="fa fa-question-circle red-tooltip"></i></label
+                      ><select id="existingCF" class="form-control">
+                        <option value="0">Select</option>
+                        <option value="1">Yes</option>
+                        <option value="2">No</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for=""
+                        >Total sanctioned amount (live sanctions with some outstanding) to FPO which is already covered under the Credit Guarantee Scheme for FPO Financing<span id="ik6gus" style="color: red;"><b>*</b></span> <i aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Total Sanctioned Amount (live sanctions with some outstanding) to FPO which is already covered under the Credit Guarantee Scheme for FPO Financing" class="fa fa-question-circle red-tooltip"></i></label
+                      ><!--<input type="number" id="TotalSanctionedAmount" class="form-control">--><input type="number" id="TotalSanctionedAmount" onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');" style="width: 100%; height: 31px;" />
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for=""
+                        >Type of Credit Facility<span id="iuvb8v" style="color: red;"><b>*</b></span></label
+                      ><select id="TypeOfCreditFacility" class="form-control">
+                        <option value="0">Select</option>
+                        <option value="1">Term Loan</option>
+                        <option value="2">WC/CC Limit</option>
+                        <option value="3">Composite Facility</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for=""
+                        >Validity of Credit Guarantee<span id="iz8qoo" style="color: red;"><b>*</b></span></label
+                      ><input type="date" id="ValidityCreditGuarantee" class="form-control" />
+                    </div>
+                  </div>
+                  <div>
+                    <div class="form-group row mx-0">
+                      <h4 class="col-md-12 title2">Detail of Chief Promoter</h4>
+                      <hr />
+                    </div>
+                    <div class="row mx-0">
+                      <div class="form-group col-md-3">
+                        <label for=""
+                          >Name<span id="ijn74q" style="color: red;"><b>*</b></span></label
+                        ><input type="text" id="NameOfCEO" class="form-control" />
+                      </div>
+                      <div class="form-group col-md-3"><label for="">Landline (with STD Code)</label><input type="number" id="ContactCEO" class="form-control" /></div>
+                      <div class="form-group col-md-3">
+                        <label for=""
+                          >Mobile Number<span id="i4xmhm" style="color: red;"><b>*</b></span></label
+                        ><input type="text" id="MobileCEO" onkeypress="return onlyNumberKey(event)" maxlength="10" class="form-control" />
+                      </div>
+                      <div class="form-group col-md-3">
+                        <label for=""
+                          >Email ID<span id="ilr6gm" style="color: red;"><b>*</b></span></label
+                        ><input type="email" id="EmailIDCEO" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button type="button" onclick="back1Function()" class="btn btn-default back">Back</button>
+              <button type="button" onclick="cfdmyFunction()" class="btn btn-default Proceed">Proceed</button>
+            </div>
+          </div>
+          <div role="tabpanel" id="optimization" class="tab-pane">
+            <div class="design-process-content">
+              <div id="">
+                <div class="row mx-0"><h4 class="col-md-12 title">Details of Credit Facility for which Guarantee Cover is Sought</h4></div>
+                <div class="row mx-0">
+                  <!--     <div class="col-md-12">
+                          <p>Details Of Credit Facility</p>
+                       </div>-->
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Customer ID<span id="ieauey" style="color: red;"><b>*</b></span></label
+                    ><input type="text" id="CustomerID" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >FPO's Eligibility for lending confirmed using<span id="i413ub" style="color: red;"><b>*</b></span
+                      ><i aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Assessment Tool used for FPO evaluation" class="fa fa-question-circle red-tooltip"></i></label
+                    ><select id="LendingAssesmentTool" class="form-control">
+                      <option value="0">Select</option>
+                      <option value="1">Lendability Assessment Tool Available in the NABARD's Guidance Note on FPO financing</option>
+                      <option value="2">Lending Institutions Approved Assessment Tool</option>
+                      <option value="3">Both the above</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Type of Facility<span id="ijq6dn" style="color: red;"><b>*</b></span></label
+                    ><select id="TypeOfFacility" class="form-control">
+                      <option value="0">Select</option>
+                      <option value="1">Term Loan OR WCTL (Working Capital Term Loan)</option>
+                      <option value="2">WC/CC Limit</option>
+                    </select>
+                  </div>
+                  <div id="termloandettl" class="form-group col-md-3">
+                    <label for=""
+                      >Purpose of the Credit Facility<span id="i5polh" style="color: red;"><b>*</b></span
+                      ><i aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Credit Facility to be used for: Setting up of new facility or running/ upgradation of existing facility" class="fa fa-question-circle"></i></label
+                    ><select id="PurposeOftheCreditFacility" multiple="multiple" class="form-control">
+                      <option value="1">Supply quality production inputs like seed, fertilizer, pesticides and such other inputs at reasonably lower wholesale rates.</option>
+                      <option value="2">Make available need-based production and post-production machinery and equipment like cultivator, tiller, sprinkler set, combine harvester and such other machinery and equipment on custom hiring basis for members to reduce the per unit production cost.</option>
+                      <option value="3">Make available value addition like cleaning, assaying, sorting, grading, packing and also farm level processing facilities at user charge basis on reasonably cheaper rate. Storage and transportation facilities may also be made available.</option>
+                      <option value="4">Undertake higher income generating activities like seed production, bee keeping, mushroom cultivation etc.</option>
+                      <option value="5">Undertake aggregation Of smaller lots Of farmer-members’ produce; add value to make them more marketable.</option>
+                      <option value="6">Facilitate market information about the produce for judicious decision in production and marketing.</option>
+                      <option value="7">Facilitate logistics services such as storage, transportation, loading/un-loading etc. on shared cost basis.</option>
+                      <option value="8">Market the aggregated produce with better negotiation strength to the buyers and in the marketing-channels Offering better and remunerative prices.</option>
+                      <option value="9">Activities eligible under Agriculture Infrastructure Fund.</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="">Credit Facility will be utilised for?<i aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Activities for which Credit Facility will be used" class="fa fa-question-circle"></i></label
+                    ><!--<input type="text" id="CreditFacilityUtilised" class="form-control"> --><select id="CreditFacilityUtilised" class="form-control">
+                      <option value="0">Select</option>
+                      <!--<option value="Term Loan OR Working Capital Term Loan(WCTL)">Term Loan OR Working Capital Term Loan(WCTL)</option>-->
+                      <option value="Working Capital Requirement">Working Capital Requirement</option>
+                      <option value="Setting up of new facility(ies)">Setting up of new facility(ies)</option>
+                      <option value="Expansion">Expansion</option>
+                      <option value="Technical Upgradation">Technical Upgradation</option>
+                    </select>
+                  </div>
+                </div>
+                <div id="termloandet" class="row mx-0">
+                  <h4 class="col-md-12 title2">Term Loan or WCTL Details</h4>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Account No<span id="ihsun4" style="color: red;"><b>*</b></span></label
+                    ><input type="text" id="AccountNo" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Sanctioned Amount(Rs)<span id="is3jcz" style="color: red;"><b>*</b></span
+                      ><i aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Sanction Amount (Live sanctions with some outstanding balance)" class="fa fa-question-circle red-tooltip"></i></label
+                    ><!--<input type="number" id="SanctionedAmount" class="form-control"> --><input type="number" id="SanctionedAmount" onchange="calval(); bindsantionamountwtcl();" onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');" style="width: 100%; height: 31px;" />
+                    <p id="SanctionedAmountinwords" style="color: #f55905;"></p>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Date of Sanction<span id="i8fckk" style="color: red;"><b>*</b></span></label
+                    ><input type="date" id="DateOfSanction" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="">End Date of Interest Moratorium<i aria-hidden="true" data-toggle="tooltip" data-placement="right" title="" data-original-title="Interest Start Date" class="fa fa-question-circle red-tooltip"></i></label><input type="date" id="EndDateOfInterestMoratium" onchange="CheckEndDateInterest();" class="form-control" />
+                  </div>
+                  <div class="clearfix"></div>
+                  <div class="form-group col-md-3">
+                    <label for="">End Date of Principle Moratorium<i aria-hidden="true" data-toggle="tooltip" data-placement="right" title="" data-original-title="Pricipal Start Date" class="fa fa-question-circle red-tooltip"></i></label><input type="date" id="EndDateOfPrincipleMoratium" onchange="CheckEndPriciple();" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-3"><label for="">Due Date of Last Installment</label><input type="date" id="DueDateOfLastInstallment" onchange="Checkdate();" class="form-control" /></div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Interest Rate (in%)<span id="ikbxbu" style="color: red;"><b>*</b></span></label
+                    ><input type="text" pattern="^\d*(\.\d{0,2})?$" id="InterestRate" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Is the Credit Facility being Extended under Agriculture Infrastructure Fund<span id="i7qokn" style="color: red;"><b>*</b></span> <i aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Is the Credit Facility being Extended under Agriculture Infrastructure Fund" class="fa fa-question-circle red-tooltip"></i></label
+                    ><select id="CreditFacilityFundAgriInfra" class="form-control">
+                      <option value="0">Select</option>
+                      <option value="1">Yes</option>
+                      <option value="2">No</option>
+                    </select>
+                  </div>
+                  <div id="outstand2" class="form-group col-md-3">
+                    <label for=""
+                      >Outstanding Amount as on Date (Rs.)<span id="ioi1ch" style="color: red;"><b>*</b></span></label
+                    ><!-- <input type="number" id="OutstandingAmountOnDate" class="form-control">--><input type="number" id="OutstandingAmountOnDate" onchange="calval(); bindOutstandingAmountwtc2();" onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');" style="width: 100%; height: 31px;" />
+                    <p id="SanctionedAmountinwords1" style="color: #f55905;"></p>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Is the Loan Fully Disbursed?<span id="idk0hn" style="color: red;"><b>*</b></span></label
+                    ><select id="LoanFullyDisbured" class="form-control">
+                      <option value="0">Select</option>
+                      <option value="1">Yes</option>
+                      <option value="2">No</option>
+                    </select>
+                  </div>
+                </div>
+                <div id="wcclimitdetail" class="row mx-0">
+                  <h4 class="col-md-12 title2">Working Capital/CC Limit Details (WC/CC)</h4>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Account No<span id="ibttnj" style="color: red;"><b>*</b></span></label
+                    ><input type="text" id="AccountNoLimitDetail" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Sanctioned Amount (Rs.)<span id="ikmq4y" style="color: red;"><b>*</b></span
+                      ><i aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Sanction Amount (Live sanctions with some outstanding balance)" class="fa fa-question-circle red-tooltip"></i></label
+                    ><!--<input type="number" id="SanctionedAmountWCDetail" class="form-control"> --><input type="number" id="SanctionedAmountWCDetail" onchange="bindTermLoan(); bindsantionamountwccc();" onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');" style="width: 100%; height: 31px;" />
+                    <p id="SanctionedAmountWCDetailinwords" style="color: #f55905;"></p>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Sanction Date<span id="ifurw8" style="color: red;"><b>*</b></span></label
+                    ><input type="date" id="SanctionedDate" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-3"><label for="">Drawing Power (Rs.)</label><input type="number" id="DrawingPower" class="form-control" /></div>
+                  <div class="clearfix"></div>
+                  <div class="form-group col-md-3"><label for="">End Date of Moratium</label><input type="date" id="EndDateOfMoratium" onchange="CheckWCEnd();" class="form-control" /></div>
+                  <div class="form-group col-md-3"><label for="">End Date of Loan Validity</label><input type="date" id="ValidityEndDate" onchange="CheckWCEndValidity();" class="form-control" /></div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Interest Rate (%)<span id="iaqeoj" style="color: red;"><b>*</b></span></label
+                    ><input type="text" id="InterestRateDetail" pattern="^\d*(\.\d{0,2})?$" class="form-control" />
+                  </div>
+                  <div id="outstanding3" class="form-group col-md-3">
+                    <label for=""
+                      >Outstanding Amount as on Date (Rs.)<span id="i9e652" style="color: red;"><b>*</b></span></label
+                    ><input type="text" id="CCOutstandingAmountOnDate" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Has the Limit been Availed?<span id="iuzdo2" style="color: red;"><b>*</b></span></label
+                    ><select id="FullyLoanDisbursed" class="form-control">
+                      <option value="0">Select</option>
+                      <option value="1">Yes</option>
+                      <option value="2">No</option>
+                    </select>
+                  </div>
+                </div>
+                <div id="LoanorWTCL" class="row mx-0">
+                  <h4 class="col-md-12 title2">Means of Finance for Term Loan or WCTL</h4>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Term Loan (Rs.)<span id="i7mch4" style="color: red;"><b>*</b></span></label
+                    ><input type="number" onkeypress="return onlyNumberKey(event)" id="MeansOfFinanaceTermLoan" onchange="Totalamount()" readonly="readonly" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Promoter's Equity/Margin (Rs.)<span id="iddd5j" style="color: red;"><b>*</b></span></label
+                    ><input type="text" onkeypress="return onlyNumberKey(event)" id="PromoterEquityMargin" onchange="Totalamount()" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Unsecured Loan (Rs.)<span id="ijmhjs" style="color: red;"><b>*</b></span></label
+                    ><input type="text" onkeypress="return onlyNumberKey(event)" id="UNsecuredLoan" onchange="Totalamount()" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Any other source (Rs.)<span id="iwtw7q" style="color: red;"><b>*</b></span></label
+                    ><input type="text" onkeypress="return onlyNumberKey(event)" id="AnyOtherSource" onchange="Totalamount()" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Total Amount (Rs.)<span id="izraf1" style="color: red;"><b>*</b></span></label
+                    ><label id="totalAmountvalue" name="totalAmountvalue" readonly="readonly" class="form-control"></label>
+                  </div>
+                </div>
+                <div id="WCCCLimit" class="row mx-0">
+                  <h4 class="col-md-12 title2">Means of Finance for for WC/CC Limit</h4>
+                  <div class="form-group col-md-3"><label for="">WC/CC Limit (Rs.)</label><input type="number" id="MeansOfFinanaceTermLoan1" onchange="TotalamountWC()" readonly="readonly" class="form-control" /></div>
+                  <div class="form-group col-md-3"><label for="">Promoter's Equity/Margin (Rs.)</label><input type="text" onkeypress="return onlyNumberKey(event)" id="PromoterEquityMargin1" onchange="TotalamountWC()" class="form-control" /></div>
+                  <div class="form-group col-md-3"><label for="">Unsecured Loan (Rs.)</label><input type="text" onkeypress="return onlyNumberKey(event)" id="UNsecuredLoan1" onchange="TotalamountWC()" class="form-control" /></div>
+                  <div class="form-group col-md-3"><label for="">Any other source (Rs.)</label><input type="text" onkeypress="return onlyNumberKey(event)" id="AnyOtherSource1" onchange="TotalamountWC()" class="form-control" /></div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Total Amount (Rs.)<span id="ivh2pi" style="color: red;"><b>*</b></span></label
+                    ><label id="totalAmountvalue1" name="totalAmountvalue" readonly="readonly" class="form-control"></label>
+                  </div>
+                </div>
+              </div>
+              <button type="button" onclick="back2Function()" class="btn btn-default back">Back</button>
+              <button type="button" onclick="sdmyFunction()" class="btn btn-default Proceed">Proceed</button>
+            </div>
+          </div>
+          <div role="tabpanel" id="content" class="tab-pane">
+            <div class="design-process-content">
+              <div id="">
+                <div class="row mx-0">
+                  <h4 class="col-md-12 title">Breaking of Total financial Outlay (Approved by Lending Institute)</h4>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Inputs (Rs.)<span id="iedfsg" style="color: red;"><b>*</b></span></label
+                    ><input type="number" id="ProjectCostInput" onchange="calTotalFinOutlet()" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Marketing (Rs.)<span id="i2te8a" style="color: red;"><b>*</b></span></label
+                    ><input type="text" onkeypress="return onlyNumberKey(event)" id="ProjectCostMarketing" onchange="calTotalFinOutlet()" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Processing (Rs.)<span id="ita9dg" style="color: red;"><b>*</b></span></label
+                    ><input type="text" onkeypress="return onlyNumberKey(event)" id="ProjectCostProcessing" onchange="calTotalFinOutlet()" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Others (Rs.)<span id="idxevl" style="color: red;"><b>*</b></span></label
+                    ><input type="text" onkeypress="return onlyNumberKey(event)" id="ProjectCostOther" onchange="calTotalFinOutlet()" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Total Project Cost (Rs.)<span id="irafpk" style="color: red;"><b>*</b></span></label
+                    ><input type="number" id="ProjectCostTotal" readonly="readonly" class="form-control" />
+                  </div>
+                </div>
+                <div class="row mx-0">
+                  <h4 class="col-md-12 title2">Security Details</h4>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Type of Security<span id="i5v61w" style="color: red;"><b>*</b></span></label
+                    ><input type="text" id="TypeOfSecurity" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Nature of Security<span id="iq1rut" style="color: red;"><b>*</b></span></label
+                    ><select id="NatureOfSecurity" class="form-control">
+                      <option value="0">Select</option>
+                      <option value="1">Primary</option>
+                      <option value="2">Collateral</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Value of Security (Rs.)<span id="iklh2z" style="color: red;"><b>*</b></span></label
+                    ><input type="number" id="ValueOfSecurity" onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');" style="width: 100%; height: 31px;" />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >The Credit Facility has been sanctioned without any collateral security and/or third guarantee<span id="ip8aot" style="color: red;"><b>*</b></span> <i aria-hidden="true" data-toggle="tooltip" data-placement="right" title="The Credit Facility has been Sanctioned without any Collateral Security and/or Third Guarantee" class="fa fa-question-circle red-tooltip"></i></label
+                    ><select id="CollateralSecurity" class="form-control">
+                      <option value="0">Select</option>
+                      <option value="1">Yes</option>
+                      <option value="2">No</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for=""
+                      >Name of Lending Institution<span id="i87owj" style="color: red;"><b>*</b></span></label
+                    ><input type="text" id="NameOfLendingInstitution" readonly="readonly" class="form-control" />
+                  </div>
+                </div>
+              </div>
+              <button type="button" onclick="back3Function()" class="btn btn-default back">Back</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-md-12">
+  <div id="divMakerHide" class="form-group col-md-6" style="display: none;">
+    <label id="il2k3i" style="color: black;"
+      >ELI Maker <span id="intaa2" style="color: red;"><b>*</b></span></label
+    >
+    <div id="divELIMakerRemark"></div>
+  </div>
+  <div id="divCheckerHide" class="form-group col-md-6" style="display: none;">
+    <label id="ikp7xwn" style="color: black;"
+      >ELI Checker <span id="iizdtak" style="color: red;"><b>*</b></span></label
+    >
+    <div id="divELICheckerRemark"></div>
+  </div>
+  <div class="form-group col-md-6"><label id="izzkv56" style="color: black;">Remark</label><textarea id="txtmakerComment" class="form-control"></textarea></div>
+</div>
+<div>
+  <div class="col-sm-12 col-md-12 mt-5 mb-5">
+    <div class="buttons" id="iedphr3" style="text-align: center;"><button type="button" onclick="javascript:SubmitData('Draft');" class="btn btn-primary mr-2">Save as Draft</button><button type="button" id="btn1" onclick="javascript:SubmitData('Submitted');" class="btn btn-primary mr-2">Send for Approval</button><button type="button" onclick="javascript:cancel();" class="btn btn-default" id="i0kg14f" style="width: 100px;">Exit</button></div>
+  </div>
+</div>
+<script type="text/javascript">
+  // script for tab steps
+  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+
+    var href = $(e.target).attr('href');
+    var $curr = $(".process-model  a[href='" + href + "']").parent();
+
+    $('.process-model li').removeClass();
+
+    $curr.addClass("active");
+    // $curr.prevAll().addClass("visited");
+  });
+
+
+  // end  script for tab steps
+</script>
+<script>
+  $(document).on('keydown', 'input[pattern]', function (e) {
+    var input = $(this);
+    var oldVal = input.val();
+    var regex = new RegExp(input.attr('pattern'), 'g');
+
+    setTimeout(function () {
+      var newVal = input.val();
+      if (!regex.test(newVal)) {
+        input.val(oldVal);
+      }
+    }, 1);
+  });
+  function onlyNumberKey(evt) {
+
+    // Only ASCII character in that range allowed
+    var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+    if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+      return false;
+    return true;
+  }
+</script>
+<script>
+  function onlyNumberKey(evt) {
+
+    // Only ASCII character in that range allowed
+    var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+    if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+      return false;
+    return true;
+  }
+</script>
+<script type="text/javascript">
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+<script type="text/javascript">
+  function fpomyFunction() {
+
+    $("#strategy").addClass("active");
+      $("#discover").removeClass("active");
+       $("optimization").removeClass("active");
+      $("#content").removeClass("active");
+      $(".fposmd").addClass('active');
+      $(".afpo").removeClass('active');
+       $(".cfd").removeClass('active');
+       $(".sd").removeClass('active');
+
+
+
+  }
+</script>
+<script type="text/javascript">
+  function cfdmyFunction() {
+
+    $("#optimization").addClass("active");
+     $("#strategy").removeClass("active");
+       $("#content").removeClass("active");
+      $(".cfd").addClass('active');
+    $(".fposmd").removeClass('active');
+      $(".afpo").removeClass('active');
+      $(".sd").removeClass('active');
+
+  }
+</script>
+<script type="text/javascript">
+  function sdmyFunction() {
+
+    $("#content").addClass("li active");
+     $("#optimization").removeClass("li active");
+     $("#strategy").removeClass("active");
+  $(".sd").addClass('active');
+      $(".fposmd").removeClass('active');
+      $(".afpo").removeClass('active');
+       $(".cfd").removeClass('active');
+
+
+
+  }
+</script>
+<script type="text/javascript">
+  function back1Function() {
+
+      $("#strategy").removeClass("active");
+      $("#discover").addClass("active");
+      $("optimization").removeClass("active");
+      $("#content").removeClass("active");
+      $(".afpq").addClass('active');
+      $(".cfb").removeClass('active');
+      $(".fposmb").removeClass('active');
+      $(".sb").removeClass('active');
+  }
+</script>
+<script type="text/javascript">
+  function back2Function() {
+
+    $("#strategy").addClass("active");
+      $("#discover").removeClass("active");
+      $("#optimization").removeClass("active");
+      $("#content").removeClass("active");
+      $(".afpq").removeClass('active');
+      $(".cfb").removeClass('active');
+      $(".fposmb").addClass('active');
+      $(".sb").removeClass('active');
+
+  }
+</script>
+<script type="text/javascript">
+  function back3Function() {
+
+      $("#strategy").removeClass("active");
+      $("#discover").removeClass("active");
+      $("#optimization").addClass("active");
+      $("#content").removeClass("active");
+      $(".afpq").removeClass('active');
+      $(".cfb").addClass('active');
+      $(".fposmb").removeClass('active');
+      $(".sb").removeClass('active');
+
+  }
+</script>
+<div id="ie41znu" class="row sectionBlockLayout text-left" style="display: flex; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;">
+  <div class="container" id="i4wxb84" style="padding: 0px; display: flex; flex-wrap: wrap;"><div class="col-md-12 columnBlockLayout" style="flex-grow: 1; display: flex; flex-direction: column; min-width: 250px; word-break: break-word;"></div></div>
+</div>

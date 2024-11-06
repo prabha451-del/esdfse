@@ -1,0 +1,137 @@
+<script type="text/javascript" src="~/NSApproverDashboard.js" data-ppid="2a4e75f5-10d9-ba1a-7d09-fae8d85f16f9"></script>
+<link rel="stylesheet" href="https://nabardmumbai.sharepoint.com/sites/FPOCGPortal/SiteAssets/Scripts/Newjs/jquery.dataTables.min.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+<script src="text/javascript" data-ppid="f27ca80d-004b-99c8-c215-6ae99062ed6c"></script>
+<script src="text/javascript" data-ppid="1423e3bf-bed8-7438-42ad-e956fbc50fc5"></script>
+<script src="text/javascript" data-ppid="54eaec08-e664-bc75-9336-07f89606263a"></script>
+<script src="text/javascript" data-ppid="1b88619a-fa2c-1cd3-7363-abb06463db41"></script>
+
+<style>
+table tr td a {
+    color: #f37a51 !important;
+}
+.table {
+         width: 100%;
+         margin-bottom: 1rem;
+         color: #212529;
+         border-radius: 40px;
+         border: 1px solid #d4d3d3;
+		 box-shadow: rgb(60 64 67 / 30%) 0px 1px 2px 0px, rgb(60 64 67 / 19%) 0px 0px 3px 1px;
+         border-radius: 0px !important;
+         }
+</style>
+<meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title data-ppid="489877de-8382-bd2d-2e77-80338f054dba">CG Application</title><link rel="stylesheet" href="https://nabardmumbai.sharepoint.com/sites/FPOCGPortalUAT/SiteAssets/Scripts/Newjs/jquery.dataTables.min.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" /><!--[if gte mso 9
+  ]><xml>
+    <mso:CustomDocumentProperties>
+      <mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">Sharepoint Admin</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+      <mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">Pankaj Katkar</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+      <mso:_ExtendedDescription msdt:dt="string"></mso:_ExtendedDescription>
+      <mso:ContentTypeId msdt:dt="string">0x010100B11F5A1FC213B943BED384F275CE40E6</mso:ContentTypeId>
+    </mso:CustomDocumentProperties>
+  </xml><!
+[endif]-->
+<div class="col-md-2">
+  <div id="leftnavigation">
+    <div class="navside">
+      <ul class="nav nav-pills">
+        <span id="Navdiv"></span>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="col-md-10">
+  <div class="container-fluid">
+    <div class="row mx-0">
+      <div class="col-md-12" style="background: #f55905; height: 45px;">
+        <div class="row">
+          <div class="col-md-5">
+            <div style="margin: 8px 1px;"><label data-ppid="f7a03ff8-4753-7bc4-e72d-858df79ea4c1" style="display: inline-block; font-size: 15px; color: white !important; font-weight: 700; margin-bottom: 0px;">CG Application</label></div>
+          </div>
+          <div class="col-md-7">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group row" style="margin-top: 10px;">
+                  <div class="col-md-12">
+                    <div class="col-md-5"><label data-ppid="20e8d71c-28fe-1dc2-f57e-b0c3481f032c" class="col-form-label" style="float: right; display: inline-block; font-size: 15px; color: white !important; font-weight: 700; margin-bottom: 0px;">Status</label></div>
+                    <div class="col-md-7">
+                    <select id="ddlStatus" title="ddlStatus" onchange="BindHomeDetails();" class="form-control" style="float: right; border: #fdac19; font-size: 10px;">
+                      <option value="All">All</option>
+                      <option value="7" data-ppid="069d814c-1b48-98a8-996d-9270e1675d4b">Review by NABSaranrakshan</option>
+                      <option value="8" data-ppid="68ae5e08-d838-e5d1-d300-5afeb5d0a40c">Approved by NABSaranrakshan</option>
+                      <option value="9" data-ppid="a7792252-4499-1c40-9b57-d65fae82800d">Rejected by NABSaranrakshan</option>
+                       <option value="6" data-ppid="42825f30-72ca-e6ca-d06d-cded46a8b6d8">Submitted to NabSanrakshan</option>
+                  <option value="3" data-ppid="c93100c3-4b7b-f37a-4c2d-2db5dcfca439">Sent Back by NABSaranrakshan</option>
+                  <option value="7" data-ppid="61b03e27-3bb4-a874-43a2-6b8799b26fbc">Review by NABSaranrakshan</option>
+                  <option value="16" data-ppid="0093ce51-55e5-a7c5-a0ce-0b652288128e">Recommend for Rejection</option>
+									   <option value="12">Payment Inititated</option>
+                  <option value="13">Payment Inititated by ELI</option>
+                  <option value="10">Payment Processed by ELI</option>
+									<option value="11">Payment Confirmed by NABSaranrakshan</option>
+                  <option value="15">Guarantee Issued</option>
+                    </select>
+                    <div>
+                  </div>
+                </div>
+              </div>
+              <!--<div class="col-md-7">
+              <div style="margin-top: 10px;">
+                <div id="tblDataMain_length" class="dataTables_length box" style="display: block;">
+                  <label style="display: inline-block; font-size: 15px; color: rgb(255, 255, 255); font-weight: 700; margin-bottom: 0px;"
+                    >Show
+                    <select name="tblDataMain_length" aria-controls="tblDataMain" style="background-image: initial; background-position-x: initial; background-position-y: initial; background-size: initial; background-repeat-x: initial; background-repeat-y: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); border-top-width: initial; border-right-width: initial; border-bottom-width: initial; border-left-width: initial; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-top-color: initial; border-right-color: initial; border-bottom-color: initial; border-left-color: initial; border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px;">
+                      <option value=""></option>
+                      <option value="10">10</option>
+                      <option value="25">25</option>
+                      <option value="50">50</option>
+                      <option value="100">100</option>
+                    </select>
+                    entries
+                  </label>
+                </div>
+              </div>
+            </div>-->
+            </div>
+          </div>
+          <!--<div class="col-md-3" style="margin-top: 10px;">
+          <div class="form-group has-search"><span class="fa fa-search form-control-feedback" style="position: absolute; z-index: 2; display: block; text-align: center; pointer-events: none; color: rgb(170, 170, 170); right: 12px; top: 7px; font-size: 12px;"></span><input type="text" placeholder="Search" class="form-control" style="background-image: initial; background-position-x: initial; background-position-y: initial; background-size: initial; background-repeat-x: initial; background-repeat-y: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); font-size: 10px;" /></div>
+        </div>-->
+        </div>
+      </div>
+    </div>
+    <div class="row my-3">
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table id="tblDataMain" bgcolor="rgb(255, 255, 255)" data-ppid="f2586cee-d014-da98-aeb6-10e5e0dddb45" class="table no-footer tbldashboard" style="margin-bottom: 1rem; width: 99.9%; border: 1px solid; color: rgb(0 0 0); border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; background-color: rgb(255, 255, 255); border-top-width: initial; border-right-width: initial; border-bottom-width: initial; border-left-width: initial; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-top-color: initial; border-right-color: initial; border-bottom-color: initial; border-left-color: initial; border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial;">
+            <thead data-ppid="9c7672b6-236a-fa2b-5fc2-9951328f60d9">
+              <tr data-ppid="27dc1fdf-f6ed-8025-efed-c4c7b1a19152">
+                <th align="left" data-ppid="5fc5665a-b1e4-9805-6bd5-4eee03124a9e" style="font-size: 13px; font-weight: 700; text-transform: uppercase; padding-top: 8px; padding-right: 27px; padding-bottom: 8px; padding-left: 27px; text-align: left;">ELI</th>
+                <th align="left" data-ppid="9126c788-7f6e-f8d6-d765-13e34151cb16" style="font-size: 13px; font-weight: 700; text-transform: uppercase; padding-top: 8px; padding-right: 27px; padding-bottom: 8px; padding-left: 27px; text-align: left;">CG Application No</th>
+                <th align="left" data-ppid="f8fe91ab-e9d8-b8b8-a25b-df255ce5ff61" style="font-size: 13px; font-weight: 700; text-transform: uppercase; padding-top: 8px; padding-right: 27px; padding-bottom: 8px; padding-left: 27px; text-align: left;">Entry date</th>
+                <!--<th style="text-align:center">Name Of Lending Institution</th> -->
+                <th align="left" data-ppid="d22ac3f6-1103-0c1c-faf1-704a3557a568" style="font-size: 13px; font-weight: 700; text-transform: uppercase; padding-top: 8px; padding-right: 27px; padding-bottom: 8px; padding-left: 27px; text-align: left;">Name of FPO</th>
+                <th align="left" data-ppid="b783dbab-6731-2e2d-daa5-d3cfccade578" style="font-size: 13px; font-weight: 700; text-transform: uppercase; padding-top: 8px; padding-right: 27px; padding-bottom: 8px; padding-left: 27px; text-align: left;">Account No</th>
+                <th align="left" data-ppid="2b064fa5-a701-861c-40b4-67c38bc77091" style="font-size: 13px; font-weight: 700; text-transform: uppercase; padding-top: 8px; padding-right: 27px; padding-bottom: 8px; padding-left: 27px; text-align: left;">Sanctioned Amount</th>
+                <!--   <th style="text-align:center">SOE Number</th> --><!--  <th style="text-align:center"> CG Fee</th> --><!--<th style="text-align:center"> Entry date</th>  --><!--	<th style="text-align:center">Remarks By Checker</th> -->
+                <th align="left" data-ppid="1923b0c7-c131-5862-08cb-adcb7cc2317e" style="font-size: 13px; font-weight: 700; text-transform: uppercase; padding-top: 8px; padding-right: 27px; padding-bottom: 8px; padding-left: 27px; text-align: left;">Status</th>
+                <th align="left" data-ppid="ec93571b-17b2-2571-24f7-2a932a835f02" style="font-size: 13px; font-weight: 700; text-transform: uppercase; padding-top: 8px; padding-right: 27px; padding-bottom: 8px; padding-left: 27px; text-align: left;">Action</th>
+                <th align="left" data-ppid="8b8ba99a-acea-4016-3fbd-e954de330d29" style="font-size: 13px; font-weight: 700; text-transform: uppercase; display: none; padding-top: 8px; padding-right: 27px; padding-bottom: 8px; padding-left: 27px; text-align: left;">ID</th>
+              </tr>
+            </thead>
+            <tbody id="tbodyRequestor" data-ppid="a64f598c-78da-4926-a6f6-0726c5e0435e">
+             
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script data-ppid="0cbd71ca-3221-37b9-a1ed-e2c2cbd1c80c">
+         	$(document).ready(function()
+       {
+
+       $('li >a:contains("CG Applications")').addClass('active');
+    });
+  </script>
+  <div data-ppid="3c257fcb-4877-5e74-0a1f-71de74f1bece" class="row sectionBlockLayout text-left" style="display: flex; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;">
+    <div data-ppid="bf47780d-a820-14f1-b62b-a2c3a42701da" class="container" style="padding: 0px; display: flex; flex-wrap: wrap;"><div data-ppid="4d115750-0a0a-b4aa-6b2b-a9152b0e3658" class="col-md-12 columnBlockLayout" style="flex-grow: 1; display: flex; flex-direction: column; min-width: 310px; word-break: break-word;"></div></div>
+  </div>
+</div>

@@ -1,0 +1,182 @@
+<script type="text/javascript" src="~/NSCheckerDashboard.js" data-ppid="a74a3e92-4301-d1d1-8ab3-e49d972a1583"></script>
+<link rel="stylesheet" href="https://nabardmumbai.sharepoint.com/sites/FPOCGPortal/SiteAssets/Scripts/Newjs/jquery.dataTables.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="text/javascript" data-ppid="ba234a54-fedd-912c-01c4-b3a1f5ff2bbf"></script>
+<script src="text/javascript" data-ppid="ed9b45d6-c9f8-eb57-980f-ba05c3094fa6"></script>
+<script src="text/javascript" data-ppid="5817107c-2822-8ba3-757e-34de1da017d9"></script>
+<script src="text/javascript" data-ppid="4ab7573f-d5fc-0f0c-49a8-c124f333f889"></script>
+<div class="col-md-2">
+  <div id="leftnavigation">
+    <div class="navside">
+      <ul class="nav nav-pills">
+        <span id="Navdiv"></span>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="col-md-10">
+  <div class="container-fluid" style="padding: 0;">
+    <div class="row mx-0 head">
+      <div class="col-md-12" style="background: #f55905; height: 45px;">
+        <div class="row">
+          <div class="col-md-5">
+            <div style="margin: 8px 1px;"><label data-ppid="09f84d03-4e23-2958-1bb6-d30e2a553cdf" style="display: inline-block; font-size: 15px; font-weight: 700; margin-bottom: 0px; color: white;">NABSanrakshan Checker</label></div>
+          </div>
+          <div class="col-md-7">
+            <div class="form-group row" style="margin-top: 10px; float: right;">
+              <label data-ppid="01c6a05d-e7fe-bc1e-a01c-9778122ff144" class="col-md-3 col-form-label" style="display: inline-block; font-size: 15px; font-weight: 700; margin-bottom: 0px; color: white;"> Status </label>
+              <div class="col-md-9">
+                <select id="ddlStatus" title="ddlStatus" onchange="BindHomeDetails();" class="form-control" style="font-size: 10px;">
+                  <option value="All" data-ppid="6875deb4-f96e-1967-9716-fbd40dbc519a">All</option>
+                  <option value="6" data-ppid="42825f30-72ca-e6ca-d06d-cded46a8b6d8">Submitted to NabSanrakshan</option>
+                  <option value="3" data-ppid="c93100c3-4b7b-f37a-4c2d-2db5dcfca439">Sent Back by NABSaranrakshan</option>
+                  <option value="7" data-ppid="61b03e27-3bb4-a874-43a2-6b8799b26fbc">Review by NABSaranrakshan</option>
+                  <option value="16" data-ppid="0093ce51-55e5-a7c5-a0ce-0b652288128e">Recommend for Rejection</option>
+                  <option value="9" data-ppid="dd2c3d70-eb8b-7a67-ce82-0573668da44d">Rejected by NABSaranrakshan</option>
+                  <option value="8" data-ppid="fb5ce1dc-8640-2d11-5830-1f3615d13ac6">Approved by NABSaranrakshan</option>
+                  <option value="12">Payment Inititated</option>
+                  <option value="13">Payment Inititated by ELI</option>
+                  <option value="10">Payment Processed by ELI</option>
+                  <option value="11">Payment Confirmed by NABSaranrakshan</option>
+                  <option value="15">Guarantee Issued</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <!--       <div class="col-md-2">
+						               <div style="margin-top:8px">
+						                  <div class="dataTables_length box"id="tblDataMain_length">
+						                     <label>
+						                        Show 
+						                        <select name="tblDataMain_length" aria-controls="tblDataMain" class="">
+						                           <option value=""></option>
+						                           <option value="10">10</option>
+						                           <option value="25">25</option>
+						                           <option value="50">50</option>
+						                           <option value="100">100</option>
+						                        </select>
+						                        entries
+						                     </label>
+						                  </div>
+						               </div>
+						            </div>
+						            <div class="col-md-3">
+						               <div class="form-group row" style="margin-top:10px">
+						                  <label class="col-md-3col-form-label">Status<span style="color:red"><b>*</b></span></label>
+						                  <div class="col-md-5">
+						                     <select id="ddlStatus" title="ddlStatus" class="form-control" onchange="BindHomeDetails();">
+						                        <option value=""></option>
+						                        <option value="Submitted to NabSanrakshan">Submitted to NabSanrakshan</option>
+						                        <option value="Sent Back by NABSaranrakshan">Sent Back by NABSaranrakshan</option>
+						                        <option value="Review by NABSaranrakshan">Review by NABSaranrakshan</option>
+						                     </select>
+						                  </div>
+						               </div>
+						            </div>  -->
+        </div>
+      </div>
+    </div>
+    <div class="row my-3">
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table id="tblDataMain" bgcolor="#f55905" data-ppid="9b7e1155-c0a3-01b3-03cd-ae6bf9beb819" class="table" style="margin-bottom: 1rem; box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.19) 0px 0px 3px 1px; width: 99.9%; border: 1px solid; color: rgb(0 0 0); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(212, 211, 211); border-right-color: rgb(212, 211, 211); border-bottom-color: rgb(212, 211, 211); border-left-color: rgb(212, 211, 211); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial; border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px;">
+            <thead data-ppid="c11c82b2-0500-96d4-f136-590aba24163d">
+              <tr data-ppid="1c090ab8-dc99-b484-035f-f6452a0b8462">
+                <th align="center" bgcolor="rgb(255, 255, 255)" data-ppid="4e7a25c0-586c-0381-4c39-10dfbaf84fbe" style="font-size: 12px; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); font-weight: 700; text-align: center;">ELI</th>
+                <th align="center" bgcolor="rgb(255, 255, 255)" data-ppid="5dea6e45-b095-e263-ef31-5ea59c230e5d" style="font-size: 12px; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); font-weight: 700; text-align: center;">CG Application No</th>
+                <th align="center" bgcolor="rgb(255, 255, 255)" data-ppid="fe38a707-1094-7703-2307-3a70f4e4608b" style="font-size: 12px; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); font-weight: 700; text-align: center;">Entry Date</th>
+                <!--    <th style="text-align:center">Name Of Lending Institution</th> -->
+                <th align="center" bgcolor="rgb(255, 255, 255)" data-ppid="542429ff-8a80-3efd-dc91-083f8ece3ba7" style="font-size: 12px; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); font-weight: 700; text-align: center;">Name of FPO</th>
+                <th align="center" bgcolor="rgb(255, 255, 255)" data-ppid="2d390cc6-1742-4626-8536-4fa94d78cc99" style="font-size: 12px; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); font-weight: 700; text-align: center;">Account No</th>
+                <th align="center" bgcolor="rgb(255, 255, 255)" data-ppid="c78e41f8-087a-5ada-b95f-8ad99a7df665" style="font-size: 12px; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); font-weight: 700; text-align: center;">Sanctioned Amount</th>
+                <!--  <th style="text-align:center">Entry Date</th> -->
+                <th align="center" bgcolor="rgb(255, 255, 255)" data-ppid="5a86fa68-66f6-b65a-57fa-1b947901ceca" style="font-size: 12px; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); font-weight: 700; text-align: center;">Status</th>
+                <th align="center" bgcolor="rgb(255, 255, 255)" data-ppid="2b1bb8f5-f4cb-5331-c6a1-4f06ed635193" style="font-size: 12px; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); font-weight: 700; text-align: center;">Action</th>
+                <th align="left" bgcolor="rgb(255, 255, 255)" data-ppid="d4f293da-dd07-9442-a4d1-62dda427ac9c" style="font-size: 12px; display: none; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); font-weight: 700; text-align: left;">ID</th>
+              </tr>
+            </thead>
+            <tbody id="tbodyRequestor" data-ppid="1882cebf-8895-d59f-7199-8dbfc47e8a78"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--			<div class="container-fluid" style="background-color: #f5f5f5;">
+					   <div class="row py-3">
+					      <div class="col-md-12 ">
+					         <h1 style="text-align: center;">NABSanrakshan Checker</h1>
+					      </div>
+					   </div>
+					   <div class="row">
+					      <div class="col-md-12">
+					         <div class="container-fluid border-box">
+					            <br>
+					            <div class="row" style="    padding-left: 20px;">
+					               <div class="button2" style="margin-right:20px;">
+					                  <button type="button" class="button" onclick="javascript:SubmitData();" style="font-size: 15px;">New Request Single Entry</button>
+					               </div>
+					               <br>
+					               <div class="button1" style="margin-right:20px;">
+					                  <button type="button" class="button" onclick="javascript:OpenXL();" style="font-size: 15px;">New Request Bulk Upload</button>
+					               </div>
+					            </div>
+					            <br>
+					            <div class="row">
+					               <div class="fromdt">
+					                  <label>From Date</label>
+					                  <input type="date">
+					               </div>
+					               <div class="todt" style="padding-right:20px">
+					                  <label>To Date</label>
+					                  <input type="date">
+					               </div>
+					            </div>
+					            <div class="search-container">
+					               <div class="form-row col-lg-10 col-lg-offset-1">
+					                  <div class="form-group col-md-6">
+					                     <label>Status<span style="color:red"><b>*</b></span></label>
+					                     <select id="ddlStatus" title="ddlStatus" class="form-control" onchange="BindHomeDetails();">
+					                        <option value="All">-All-</option>
+					                        <option value="Review by NABSaranrakshan">Review by NABSaranrakshan</option>
+					                        <option value="Approved by NabSaranrakshan">Approved by NabSaranrakshan</option>
+					                        <option value="Rejected by NabSaranrakshan">Rejected by NabSaranrakshan</option>
+					                     </select>
+					                  </div>
+					                  -<button type="button" style="height: 37px;margin-top: 30px;" class="btn btn-success" id="btnSearch" onclick="BindHomeDetails();">  Search... </button>
+					               </div>
+					            </div>
+					            <div class="row">
+					               <div class="col-md-12 ">
+					                  <table  class="table" style="width: 99.9%; border: 1px solid; background-color:#f55905;     color: rgb(0 0 0);" id="tblDataMain" >
+					                     <thead>
+					                        <tr>
+					                           <th style="text-align:center">CG Application No</th>
+					                           <th style="text-align:center">Name Of Lending Institution</th>
+					                           <th style="text-align:center">Name of FPO</th>
+					                           <th style="text-align:center">Account No</th>
+					                           <th style="text-align:center">Sanctioned Amount</th>
+					                           <th style="text-align:center">Entry Date</th>
+					                           <th style="text-align:center"> Status</th>
+					                           <th style="text-align:center"> Action</th>
+					                           <th style="text-align:center; display:none">ID</th>
+					                        </tr>
+					                     </thead>
+					                     <tbody id="tbodyRequestor">
+					                     </tbody>
+					                  </table>
+					               </div>
+					            </div>
+					         </div>
+					      </div>
+					   </div>
+					</div> -->
+  <script data-ppid="8719e4c2-1393-5c6a-1ec1-2c233dfb7f96">
+         	$(document).ready(function()
+       {
+
+       $('li >a:contains("CG Applications")').addClass('active');
+    });
+  </script>
+  <div data-ppid="726f86e2-e969-b59b-0b08-ad8d2be50aca" class="row sectionBlockLayout text-left" style="display: flex; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;">
+    <div data-ppid="a5a6fa4d-9104-c06b-471e-151a8021320b" class="container" style="padding: 0px; display: flex; flex-wrap: wrap;"><div data-ppid="c7093edc-d930-8098-c824-eba71dae696a" class="col-md-12 columnBlockLayout" style="flex-grow: 1; display: flex; flex-direction: column; min-width: 310px; word-break: break-word;"></div></div>
+  </div>
+</div>

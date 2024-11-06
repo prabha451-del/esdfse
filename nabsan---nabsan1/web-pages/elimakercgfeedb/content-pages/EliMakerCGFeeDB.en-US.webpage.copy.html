@@ -1,0 +1,154 @@
+<script type="text/javascript" src="~/ELIMakerCGFeeDB.js"></script>
+<div class="col-md-2">
+  <div id="leftnavigation">
+    <div class="navside">
+      <ul class="nav nav-pills">
+        <span id="Navdiv"></span>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="col-md-10">
+  <div class="container-fluid">
+    <div class="row mx-0 head">
+      <div class="col-md-12" style="background: #f55905; height: 45px;">
+        <div class="row">
+          <div class="col-md-6">
+            <div style="margin: 8px 1px;"><label style="color: white;">CG Fee</label></div>
+          </div>
+          <div class="col-md-3"></div>
+          <div class="col-md-6" style="margin-top: 8px;">
+            <div style="float: right;">
+              <div class="form-group row" style="margin-top: 3px;">
+                <label class="col-md-5 col-form-label" style="color: white;">Application Status</label>
+                <div class="col-md-7">
+                  <select id="ddlStatus" title="ddlStatus" onchange="BindHomeDetails(ddlStatus);" class="form-control" style="border: #fdac19;">
+                    <option value="All">All</option>
+                    <option value="Approved by NABSaranrakshan">Approved by NABSaranrakshan</option>
+                    <option value="Payment Inititated">Payment Inititated</option>
+                    <option value="Payment Being Reviewed by Nabsanrakshan">Payment Being Reviewed by Nabsanrakshan</option>
+                    <option value="Returned by Checker">Returned by Checker</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row my-3">
+      <div class="col-md-12">
+        <div style="float: right;">
+          <!--<button type="button" class="button" onclick="javascript:SubmitData();" style="font-size: 13px;margin-right: 10px;font-weight:600;">New Request Single Entry</button>
+   					<button type="button" class="button" onclick="javascript:OpenXL();" style="font-size: 13px;font-weight:600;">New Request Bulk Upload</button>-->
+        </div>
+      </div>
+    </div>
+    <div class="row my-3">
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table id="tblDataMain" class="table col-md-12" style="margin-bottom: 1rem; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(212, 211, 211); border-right-color: rgb(212, 211, 211); border-bottom-color: rgb(212, 211, 211); border-left-color: rgb(212, 211, 211); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial; box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.19) 0px 0px 3px 1px; color: rgb(0 0 0); border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; width: 1172px;">
+            <thead>
+              <tr>
+                <th style="text-align: center;" align="center">CGPAN</th>
+                <th style="text-align: center;" align="center">Name of FPO</th>
+                <th style="text-align: center;" align="center">SOE No</th>
+                <th style="text-align: center;" align="center">SOE Date</th>
+                <th style="text-align: center;" align="center">Total CG Fee</th>
+                <th style="text-align: center;" align="center">CG Status</th>
+                <th style="text-align: center;" align="center">Application Status</th>
+                <th style="text-align: center;" align="center">Action</th>
+                <th style="text-align: center; display: none;" align="center">ID</th>
+              </tr>
+            </thead>
+            <tbody id="tbodyRequestor"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!---     <div class="container-fluid">
+         
+         
+         <div class="row">
+            <div class="">
+               <div class="container-fluid">
+               <div class="row my-3" style="    padding-left: 20px;">
+            <div class="button2" style="margin-right:20px;">
+               <button type="button" class="button" onclick="javascript:SubmitData();" style="font-size: 15px;">New Request Single Entry</button>
+            </div>
+            <br>
+            <div class="button1" style="margin-right:20px;">
+               <button type="button" class="button" onclick="javascript:OpenXL();" style="font-size: 15px;">New Request Bulk Upload</button>
+            </div>
+         </div>
+                  <br>
+                   <div class="row">
+                     <div class="fromdt">
+                     <label>From Date</label>
+                     <input type="date">
+                     </div>
+                     
+                     <div class="todt" style="padding-right:20px">
+                     <label>To Date</label>
+                     <input type="date">
+                     </div>
+                     </div>
+                 <div class="search-container">
+                     <div class="form-row col-lg-10 col-lg-offset-1">
+                        <div class="form-group col-md-3">
+                           <label>Status<span style="color:red"><b>*</b></span></label>
+                           <select id="ddlStatus" title="ddlStatus" class="form-control" onchange="BindHomeDetails(ddlStatus);">
+                              <option value="All">-All-</option>
+                              <option value="Submitted">Submitted</option>
+                              <option value="Saved">Saved</option>
+                              <option value="Pending For Approval">Pending For Approval</option>
+                              <option value="Sent Back by ELI Checker">Sent Back by ELI Checker</option>
+                              <option value="Rejected by NABSaranrakshan">Rejected by NABSaranrakshan</option>
+                              <option value="Approved by NABSaranrakshan">Approved by NABSaranrakshan</option>
+                              <option value="Submitted to NabSanrakshan">Submitted to NabSanrakshan</option>
+                              <option value="Payment Processed by ELI">Payment Processed by ELI</option>
+                              <option value="Guarantee Issued">Guarantee Issued</option>
+                           </select>
+                        </div>
+                        <div class="col-md-9"></div>
+                         <button type="button" class="btn btn-success" id="btnSearch" style="height: 37px;margin-top: 30px;" onclick="BindHomeDetails();">  Search... </button>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-md-12">
+                     		<table  class="table" style="width: 99.9%; border: 1px solid; background-color:#f55905; color: #fff;" id="tblDataMain" >
+                           <thead>
+                              <tr>
+                                 <th class="sticky-col first-col" style="text-align:center"><input type="checkbox" id="checkall" value='1'> 
+                                 <th style="text-align:center"> CG Application No.</th>
+                                 <th style="text-align:center">Entry Date</th>
+                                 <th style="text-align:center">Name of FPO</th>
+                                 <th style="text-align:center">Account No</th>
+                                 <th style="text-align:center">Sanctioned Amount of Credit Facility </th>
+                                 <th style="text-align:center">Date Of Sanction</th>
+                                 <th style="text-align:center"> Status</th>
+                                 <th style="text-align:center"> Action</th>
+                                 <th style="text-align:center; display:none">ID</th>
+                              </tr>
+                           </thead>
+                           <tbody id="tbodyRequestor">
+                           </tbody>
+                        </table>
+                        
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>  -->
+<script>
+  $(document).ready(function () {
+
+     $('li >a:contains("Renewal Fee")').addClass('active');
+  });
+</script>
+<div class="row sectionBlockLayout text-start" style="display: flex; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;">
+  <div class="container" style="padding: 0px; display: flex; flex-wrap: wrap;"><div class="col-lg-12 columnBlockLayout" style="flex-grow: 1; display: flex; flex-direction: column; min-width: 250px; word-break: break-word;"></div></div>
+</div>

@@ -1,0 +1,20 @@
+adx_accountrelationship: 
+adx_append: true
+adx_appendto: true
+adx_childTablePermissions: []
+adx_contactrelationship: 
+adx_copy: undefined
+adx_create: true
+adx_delete: true
+adx_entitylogicalname: cr6fc_cgappfiles
+adx_entityname: CGAppFiles
+adx_entitypermission_webrole:
+- 3069438b-c2f9-442b-9d11-3e42a4cb8a6b
+- 691626fe-bf7a-4753-89e5-5bba3a6e7c24
+- 9b3d22e4-2339-413e-b753-7c71791a03b1
+adx_entitypermissionid: 97899746-6fd6-482c-9bdd-042b517934cf
+adx_parententitypermission: 
+adx_parentrelationship: 
+adx_read: true
+adx_scope: 756150000
+adx_write: true
